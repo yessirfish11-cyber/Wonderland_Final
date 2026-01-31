@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // ตรวจสอบการกดปุ่ม ESC
+        // ๏ฟฝ๏ฟฝวจ๏ฟฝอบ๏ฟฝ๏ฟฝรก๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ESCs
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -29,26 +29,26 @@ public class GameManager : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        settingsMenuUI.SetActive(false); // ปิดหน้า Setting ด้วยถ้าเปิดค้างไว้
-        Time.timeScale = 1f; // ให้เวลาในเกมเดินปกติ
+        settingsMenuUI.SetActive(false); // ๏ฟฝิดหน๏ฟฝ๏ฟฝ Setting ๏ฟฝ๏ฟฝ๏ฟฝยถ๏ฟฝ๏ฟฝ๏ฟฝิด๏ฟฝ๏ฟฝาง๏ฟฝ๏ฟฝ๏ฟฝ
+        Time.timeScale = 1f; // ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
         isPaused = false;
     }
 
     void Pause()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f; // หยุดเวลาในเกมทั้งหมด
+        Time.timeScale = 0f; // ๏ฟฝ๏ฟฝุด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
         isPaused = true;
     }
 
-    // ฟังก์ชันสำหรับปุ่ม Setting
+    // ๏ฟฝัง๏ฟฝ๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝับ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ Setting
     public void OpenSettings()
     {
         pauseMenuUI.SetActive(false);
         settingsMenuUI.SetActive(true);
     }
 
-    // ฟังก์ชันสำหรับปุ่ม Back ในหน้า Setting
+    // ๏ฟฝัง๏ฟฝ๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝับ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ Back ๏ฟฝหน๏ฟฝ๏ฟฝ Setting
     public void CloseSettings()
     {
         settingsMenuUI.SetActive(false);
