@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        // Singleton pattern
         if (Instance == null)
         {
             Instance = this;
@@ -43,7 +42,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // ตรวจสอบการกด ESC
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -57,44 +55,38 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    #region Pause Menu Functions
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        settingsMenuUI.SetActive(false); // ปิดหน้า Setting ด้วยถ้าเปิดค้างอยู่
-        Time.timeScale = 1f; // ให้เกมเดินต่อ
+        settingsMenuUI.SetActive(false);
+        Time.timeScale = 1f;
         isPaused = false;
     }
 
     void Pause()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f; // หยุดเวลาในเกม
+        Time.timeScale = 0f;
         isPaused = true;
     }
 
-    // ฟังก์ชันสำหรับเปิด Setting
     public void OpenSettings()
     {
         pauseMenuUI.SetActive(false);
         settingsMenuUI.SetActive(true);
     }
 
-    // ฟังก์ชันสำหรับปุ่ม Back ในหน้า Setting
     public void CloseSettings()
     {
         settingsMenuUI.SetActive(false);
         pauseMenuUI.SetActive(true);
     }
-    #endregion
 
-    #region Score System Functions
     public void AddScore(int amount)
     {
         currentScore += amount;
         UpdateScoreUI();
-        
-        // Check win condition
+
         if (currentScore >= scoreToWin)
         {
             Win();
@@ -116,7 +108,6 @@ public class GameManager : MonoBehaviour
             winPanel.SetActive(true);
         }
         
-        // หยุดเกม
         Time.timeScale = 0f;
     }
     
@@ -130,5 +121,4 @@ public class GameManager : MonoBehaviour
         currentScore = 0;
         UpdateScoreUI();
     }
-    #endregion
 }
