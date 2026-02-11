@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(0, playerDirection.y * currentSpeed);
+        rb.linearVelocity = new Vector2(0, playerDirection.y * currentSpeed);
     }
 
     public void TakeDamage(int damage, float speedReduction, float slowDuration)
