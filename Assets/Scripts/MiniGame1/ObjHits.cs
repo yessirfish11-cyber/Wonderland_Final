@@ -26,7 +26,7 @@ public class ObjHits : MonoBehaviour
         }
         else if(collision.tag == "Player")
         {
-            Player playerScript = collision.GetComponent<Player>();
+            Player1 playerScript = collision.GetComponent<Player1>();
             
             if (playerScript != null)
             {

@@ -1,14 +1,13 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player1 : MonoBehaviour
 {
     public float playerSpeed;
     private float currentSpeed;
     private Rigidbody2D rb;
     private Vector2 playerDirection;
 
-    private int currentHealth = 4;
-    private int maxHealth = 4;
+    public int currentHealth = 4;
     
     private bool isSlowed = false;
     private float slowEndTime;

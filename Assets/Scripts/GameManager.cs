@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [Header("Score System")]
     [SerializeField] private TMP_Text scoreText;
     private int currentScore = 0;
-    private int scoreToWin = 10;
+    public int scoreToWin = 3;
 
     [Header("Scene Names")]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 1f; // ป้องกันเวลาหยุดเดินเมื่อเริ่ม Scene ใหม่
+        Time.timeScale = 1f; // ๏ฟฝ๏ฟฝอง๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝุด๏ฟฝิน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ Scene ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
         UpdateScoreUI();
         
         if (winPanel != null)
@@ -62,13 +62,13 @@ public class GameManager : MonoBehaviour
 
     public void PlayGame()
     {
-        // โหลด Scene เกม (สำหรับกดจากหน้า MainMenu)
+        // ๏ฟฝ๏ฟฝลด Scene ๏ฟฝ๏ฟฝ (๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝับ๏ฟฝ๏ฟฝ๏ฟฝากหน๏ฟฝ๏ฟฝ MainMenu)
         SceneManager.LoadScene(gameSceneName);
     }
 
     public void RestartGame()
     {
-        // โหลด Scene ปัจจุบันซ้ำเพื่อเริ่มใหม่
+        // ๏ฟฝ๏ฟฝลด Scene ๏ฟฝัจ๏ฟฝุบัน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
         Time.timeScale = 1f;
         isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -76,20 +76,20 @@ public class GameManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        Time.timeScale = 1f; // สำคัญ! ต้องคืนค่าเวลาก่อนกลับเมนู
+        Time.timeScale = 1f; // ๏ฟฝำคัญ! ๏ฟฝ๏ฟฝอง๏ฟฝืน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาก๏ฟฝอน๏ฟฝ๏ฟฝับ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
         isPaused = false;
         SceneManager.LoadScene(mainMenuSceneName);
     }
 
     public void ExitGame()
     {
-        Debug.Log("ออกจากเกม..."); // จะเห็นใน Console เมื่อกดใน Editor
-        Application.Quit(); // ปิดโปรแกรม (ใช้งานได้จริงเมื่อ Build แล้ว)
+        Debug.Log("๏ฟฝอก๏ฟฝาก๏ฟฝ๏ฟฝ..."); // ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ Console ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอก๏ฟฝ๏ฟฝ Editor
+        Application.Quit(); // ๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ (๏ฟฝ๏ฟฝาน๏ฟฝ๏ฟฝ๏ฟฝิง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ Build ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ)
     }
 
     public void Resume()
     {
-        // ตรวจสอบว่ามีช่องใส่ UI หรือไม่ ถ้าไม่มีให้ข้ามไปเลย ไม่ต้อง Error
+        // ๏ฟฝ๏ฟฝวจ๏ฟฝอบ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝีช๏ฟฝอง๏ฟฝ๏ฟฝ๏ฟฝ UI ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอง Error
         if (pauseMenuUI != null) pauseMenuUI.SetActive(false);
         if (settingsMenuUI != null) settingsMenuUI.SetActive(false);
 
@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
 
     void Pause()
     {
-        // ถ้าหน้าไหนไม่มีแผง Pause ก็จะไม่เกิดอะไรขึ้นและไม่ Error
+        // ๏ฟฝ๏ฟฝ๏ฟฝหน๏ฟฝ๏ฟฝ๏ฟฝหน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝแผง Pause ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝรข๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ Error
         if (pauseMenuUI != null)
         {
             pauseMenuUI.SetActive(true);
@@ -158,5 +158,12 @@ public class GameManager : MonoBehaviour
     {
         currentScore = 0;
         UpdateScoreUI();
+    }
+
+    public void BackToGameScene()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+        SceneManager.LoadScene(gameSceneName);
     }
 }

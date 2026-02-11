@@ -25,7 +25,7 @@ public class NPC : MonoBehaviour
         {
             if (!dialoguePanel.activeInHierarchy)
             {
-                // เมื่อเริ่มคุย ให้ซ่อนป้าย [E] ไปเลยเพื่อไม่ให้เกะกะ
+                // ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ [E] ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝะก๏ฟฝ
                 interactPrompt.SetActive(false);
                 StartDialogue();
             }
@@ -92,7 +92,7 @@ public class NPC : MonoBehaviour
     public void FinishDialogue()
     {
         zeroText();
-        // เปลี่ยน Scene เมื่อคุยจบ
+        // ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝยน Scene ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอค๏ฟฝยจ๏ฟฝ
         if (!string.IsNullOrEmpty(nextSceneName))
         {
             SceneManager.LoadScene(nextSceneName);
