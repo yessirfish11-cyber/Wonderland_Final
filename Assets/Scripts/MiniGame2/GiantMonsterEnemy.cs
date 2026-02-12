@@ -199,11 +199,13 @@ public class GiantMonsterEnemy : MonoBehaviour
     {
         movement = Vector2.zero;
 
-        if (audioSource != null && catchSound != null)
-        {
+        // หยุดเพลงไล่ล่าก่อน
+        if (audioSource != null && audioSource.isPlaying)
             audioSource.Stop();
+
+        // เล่นเสียงจับได้ (ถ้ามี) — JumpScareUI จะเล่นเสียง Jumpscare ต่อเอง
+        if (audioSource != null && catchSound != null)
             audioSource.PlayOneShot(catchSound);
-        }
 
         Debug.Log("ตัวเงินตัวทองยักษ์จับผู้เล่นได้!");
 
@@ -212,15 +214,28 @@ public class GiantMonsterEnemy : MonoBehaviour
 
     private IEnumerator AttackSequence()
     {
+        // แอนิเมชัน Attack
         if (animator != null)
-        {
             animator.SetTrigger("Attack");
+
+        // หยุดการเคลื่อนที่ของผู้เล่นทันที
+        if (playerScript != null)
+            playerScript.SetMovement(false);
+
+        // รอนิดนึงให้แอนิเมชัน Attack เริ่มต้น
+        yield return new WaitForSecondsRealtime(0.3f);
+
+        // ──── เรียก Jump Scare UI ────
+        if (JumpScareUI.Instance != null)
+        {
+            JumpScareUI.Instance.TriggerJumpScare();
+        }
+        else
+        {
+            Debug.LogWarning("JumpScareUI.Instance เป็น null — ตรวจสอบว่ามี JumpScareUI ใน Scene");
         }
 
-        yield return new WaitForSeconds(0.3f);
-        yield return new WaitForSeconds(1f);
-
-        currentState = EnemyState.Patrol;
+        // Enemy หยุดนิ่ง ไม่ต้อง return to Patrol เพราะ Scene จะ Reload
     }
 
     private Vector2 GetForwardDirection()
@@ -274,7 +289,7 @@ public class GiantMonsterEnemy : MonoBehaviour
 
         // วงใกล้ (visionRange * 0.5f) - สีส้ม: ตรวจจับทันทีไม่ว่าผู้เล่นจะหยุดหรือขยับ
         Gizmos.color = new Color(1f, 0.5f, 0f, 0.9f);
-        Gizmos.DrawWireSphere(transform.position, visionRange * 0.4f);
+        Gizmos.DrawWireSphere(transform.position, visionRange * 0.3f);
 
         // มุมมองเห็น (เฉพาะวงไกล)
         Vector2 forward = GetForwardDirection();
