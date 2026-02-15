@@ -869,7 +869,10 @@ MonoBehaviour:
   interactPrompt: {fileID: 264999728}
   nameText: {fileID: 0}
   portraitImage: {fileID: 0}
-  dialogueLines: []
+  dialogueLines:
+  - name: yep
+    characterImage: {fileID: 5217379473766106796, guid: e8e3936725fc7b64f9383fd21d38975a, type: 3}
+    sentence: yoyo
   contButton: {fileID: 77145914}
   wordSpeed: 0.05
   playerIsClose: 0

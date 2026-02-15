@@ -183,13 +183,11 @@ public class NPC : MonoBehaviour
 
     public void FinishDialogue()
     {
+        Debug.Log("Trying load scene: " + nextSceneName);
         zeroText();
-        // ����¹ Scene ����ͤ�¨�
-        if (!string.IsNullOrEmpty(nextSceneName))
-        {
-            SceneManager.LoadScene(nextSceneName);
-        }
+        SceneManager.LoadScene(nextSceneName);
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {

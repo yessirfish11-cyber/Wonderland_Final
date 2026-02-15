@@ -207,8 +207,6 @@ public class GiantMonsterEnemy : MonoBehaviour
         if (audioSource != null && catchSound != null)
             audioSource.PlayOneShot(catchSound);
 
-        Debug.Log("ตัวเงินตัวทองยักษ์จับผู้เล่นได้!");
-
         StartCoroutine(AttackSequence());
     }
 
