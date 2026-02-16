@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 488d67c10d4d74b4aa700cafd35831a1
+guid: f0740745af903554dac5e1f9b7d5e65a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -55218093883684948
-    second: wave_0
+      213: -2008315740742844351
+    second: Gumanthong_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wave_0
+      name: Gumanthong_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1795
-        height: 1133
+        x: 154
+        y: 44
+        width: 191
+        height: 411
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ca783e8af63db3ff0800000000000000
-      internalID: -55218093883684948
+      spriteID: 140823c69770124e0800000000000000
+      internalID: -2008315740742844351
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wave_0: -55218093883684948
+      Gumanthong_0: -2008315740742844351
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

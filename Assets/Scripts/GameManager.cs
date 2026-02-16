@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -12,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private GameObject settingsMenuUI;
     [SerializeField] private GameObject winPanel;
-    
+
     [Header("Score System")]
     [SerializeField] private TMP_Text scoreText;
     private int currentScore = 0;
@@ -25,51 +24,40 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-        }
         else
-        {
             Destroy(gameObject);
-        }
     }
 
     void Start()
     {
-        Time.timeScale = 1f; // ��ͧ�ѹ������ش�Թ���������� Scene ����
+        Time.timeScale = 1f;
+        isPaused = false;
         UpdateScoreUI();
-        
+
         if (winPanel != null)
-        {
             winPanel.SetActive(false);
-        }
     }
 
     void Update()
     {
-        Debug.Log("ESC Pressed!");
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+            if (isPaused) Resume();
+            else Pause();
         }
     }
 
-    public void PlayGame()
+    public void PlayGame()      => SceneManager.LoadScene(gameSceneName);
+    public void BackToGameScene()
     {
-        // ��Ŵ Scene �� (����Ѻ���ҡ˹�� MainMenu)
+        Time.timeScale = 1f;
+        isPaused = false;
         SceneManager.LoadScene(gameSceneName);
     }
 
     public void RestartGame()
     {
-        // ��Ŵ Scene �Ѩ�غѹ����������������
         Time.timeScale = 1f;
         isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -77,30 +65,27 @@ public class GameManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        Time.timeScale = 1f; // �Ӥѭ! ��ͧ�׹������ҡ�͹��Ѻ����
+        Time.timeScale = 1f;
         isPaused = false;
         SceneManager.LoadScene(mainMenuSceneName);
     }
 
     public void ExitGame()
     {
-        Debug.Log("�͡�ҡ��..."); // ������ Console ����͡�� Editor
-        Application.Quit(); // �Դ����� (��ҹ���ԧ����� Build ����)
+        Debug.Log("Quitting...");
+        Application.Quit();
     }
 
     public void Resume()
     {
-        // ��Ǩ�ͺ����ժ�ͧ��� UI ������� ������������������ ����ͧ Error
         if (pauseMenuUI != null) pauseMenuUI.SetActive(false);
         if (settingsMenuUI != null) settingsMenuUI.SetActive(false);
-
         Time.timeScale = 1f;
         isPaused = false;
     }
 
     void Pause()
     {
-        // ���˹���˹�����ἧ Pause �������Դ���â�������� Error
         if (pauseMenuUI != null)
         {
             pauseMenuUI.SetActive(true);
@@ -125,46 +110,28 @@ public class GameManager : MonoBehaviour
     {
         currentScore += amount;
         UpdateScoreUI();
-
         if (currentScore >= scoreToWin)
-        {
             Win();
-        }
     }
-    
+
     private void UpdateScoreUI()
     {
         if (scoreText != null)
-        {
             scoreText.text = "Maps: " + currentScore + " / " + scoreToWin;
-        }
     }
-    
+
     private void Win()
     {
         if (winPanel != null)
-        {
             winPanel.SetActive(true);
-        }
-        
         Time.timeScale = 0f;
     }
-    
-    public int GetCurrentScore()
-    {
-        return currentScore;
-    }
-    
+
+    public int GetCurrentScore() => currentScore;
+
     public void ResetScore()
     {
         currentScore = 0;
         UpdateScoreUI();
-    }
-
-    public void BackToGameScene()
-    {
-        Time.timeScale = 1f;
-        isPaused = false;
-        SceneManager.LoadScene(gameSceneName);
     }
 }
