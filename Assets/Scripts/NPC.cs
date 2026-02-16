@@ -13,6 +13,10 @@ public class DialogueLine
     public Sprite characterImage;// ชื่อผู้พูด (Player หรือ NPC)
     [TextArea(3, 10)]
     public string sentence;  // ข้อความที่พูด
+    [Header("Tutorial Settings")]
+    public Sprite tutorialSprite; // ลากรูปภาพสอนเล่นของ NPC ตัวนี้มาใส่
+    [TextArea(2, 5)]
+    public string tutorialDescription; // เขียนคำอธิบายวิธีเล่น (ถ้ามี)
 }
 
 public class NPC : MonoBehaviour
@@ -37,7 +41,8 @@ public class NPC : MonoBehaviour
     public bool isAutoPlay = false;       // สถานะ Auto
     public float autoPlayDelay = 2.0f;    // เวลาที่รอหลังจากพิมพ์จบ (วินาที)
     private Coroutine typingCoroutine;
-
+    [Header("Custom Tutorial")]
+    public GameObject customTutorialPanel;
 
     // Update is called once per frame
     void Update()
@@ -182,17 +187,18 @@ public class NPC : MonoBehaviour
 
     public void FinishDialogue()
     {
-        // บรรทัดนี้จะบอกชื่อ NPC ที่สั่งโหลดซีน
-        Debug.Log("<color=yellow>NPC: " + gameObject.name + " กำลังสั่งโหลดซีน: " + nextSceneName + "</color>");
+        Debug.Log("<color=yellow>จบการสนทนา เปิด Tutorial เฉพาะตัว</color>");
 
-        if (!string.IsNullOrEmpty(nextSceneName))
+        zeroText(); // ปิดหน้าต่างคุย
+
+        if (customTutorialPanel != null)
         {
-            zeroText();
-            SceneManager.LoadScene(nextSceneName);
+            customTutorialPanel.SetActive(true); // เปิดหน้าวิธีเล่นของตัวเอง
         }
         else
         {
-            Debug.LogError(gameObject.name + " ไม่มีชื่อซีนปลายทาง! กรุณาใส่ใน Inspector");
+            // ถ้าไม่มีหน้าพิเศษ ให้ลองไปใช้ตัวกลางใน Manager (ถ้ามี) หรือโหลดซีนเลย
+            SceneManager.LoadScene(nextSceneName);
         }
     }
 
