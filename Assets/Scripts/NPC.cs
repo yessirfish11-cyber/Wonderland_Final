@@ -19,7 +19,6 @@ public class NPC : MonoBehaviour
 {
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
-    public string[] dialogue;
     private int index;
     public GameObject interactPrompt;
 
@@ -74,6 +73,11 @@ public class NPC : MonoBehaviour
 
     public void StartDialogue()
     {
+        if (DialogueManager.Instance != null)
+        {
+            DialogueManager.Instance.currentTalkingNPC = this;
+        }
+
         index = 0;
         dialoguePanel.SetActive(true);
         StopAllCoroutines();
@@ -93,22 +97,17 @@ public class NPC : MonoBehaviour
 
     public void SkipToLastLine()
     {
-        // 1. ตรวจสอบว่ามีข้อมูลบทสนทนาอยู่จริง
         if (dialogueLines != null && dialogueLines.Count > 0)
         {
-            // 2. หยุดการพิมพ์และ Timer ทุกอย่างที่กำลังทำงาน
             StopAllCoroutines();
+            index = dialogueLines.Count - 1; // ไปที่บรรทัดสุดท้าย
 
-            // 3. กระโดดไปที่ประโยคสุดท้าย (ลำดับสุดท้ายของ List)
-            index = dialogueLines.Count - 1;
+            // แสดงข้อความสุดท้ายทันที
+            dialogueText.text = dialogueLines[index].sentence;
+            nameText.text = dialogueLines[index].name;
 
-            // 4. แสดงผลข้อความสุดท้ายทันที (ใช้ Typing เพื่อเปลี่ยนภาพและชื่อด้วย)
-            StartCoroutine(Typing());
-
-            // 5. ปิดโหมด Auto (เพื่อไม่ให้มันข้ามจบไวเกินไป)
-            isAutoPlay = false;
-
-            Debug.Log("ข้ามไปประโยคสุดท้ายแล้ว!");
+            // หลังจากโชว์ประโยคสุดท้ายแล้ว เมื่อกดปุ่มต่อหรือ Skip อีกครั้ง 
+            // มันจะไปเรียก FinishDialogue() ซึ่งใช้ nextSceneName ของตัวมันเอง
         }
     }
 
@@ -183,9 +182,18 @@ public class NPC : MonoBehaviour
 
     public void FinishDialogue()
     {
-        Debug.Log("Trying load scene: " + nextSceneName);
-        zeroText();
-        SceneManager.LoadScene(nextSceneName);
+        // บรรทัดนี้จะบอกชื่อ NPC ที่สั่งโหลดซีน
+        Debug.Log("<color=yellow>NPC: " + gameObject.name + " กำลังสั่งโหลดซีน: " + nextSceneName + "</color>");
+
+        if (!string.IsNullOrEmpty(nextSceneName))
+        {
+            zeroText();
+            SceneManager.LoadScene(nextSceneName);
+        }
+        else
+        {
+            Debug.LogError(gameObject.name + " ไม่มีชื่อซีนปลายทาง! กรุณาใส่ใน Inspector");
+        }
     }
 
 

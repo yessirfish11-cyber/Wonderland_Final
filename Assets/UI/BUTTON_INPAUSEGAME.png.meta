@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: aad0dae83b30548488fd3d20f04da2bf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3381864921509700881
+    second: BUTTON_INPAUSEGAME_0
+  - first:
+      213: 2670642367596977721
+    second: BUTTON_INPAUSEGAME_1
+  - first:
+      213: -3667440268357320016
+    second: BUTTON_INPAUSEGAME_2
+  - first:
+      213: 1651921870052523502
+    second: BUTTON_INPAUSEGAME_3
+  - first:
+      213: -4306673024235404201
+    second: BUTTON_INPAUSEGAME_4
+  - first:
+      213: -8696952537117230457
+    second: BUTTON_INPAUSEGAME_5
+  - first:
+      213: -3559830157076860764
+    second: BUTTON_INPAUSEGAME_6
+  - first:
+      213: -703621380805242865
+    second: BUTTON_INPAUSEGAME_7
+  - first:
+      213: 6538042920470833468
+    second: BUTTON_INPAUSEGAME_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BUTTON_INPAUSEGAME_0
+      rect:
+        serializedVersion: 2
+        x: 1765
+        y: 1200
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 115a0fc6a3cceee20800000000000000
+      internalID: 3381864921509700881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BUTTON_INPAUSEGAME_1
+      rect:
+        serializedVersion: 2
+        x: 1786
+        y: 1174
+        width: 459
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93ed9ba6517001520800000000000000
+      internalID: 2670642367596977721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BUTTON_INPAUSEGAME_2
+      rect:
+        serializedVersion: 2
+        x: 2230
+        y: 1200
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b24991c182aa1dc0800000000000000
+      internalID: -3667440268357320016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BUTTON_INPAUSEGAME_3
+      rect:
+        serializedVersion: 2
+        x: 1765
+        y: 973
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eedfd25403ecce610800000000000000
+      internalID: 1651921870052523502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BUTTON_INPAUSEGAME_4
+      rect:
+        serializedVersion: 2
+        x: 1786
+        y: 947
+        width: 459
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75401b2c3bf9b34c0800000000000000
+      internalID: -4306673024235404201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BUTTON_INPAUSEGAME_5
+      rect:
+        serializedVersion: 2
+        x: 2230
+        y: 973
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78af1b4feb73e4780800000000000000
+      internalID: -8696952537117230457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BUTTON_INPAUSEGAME_6
+      rect:
+        serializedVersion: 2
+        x: 1765
+        y: 738
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a0f5ba3551f89ec0800000000000000
+      internalID: -3559830157076860764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BUTTON_INPAUSEGAME_7
+      rect:
+        serializedVersion: 2
+        x: 1786
+        y: 712
+        width: 459
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f00dbb4051c3c36f0800000000000000
+      internalID: -703621380805242865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BUTTON_INPAUSEGAME_8
+      rect:
+        serializedVersion: 2
+        x: 2230
+        y: 738
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c39ebe8656bcbba50800000000000000
+      internalID: 6538042920470833468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BUTTON_INPAUSEGAME_0: 3381864921509700881
+      BUTTON_INPAUSEGAME_1: 2670642367596977721
+      BUTTON_INPAUSEGAME_2: -3667440268357320016
+      BUTTON_INPAUSEGAME_3: 1651921870052523502
+      BUTTON_INPAUSEGAME_4: -4306673024235404201
+      BUTTON_INPAUSEGAME_5: -8696952537117230457
+      BUTTON_INPAUSEGAME_6: -3559830157076860764
+      BUTTON_INPAUSEGAME_7: -703621380805242865
+      BUTTON_INPAUSEGAME_8: 6538042920470833468
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

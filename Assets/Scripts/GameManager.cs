@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("ESC Pressed!");
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
