@@ -1,0 +1,629 @@
+fileFormatVersion: 2
+guid: cb2c74aa0aa87214ebbf70a88a6d8581
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8990763123181462008
+    second: Kumanthong_0
+  - first:
+      213: -9034533184419712374
+    second: Kumanthong_1
+  - first:
+      213: -6554918332738248641
+    second: Kumanthong_2
+  - first:
+      213: -5854229605395944721
+    second: Kumanthong_3
+  - first:
+      213: -5363244188603834660
+    second: Kumanthong_4
+  - first:
+      213: 951235100241315995
+    second: Kumanthong_5
+  - first:
+      213: -4792200054057542195
+    second: Kumanthong_6
+  - first:
+      213: -3099939577520084439
+    second: Kumanthong_7
+  - first:
+      213: -7685940805476066382
+    second: Kumanthong_8
+  - first:
+      213: -6807117550642326457
+    second: Kumanthong_9
+  - first:
+      213: 7774970338449385033
+    second: Kumanthong_10
+  - first:
+      213: 6037370485079276670
+    second: Kumanthong_11
+  - first:
+      213: 7483490064831963152
+    second: Kumanthong_12
+  - first:
+      213: 7899882339849895003
+    second: Kumanthong_13
+  - first:
+      213: 9050390283813140406
+    second: Kumanthong_14
+  - first:
+      213: 8476725172936545705
+    second: Kumanthong_15
+  - first:
+      213: -7937468150519049017
+    second: Kumanthong_16
+  - first:
+      213: -4759942602034191616
+    second: Kumanthong_17
+  - first:
+      213: -2965884486529149663
+    second: Kumanthong_18
+  - first:
+      213: 1153977394181975838
+    second: Kumanthong_19
+  - first:
+      213: -6823748330717038708
+    second: Kumanthong_20
+  - first:
+      213: -2650871423542596787
+    second: Kumanthong_21
+  - first:
+      213: 7309346991421328914
+    second: Kumanthong_22
+  - first:
+      213: 5307599913981402312
+    second: Kumanthong_23
+  - first:
+      213: -8439503297103849193
+    second: Kumanthong_24
+  - first:
+      213: 6410803613229089441
+    second: Kumanthong_25
+  - first:
+      213: 3208503522703790605
+    second: Kumanthong_26
+  - first:
+      213: -2559271820665283408
+    second: Kumanthong_27
+  - first:
+      213: -8190584414152087346
+    second: Kumanthong_28
+  - first:
+      213: -1534442314587233873
+    second: Kumanthong_29
+  - first:
+      213: -6564480463085693302
+    second: Kumanthong_30
+  - first:
+      213: 8924428347442827426
+    second: Kumanthong_31
+  - first:
+      213: -344229954553804954
+    second: Kumanthong_32
+  - first:
+      213: -8813272453312993347
+    second: Kumanthong_33
+  - first:
+      213: -3147470387986443671
+    second: Kumanthong_34
+  - first:
+      213: 3903769864894888988
+    second: Kumanthong_35
+  - first:
+      213: -7627093184085286047
+    second: Kumanthong_36
+  - first:
+      213: 8014480035551595742
+    second: Kumanthong_37
+  - first:
+      213: -5237107423133453115
+    second: Kumanthong_38
+  - first:
+      213: 3061895938991571471
+    second: Kumanthong_39
+  - first:
+      213: 4900211804173435668
+    second: Kumanthong_40
+  - first:
+      213: -4572765643768918511
+    second: Kumanthong_41
+  - first:
+      213: 2363894108370659504
+    second: Kumanthong_42
+  - first:
+      213: 2892229097197000851
+    second: Kumanthong_43
+  - first:
+      213: 1764876072095622512
+    second: Kumanthong_44
+  - first:
+      213: -2448946411772312236
+    second: Kumanthong_45
+  - first:
+      213: 2896047256167423255
+    second: Kumanthong_46
+  - first:
+      213: 2890566024090325836
+    second: Kumanthong_47
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Kumanthong_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80e561713946a3380800000000000000
+      internalID: -8990763123181462008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kumanthong_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a823f2f8fe3ee9280800000000000000
+      internalID: -9034533184419712374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kumanthong_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f30e07d71804805a0800000000000000
+      internalID: -6554918332738248641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kumanthong_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: feaacc0e03991cea0800000000000000
+      internalID: -5854229605395944721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kumanthong_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cde179e73dde195b0800000000000000
+      internalID: -5363244188603834660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kumanthong_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9844c7a847733d00800000000000000
+      internalID: 951235100241315995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kumanthong_6
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcdda45e07fae7db0800000000000000
+      internalID: -4792200054057542195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kumanthong_7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92aadb0e06dcaf4d0800000000000000
+      internalID: -3099939577520084439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kumanthong_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bb5bec2f8d065590800000000000000
+      internalID: -7685940805476066382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kumanthong_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74413a147a24881a0800000000000000
+      internalID: -6807117550642326457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kumanthong_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 946697a445e36eb60800000000000000
+      internalID: 7774970338449385033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kumanthong_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7cf394087c09c350800000000000000
+      internalID: 6037370485079276670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kumanthong_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01069729092bad760800000000000000
+      internalID: 7483490064831963152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kumanthong_13
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5c722af12502ad60800000000000000
+      internalID: 7899882339849895003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kumanthong_14
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b734591302799d70800000000000000
+      internalID: 9050390283813140406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kumanthong_15
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a59e7712a063a570800000000000000
+      internalID: 8476725172936545705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Kumanthong_0: -8990763123181462008
+      Kumanthong_1: -9034533184419712374
+      Kumanthong_10: 7774970338449385033
+      Kumanthong_11: 6037370485079276670
+      Kumanthong_12: 7483490064831963152
+      Kumanthong_13: 7899882339849895003
+      Kumanthong_14: 9050390283813140406
+      Kumanthong_15: 8476725172936545705
+      Kumanthong_2: -6554918332738248641
+      Kumanthong_3: -5854229605395944721
+      Kumanthong_4: -5363244188603834660
+      Kumanthong_5: 951235100241315995
+      Kumanthong_6: -4792200054057542195
+      Kumanthong_7: -3099939577520084439
+      Kumanthong_8: -7685940805476066382
+      Kumanthong_9: -6807117550642326457
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
