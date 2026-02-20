@@ -10,7 +10,7 @@
                     "name": "Move",
                     "type": "PassThrough",
                     "id": "e53b5887-3189-464e-878b-1b4fd85b854f",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCtrl : MonoBehaviour
 {
@@ -12,22 +13,34 @@ public class PlayerCtrl : MonoBehaviour
     private int lastDirectionState = 2;
 
     private bool isSprinting;
+    private PlayerCtrls playerControls;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        
+
     }
 
     private void OnEnable()
     {
-        if (PlayerCtrls == null)
+        if (PlayerCtrls != null)
         {
-            PlayerCtrls = new PlayerCtrls();
+            PlayerCtrls.Enable();
         }
-
-        PlayerCtrls.Enable();
+ 
     }
+
+    private void OnDisable()
+    {
+        if (playerControls != null)
+        {
+            playerControls.Disable();
+        }
+    }
+            // ปิดการใช้งานเมื่อเปลี่ยนฉากหรือ Object ถูกทำลาย
+        
 
     private void Update()
     {
@@ -42,8 +55,13 @@ public class PlayerCtrl : MonoBehaviour
 
     private void PlayerInput()
     {
+        if (PlayerCtrls == null) return;
         movement = PlayerCtrls.Movement.Move.ReadValue<Vector2>();
         isSprinting = PlayerCtrls.Movement.Sprint.ReadValue<float>() > 0;
+        if (movement != Vector2.zero)
+        {
+            Debug.Log("ค่า Input เข้ามาแล้ว: " + movement);
+        }
     }
 
     private void Move()

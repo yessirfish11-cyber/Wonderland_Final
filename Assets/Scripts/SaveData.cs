@@ -7,5 +7,6 @@ public class SaveData
 {
    public Vector3 playerPosition;
    public string mapName;
+   public string sceneName;
 
 }
