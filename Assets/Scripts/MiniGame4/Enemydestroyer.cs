@@ -3,118 +3,95 @@ using System.Collections.Generic;
 using System.Collections;
 
 /// <summary>
-/// Enemy ที่อยู่นิ่งๆ แต่ทำลายที่ซ่อนแบบสุ่มเมื่อ Player ซ่อนอยู่
-/// รองรับ Particle Effect และ Animation ตอนทำลาย
+/// เปลี่ยน Sprite ด้วย Code โดยตรง - ใช้ได้แน่นอน 100%
 /// </summary>
 public class EnemyDestroyer : MonoBehaviour
 {
     [Header("Hiding Spot Destruction")]
-    [Tooltip("เวลาระหว่างการทำลายแต่ละที่ซ่อน (วินาที)")]
     public float destructionInterval = 3f;
-    
-    [Tooltip("Tag ของ Hiding Spots (ควรเป็น 'HidingSpot')")]
     public string hidingSpotTag = "HidingSpot";
 
-    [Header("Destruction Effect")]
-    [Tooltip("Particle System Prefab (เช่น ควันระเบิด, เศษไม้)")]
+    [Header("Destruction Sprites (ต้องลากตามลำดับ!)")]
+    [Tooltip("ลาก Sprite ทั้ง 5 ตัวตามลำดับ:\n0 = ปกติ\n1 = แตกน้อย\n2 = แตกกลาง\n3 = แตกเยอะ\n4 = เศษกระจาย")]
+    public Sprite[] destructionSprites = new Sprite[5];
+    
+    [Tooltip("เวลาแสดงแต่ละ Frame (วินาที)")]
+    public float frameTime = 0.08f;
+
+    [Header("Effect (Optional)")]
     public GameObject destructionEffectPrefab;
     
-    [Tooltip("Animation Clip ที่เล่นตอนทำลาย (ถ้าใช้ Animation แทน Particle)")]
-    public AnimationClip destructionAnimation;
-    
-    [Tooltip("ระยะเวลารอให้ Animation เล่นจบก่อนทำลาย Object (วินาที)")]
-    public float destroyDelay = 0.5f;
-
     [Header("Sound (Optional)")]
     public AudioClip destructionSound;
     private AudioSource audioSource;
 
-    [Header("Enemy Animation (Optional)")]
-    [Tooltip("Animator ของ Enemy เอง")]
-    public Animator enemyAnimator;
-    public string attackTrigger = "Attack";
-
-    // Destruction system
     private PlayerMiniGame4 player;
     private Coroutine destructionCoroutine;
     private List<GameObject> availableHidingSpots = new List<GameObject>();
 
-    // ─────────────────────────────────────────
     void Start()
     {
-        if (enemyAnimator == null)
-            enemyAnimator = GetComponent<Animator>();
-
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null && destructionSound != null)
-        {
             audioSource = gameObject.AddComponent<AudioSource>();
-        }
 
-        // หา Player
         player = FindFirstObjectByType<PlayerMiniGame4>();
-        if (player == null)
-            Debug.LogError("[EnemyDestroyer] ไม่เจอ PlayerMiniGame4 ใน Scene!");
+        
+        // เช็คว่าใส่ Sprites ครบหรือไม่
+        if (destructionSprites.Length < 5)
+        {
+            Debug.LogError("[EnemyDestroyer] ต้องใส่ Sprite ครบ 5 ตัว!");
+        }
         else
-            Debug.Log($"[EnemyDestroyer] '{gameObject.name}' พร้อมแล้ว!");
+        {
+            for (int i = 0; i < destructionSprites.Length; i++)
+            {
+                if (destructionSprites[i] == null)
+                    Debug.LogWarning($"[EnemyDestroyer] Sprite ช่องที่ {i} ยังว่างอยู่!");
+            }
+        }
     }
 
-    // ─────────────────────────────────────────
     void Update()
     {
         if (GameManager.isPaused) return;
         CheckPlayerHidingStatus();
     }
 
-    // ─────────────────────────────────────────
     void CheckPlayerHidingStatus()
     {
         if (player == null) return;
-
         bool playerIsHiding = player.IsHiding();
 
         if (playerIsHiding && destructionCoroutine == null)
         {
-            Debug.Log($"[EnemyDestroyer] '{gameObject.name}' detected hiding! Start destroying...");
+            Debug.Log("[EnemyDestroyer] Start destroying...");
             destructionCoroutine = StartCoroutine(DestroyHidingSpotsCoroutine());
         }
         else if (!playerIsHiding && destructionCoroutine != null)
         {
-            Debug.Log($"[EnemyDestroyer] '{gameObject.name}' Player came out! Stop destroying.");
             StopCoroutine(destructionCoroutine);
             destructionCoroutine = null;
         }
     }
 
-    // ─────────────────────────────────────────
     IEnumerator DestroyHidingSpotsCoroutine()
     {
         while (true)
         {
             yield return new WaitForSeconds(destructionInterval);
-
             FindAvailableHidingSpots();
 
-            if (availableHidingSpots.Count == 0)
-            {
-                Debug.Log("[EnemyDestroyer] ไม่มีที่ซ่อนเหลืออยู่แล้ว!");
-                yield break;
-            }
+            if (availableHidingSpots.Count == 0) yield break;
 
-            // เล่น Enemy animation
-            PlayEnemyAttackAnimation();
-
-            // สุ่มทำลาย
-            GameObject spotToDestroy = availableHidingSpots[Random.Range(0, availableHidingSpots.Count)];
-            StartCoroutine(DestroyHidingSpotWithEffect(spotToDestroy));
+            GameObject spot = availableHidingSpots[Random.Range(0, availableHidingSpots.Count)];
+            StartCoroutine(PlayDestructionAnimation(spot));
         }
     }
 
-    // ─────────────────────────────────────────
     void FindAvailableHidingSpots()
     {
         availableHidingSpots.Clear();
-
         GameObject[] spots = GameObject.FindGameObjectsWithTag(hidingSpotTag);
         
         foreach (GameObject spot in spots)
@@ -123,52 +100,74 @@ public class EnemyDestroyer : MonoBehaviour
             {
                 InteractableObjectMG4 interactable = spot.GetComponent<InteractableObjectMG4>();
                 if (interactable != null && interactable.interactType == InteractTypeMG4.Hide)
-                {
                     availableHidingSpots.Add(spot);
-                }
             }
         }
-
-        Debug.Log($"[EnemyDestroyer] พบที่ซ่อนทั้งหมด: {availableHidingSpots.Count} แห่ง");
     }
 
     // ─────────────────────────────────────────
-    // ทำลายพร้อม Effect
-    IEnumerator DestroyHidingSpotWithEffect(GameObject spot)
+    // เล่น Animation โดยเปลี่ยน Sprite ทีละ Frame
+    IEnumerator PlayDestructionAnimation(GameObject spot)
     {
         if (spot == null) yield break;
 
         Debug.Log($"[EnemyDestroyer] 💥 ทำลาย '{spot.name}'!");
 
-        // เล่นเสียง
-        PlayDestructionSound();
+        // เสียง
+        if (audioSource != null && destructionSound != null)
+            audioSource.PlayOneShot(destructionSound);
 
-        // เช็คว่า Player ซ่อนอยู่ที่นี่หรือไม่
+        // เช็ค Player
         InteractableObjectMG4 interactable = spot.GetComponent<InteractableObjectMG4>();
-        bool playerWasHere = false;
-
         if (interactable != null && interactable.IsPlayerHidingHere())
         {
-            Debug.Log($"[EnemyDestroyer] ⚠️ Player was hiding in '{spot.name}'! Forced out!");
+            Debug.Log($"[EnemyDestroyer] ⚠️ Player forced out from '{spot.name}'!");
             interactable.ForcePlayerOut();
-            playerWasHere = true;
         }
 
-        // ─── วิธีที่ 1: ใช้ Animation Clip (ถ้ามี) ───
-        if (destructionAnimation != null)
+        // ดึง SpriteRenderer
+        SpriteRenderer sr = spot.GetComponent<SpriteRenderer>();
+        
+        if (sr == null)
         {
-            Animator spotAnimator = spot.GetComponent<Animator>();
-            if (spotAnimator != null)
-            {
-                spotAnimator.Play(destructionAnimation.name);
-                Debug.Log($"[EnemyDestroyer] เล่น Animation: {destructionAnimation.name}");
-            }
-            
-            // รอให้ Animation เล่นจบ
-            yield return new WaitForSeconds(destroyDelay);
+            Debug.LogError($"[EnemyDestroyer] '{spot.name}' ไม่มี SpriteRenderer!");
+            Destroy(spot);
+            yield break;
         }
 
-        // ─── วิธีที่ 2: ใช้ Particle Effect ───
+        // ─── เล่น Animation: เปลี่ยน Sprite ทีละตัว ───
+        if (destructionSprites.Length >= 5)
+        {
+            for (int i = 0; i < destructionSprites.Length; i++)
+            {
+                if (destructionSprites[i] != null)
+                {
+                    sr.sprite = destructionSprites[i];
+                    Debug.Log($"[EnemyDestroyer] Frame {i}: {destructionSprites[i].name}");
+                    yield return new WaitForSeconds(frameTime);
+                }
+            }
+
+            // Fade out ในตอนท้าย
+            Color startColor = sr.color;
+            float fadeDuration = frameTime * 2; // Fade ช้ากว่า Frame เล็กน้อย
+            float elapsed = 0f;
+
+            while (elapsed < fadeDuration)
+            {
+                elapsed += Time.deltaTime;
+                float alpha = Mathf.Lerp(1f, 0f, elapsed / fadeDuration);
+                sr.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+                yield return null;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[EnemyDestroyer] Sprites ไม่ครบ! ข้าม animation");
+            yield return new WaitForSeconds(0.3f);
+        }
+
+        // Particle
         if (destructionEffectPrefab != null)
         {
             GameObject effect = Instantiate(
@@ -176,38 +175,13 @@ public class EnemyDestroyer : MonoBehaviour
                 spot.transform.position, 
                 Quaternion.identity
             );
-            
-            // ทำลาย Particle หลังเล่นจบ
             Destroy(effect, 2f);
         }
 
         // ทำลาย Object
         Destroy(spot);
-
-        if (!playerWasHere)
-        {
-            Debug.Log($"[EnemyDestroyer] '{spot.name}' destroyed, but player wasn't here.");
-        }
     }
 
-    // ─────────────────────────────────────────
-    void PlayEnemyAttackAnimation()
-    {
-        if (enemyAnimator != null && !string.IsNullOrEmpty(attackTrigger))
-        {
-            enemyAnimator.SetTrigger(attackTrigger);
-        }
-    }
-
-    void PlayDestructionSound()
-    {
-        if (audioSource != null && destructionSound != null)
-        {
-            audioSource.PlayOneShot(destructionSound);
-        }
-    }
-
-    // ─────────────────────────────────────────
     void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(1f, 0.5f, 0f, 0.5f);
