@@ -18,7 +18,7 @@ public class InteractableObjectMG4 : MonoBehaviour
     public bool destroyAfterCollect = true;
 
     private PlayerMiniGame4 playerInRange = null;
-    private bool playerIsHidingHere = false;
+    private bool playerIsHidingHere = false; // เพิ่ม: บันทึกว่า Player ซ่อนอยู่ที่นี่จริงๆ
     private bool isCollected = false;
 
     void Update()
@@ -40,7 +40,6 @@ public class InteractableObjectMG4 : MonoBehaviour
         {
             HandleHide(player);
         }
-        // Collect type ไม่ใช้ฟังก์ชันนี้ เพราะเก็บอัตโนมัติใน OnTriggerEnter2D
     }
 
     // ─────────────────────────────────────────
@@ -51,7 +50,7 @@ public class InteractableObjectMG4 : MonoBehaviour
             // ซ่อนตัว
             player.SetHiding(true);
             player.transform.position = transform.position;
-            playerIsHidingHere = true;
+            playerIsHidingHere = true; // บันทึกว่า Player ซ่อนที่นี่
             playerInRange = player;
             Debug.Log($"[Interact] Player hiding in '{gameObject.name}'");
         }
@@ -59,7 +58,7 @@ public class InteractableObjectMG4 : MonoBehaviour
         {
             // ออกจากที่ซ่อน
             player.SetHiding(false);
-            playerIsHidingHere = false;
+            playerIsHidingHere = false; // ล้างสถานะ
             playerInRange = null;
             Debug.Log($"[Interact] Player came out from '{gameObject.name}'");
         }
@@ -112,5 +111,33 @@ public class InteractableObjectMG4 : MonoBehaviour
         }
 
         playerInRange = null;
+    }
+
+    // ─────────────────────────────────────────
+    // ฟังก์ชันใหม่: เช็คว่า Player ซ่อนอยู่ที่นี่หรือไม่
+    public bool IsPlayerHidingHere()
+    {
+        return playerIsHidingHere;
+    }
+
+    // ฟังก์ชันใหม่: บังคับ Player ออกจากที่ซ่อน (เรียกจาก EnemyDestroyer)
+    public void ForcePlayerOut()
+    {
+        if (playerIsHidingHere && playerInRange != null)
+        {
+            playerInRange.SetHiding(false);
+            playerIsHidingHere = false;
+            Debug.Log($"[Interact] '{gameObject.name}' destroyed! Player forced out!");
+        }
+    }
+
+    // ─────────────────────────────────────────
+    void OnDestroy()
+    {
+        // ถ้า Object ถูกทำลายขณะ Player ซ่อนอยู่ → บังคับออกมา
+        if (playerIsHidingHere && playerInRange != null)
+        {
+            playerInRange.SetHiding(false);
+        }
     }
 }
