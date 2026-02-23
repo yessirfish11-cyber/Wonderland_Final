@@ -494,7 +494,6 @@ GameObject:
   - component: {fileID: 673251043}
   - component: {fileID: 673251042}
   - component: {fileID: 673251041}
-  - component: {fileID: 673251040}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -502,31 +501,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &673251040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 673251039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36e4ea43f34fd7545a0ae1e63edaba93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpScareImage: {fileID: 0}
-  jumpScareDisplayTime: 1.5
-  jumpScareInDuration: 0
-  jumpScareOutDuration: 0.4
-  blackOverlay: {fileID: 0}
-  overlayFadeDuration: 0.6
-  restartButton: {fileID: 0}
-  restartButtonGroup: {fileID: 0}
-  restartButtonDelay: 0.5
-  restartButtonFadeDuration: 1
-  jumpScareAudio: {fileID: 0}
-  jumpScareSound: {fileID: 0}
-  sceneToReload: 
 --- !u!114 &673251041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1417,16 +1391,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1393918677}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1073c4c1112aea84c9052fcc12bab50e, type: 3}
+  m_Script: {fileID: 11500000, guid: fa2ebc446e53ecc4abb4a3941a011272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  walkSpeed: 5
+  sprintSpeed: 7
   maxLives: 3
   invincibleDuration: 1
   interactRange: 1.5
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
+  itemsNeededToWin: 3
 --- !u!1 &1426968839
 GameObject:
   m_ObjectHideFlags: 0
