@@ -2,8 +2,9 @@ using UnityEngine;
 
 public enum InteractTypeMG4
 {
-    Hide,       // ซ่อนตัว (กด E)
-    Collect     // เก็บไอเทม (เดินชนเก็บอัตโนมัติ)
+    Hide,          // ซ่อนตัว (กด E)
+    Collect,       // เก็บไอเทมปกติ (เดินชน)
+    CollectFinal   // เก็บไอเทมสุดท้าย (เดินชน = ชนะเลย!)
 }
 
 public class InteractableObjectMG4 : MonoBehaviour
@@ -12,18 +13,17 @@ public class InteractableObjectMG4 : MonoBehaviour
     public InteractTypeMG4 interactType = InteractTypeMG4.Collect;
 
     [Header("Visual Hint")]
-    public GameObject interactPrompt; // ป้าย [E] สำหรับ Hide เท่านั้น
+    public GameObject interactPrompt;
 
     [Header("Collect Settings")]
     public bool destroyAfterCollect = true;
 
     private PlayerMiniGame4 playerInRange = null;
-    private bool playerIsHidingHere = false; // เพิ่ม: บันทึกว่า Player ซ่อนอยู่ที่นี่จริงๆ
+    private bool playerIsHidingHere = false;
     private bool isCollected = false;
 
     void Update()
     {
-        // แสดง prompt เฉพาะ Hide type
         if (interactPrompt != null)
         {
             bool shouldShow = (interactType == InteractTypeMG4.Hide) && 
@@ -32,8 +32,6 @@ public class InteractableObjectMG4 : MonoBehaviour
         }
     }
 
-    // ─────────────────────────────────────────
-    // สำหรับ Hide - เรียกจาก Player เมื่อกด E
     public void Interact(PlayerMiniGame4 player)
     {
         if (interactType == InteractTypeMG4.Hide)
@@ -42,36 +40,40 @@ public class InteractableObjectMG4 : MonoBehaviour
         }
     }
 
-    // ─────────────────────────────────────────
     void HandleHide(PlayerMiniGame4 player)
     {
         if (!player.IsHiding())
         {
-            // ซ่อนตัว
             player.SetHiding(true);
             player.transform.position = transform.position;
-            playerIsHidingHere = true; // บันทึกว่า Player ซ่อนที่นี่
+            playerIsHidingHere = true;
             playerInRange = player;
             Debug.Log($"[Interact] Player hiding in '{gameObject.name}'");
         }
         else
         {
-            // ออกจากที่ซ่อน
             player.SetHiding(false);
-            playerIsHidingHere = false; // ล้างสถานะ
+            playerIsHidingHere = false;
             playerInRange = null;
             Debug.Log($"[Interact] Player came out from '{gameObject.name}'");
         }
     }
 
-    // ─────────────────────────────────────────
     void HandleCollect(PlayerMiniGame4 player)
     {
         if (isCollected) return;
 
         isCollected = true;
-        player.CollectItem();
-        Debug.Log($"[Interact] Item '{gameObject.name}' collected!");
+
+        // เช็คว่าเป็น Final Item หรือไม่
+        bool isFinalItem = (interactType == InteractTypeMG4.CollectFinal);
+        
+        player.CollectItem(isFinalItem);
+        
+        if (isFinalItem)
+            Debug.Log($"[Interact] 🎉 Final item '{gameObject.name}' collected! WIN!");
+        else
+            Debug.Log($"[Interact] Item '{gameObject.name}' collected!");
 
         if (destroyAfterCollect)
             Destroy(gameObject);
@@ -79,7 +81,6 @@ public class InteractableObjectMG4 : MonoBehaviour
             gameObject.SetActive(false);
     }
 
-    // ─────────────────────────────────────────
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
@@ -89,8 +90,9 @@ public class InteractableObjectMG4 : MonoBehaviour
 
         playerInRange = player;
 
-        // ถ้าเป็น Collect type → เก็บทันที!
-        if (interactType == InteractTypeMG4.Collect)
+        // เก็บไอเทมทั้งแบบปกติและ Final
+        if (interactType == InteractTypeMG4.Collect || 
+            interactType == InteractTypeMG4.CollectFinal)
         {
             HandleCollect(player);
         }
@@ -100,7 +102,6 @@ public class InteractableObjectMG4 : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        // สำหรับ Hide type - ถ้า Player ออกจากพื้นที่ขณะซ่อนอยู่
         if (interactType == InteractTypeMG4.Hide)
         {
             if (playerIsHidingHere && playerInRange != null)
@@ -113,14 +114,11 @@ public class InteractableObjectMG4 : MonoBehaviour
         playerInRange = null;
     }
 
-    // ─────────────────────────────────────────
-    // ฟังก์ชันใหม่: เช็คว่า Player ซ่อนอยู่ที่นี่หรือไม่
     public bool IsPlayerHidingHere()
     {
         return playerIsHidingHere;
     }
 
-    // ฟังก์ชันใหม่: บังคับ Player ออกจากที่ซ่อน (เรียกจาก EnemyDestroyer)
     public void ForcePlayerOut()
     {
         if (playerIsHidingHere && playerInRange != null)
@@ -131,10 +129,8 @@ public class InteractableObjectMG4 : MonoBehaviour
         }
     }
 
-    // ─────────────────────────────────────────
     void OnDestroy()
     {
-        // ถ้า Object ถูกทำลายขณะ Player ซ่อนอยู่ → บังคับออกมา
         if (playerIsHidingHere && playerInRange != null)
         {
             playerInRange.SetHiding(false);

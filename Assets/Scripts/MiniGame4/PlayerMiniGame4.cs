@@ -18,10 +18,6 @@ public class PlayerMiniGame4 : MonoBehaviour
     public float interactRange = 1.5f;
     public LayerMask interactableLayer;
 
-    [Header("Collection")]
-    private int itemsCollected = 0;
-    public int itemsNeededToWin = 3;
-
     [Header("Animation")]
     // State: 1=Up 2=Down 3=Left 4=Right, Idle=10/20/30/40
 
@@ -54,7 +50,7 @@ public class PlayerMiniGame4 : MonoBehaviour
         if (GameManager.isPaused) return;
 
         ReadInput();
-        HandleInteraction(); // เฉพาะ Hide (กด E)
+        HandleInteraction();
         UpdateAnimationState();
     }
 
@@ -111,8 +107,6 @@ public class PlayerMiniGame4 : MonoBehaviour
         }
     }
 
-    // ─────────────────────────────────────────
-    // กด E เฉพาะ Hide type เท่านั้น
     void HandleInteraction()
     {
         if (!Input.GetKeyDown(KeyCode.E)) return;
@@ -139,15 +133,10 @@ public class PlayerMiniGame4 : MonoBehaviour
         {
             InteractableObjectMG4 interactable = closest.GetComponent<InteractableObjectMG4>();
             if (interactable != null)
-            {
-                // Interact จะทำงานเฉพาะ Hide type
-                // Collect type ถูกเรียกใน OnTriggerEnter2D ของ Object เอง
                 interactable.Interact(this);
-            }
         }
     }
 
-    // ─────────────────────────────────────────
     public void TakeDamage()
     {
         if (isInvincible || isHiding) return;
@@ -185,7 +174,6 @@ public class PlayerMiniGame4 : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // ─────────────────────────────────────────
     public void SetHiding(bool hiding)
     {
         isHiding = hiding;
@@ -205,13 +193,24 @@ public class PlayerMiniGame4 : MonoBehaviour
         }
     }
 
-    public void CollectItem()
+    /// <summary>
+    /// เรียกจาก InteractableObjectMG4 เมื่อเก็บไอเทม
+    /// </summary>
+    public void CollectItem(bool isFinalItem = false)
     {
-        itemsCollected++;
-        Debug.Log($"[Player] ✅ Items: {itemsCollected}/{itemsNeededToWin}");
-
-        if (itemsCollected >= itemsNeededToWin)
+        if (isFinalItem)
+        {
+            // เก็บ Final Item = ชนะเลย!
             Win();
+        }
+        else
+        {
+            // เก็บไอเทมปกติ = แจ้ง CollectionManager
+            if (CollectionManager.Instance != null)
+            {
+                CollectionManager.Instance.OnItemCollected();
+            }
+        }
     }
 
     void Win()
@@ -221,7 +220,6 @@ public class PlayerMiniGame4 : MonoBehaviour
         UIManager4.Instance?.ShowWinPanel();
     }
 
-    // ─────────────────────────────────────────
     public bool IsHiding() => isHiding;
     public bool IsMoving() => movement.magnitude > 0f;
     public bool IsSprinting() => isSprinting;
