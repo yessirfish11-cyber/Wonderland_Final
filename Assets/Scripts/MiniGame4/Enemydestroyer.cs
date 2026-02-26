@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 
 /// <summary>
-/// เปลี่ยน Sprite ด้วย Code โดยตรง - ใช้ได้แน่นอน 100%
+/// Enemy Destroyer พร้อม Animation Idle และ Attack
 /// </summary>
 public class EnemyDestroyer : MonoBehaviour
 {
@@ -18,6 +18,16 @@ public class EnemyDestroyer : MonoBehaviour
     [Tooltip("เวลาแสดงแต่ละ Frame (วินาที)")]
     public float frameTime = 0.08f;
 
+    [Header("Enemy Animation")]
+    [Tooltip("Animator ของ Enemy")]
+    public Animator animator;
+    
+    [Tooltip("ชื่อ Parameter Bool ใน Animator (true = Attack, false = Idle)")]
+    public string attackParamName = "IsAttacking";
+    
+    [Tooltip("ชื่อ Trigger สำหรับเริ่มโจมตี (Optional)")]
+    public string attackTriggerName = "Attack";
+
     [Header("Effect (Optional)")]
     public GameObject destructionEffectPrefab;
     
@@ -31,6 +41,10 @@ public class EnemyDestroyer : MonoBehaviour
 
     void Start()
     {
+        // หา Components
+        if (animator == null)
+            animator = GetComponent<Animator>();
+
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null && destructionSound != null)
             audioSource = gameObject.AddComponent<AudioSource>();
@@ -50,6 +64,9 @@ public class EnemyDestroyer : MonoBehaviour
                     Debug.LogWarning($"[EnemyDestroyer] Sprite ช่องที่ {i} ยังว่างอยู่!");
             }
         }
+
+        // ตั้งเป็น Idle ตอนเริ่ม
+        SetAnimationState(false);
     }
 
     void Update()
@@ -72,6 +89,9 @@ public class EnemyDestroyer : MonoBehaviour
         {
             StopCoroutine(destructionCoroutine);
             destructionCoroutine = null;
+            
+            // กลับเป็น Idle
+            SetAnimationState(false);
         }
     }
 
@@ -82,10 +102,19 @@ public class EnemyDestroyer : MonoBehaviour
             yield return new WaitForSeconds(destructionInterval);
             FindAvailableHidingSpots();
 
-            if (availableHidingSpots.Count == 0) yield break;
+            if (availableHidingSpots.Count == 0)
+            {
+                SetAnimationState(false); // Idle
+                yield break;
+            }
 
             GameObject spot = availableHidingSpots[Random.Range(0, availableHidingSpots.Count)];
-            StartCoroutine(PlayDestructionAnimation(spot));
+            
+            // เริ่มโจมตี → เล่น Attack Animation
+            yield return StartCoroutine(PlayAttackSequence(spot));
+            
+            // กลับเป็น Idle
+            SetAnimationState(false);
         }
     }
 
@@ -106,7 +135,21 @@ public class EnemyDestroyer : MonoBehaviour
     }
 
     // ─────────────────────────────────────────
-    // เล่น Animation โดยเปลี่ยน Sprite ทีละ Frame
+    // เล่น Attack Animation + ทำลาย Object
+    IEnumerator PlayAttackSequence(GameObject spot)
+    {
+        // 1. เริ่ม Attack Animation
+        SetAnimationState(true);
+        
+        // 2. รอให้ Animation เล่นนิดหน่อย (ถ้ามี)
+        yield return new WaitForSeconds(0.2f);
+        
+        // 3. ทำลาย Object พร้อม Animation
+        yield return StartCoroutine(PlayDestructionAnimation(spot));
+    }
+
+    // ─────────────────────────────────────────
+    // เปลี่ยน Sprite ของ Hiding Spot ทีละ Frame
     IEnumerator PlayDestructionAnimation(GameObject spot)
     {
         if (spot == null) yield break;
@@ -148,9 +191,9 @@ public class EnemyDestroyer : MonoBehaviour
                 }
             }
 
-            // Fade out ในตอนท้าย
+            // Fade out
             Color startColor = sr.color;
-            float fadeDuration = frameTime * 2; // Fade ช้ากว่า Frame เล็กน้อย
+            float fadeDuration = frameTime * 2;
             float elapsed = 0f;
 
             while (elapsed < fadeDuration)
@@ -180,6 +223,27 @@ public class EnemyDestroyer : MonoBehaviour
 
         // ทำลาย Object
         Destroy(spot);
+    }
+
+    // ─────────────────────────────────────────
+    // ตั้งค่า Animation State
+    void SetAnimationState(bool isAttacking)
+    {
+        if (animator == null) return;
+
+        // ตั้ง Bool Parameter
+        if (!string.IsNullOrEmpty(attackParamName))
+        {
+            animator.SetBool(attackParamName, isAttacking);
+        }
+
+        // ยิง Trigger (ถ้ามี)
+        if (isAttacking && !string.IsNullOrEmpty(attackTriggerName))
+        {
+            animator.SetTrigger(attackTriggerName);
+        }
+
+        Debug.Log($"[EnemyDestroyer] Animation: {(isAttacking ? "ATTACK" : "IDLE")}");
     }
 
     void OnDrawGizmosSelected()

@@ -185,11 +185,22 @@ public class PlayerMiniGame4 : MonoBehaviour
             spriteRenderer.color = new Color(1f, 1f, 1f, 0.3f);
 
             if (animator != null)
-                animator.SetInteger("State", lastDirectionState * 10);
+            {
+                animator.SetBool("IsHiding", true);
+                // หยุด State ไม่ให้ขัด
+                animator.SetInteger("State", 0);
+            }
         }
         else
         {
             spriteRenderer.color = Color.white;
+
+            if (animator != null)
+            {
+                animator.SetBool("IsHiding", false);
+                // กลับ idle หน้าตรงหลังออกจากซ่อน
+                animator.SetInteger("State", lastDirectionState * 10);
+            }
         }
     }
 
