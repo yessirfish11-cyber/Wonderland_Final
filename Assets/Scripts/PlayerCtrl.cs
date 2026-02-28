@@ -1,3 +1,4 @@
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,31 +14,30 @@ public class PlayerCtrl : MonoBehaviour
     private int lastDirectionState = 2;
 
     private bool isSprinting;
-    private PlayerCtrls playerControls;
+    
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        
+
+        PlayerCtrls = new PlayerCtrls();    
+
 
     }
 
     private void OnEnable()
     {
-        if (PlayerCtrls != null)
-        {
+       
             PlayerCtrls.Enable();
-        }
- 
+     
     }
 
     private void OnDisable()
     {
-        if (playerControls != null)
-        {
-            playerControls.Disable();
-        }
+        
+            PlayerCtrls.Disable();
+        
     }
             // ปิดการใช้งานเมื่อเปลี่ยนฉากหรือ Object ถูกทำลาย
         
@@ -55,29 +55,19 @@ public class PlayerCtrl : MonoBehaviour
 
     private void PlayerInput()
     {
-        if (PlayerCtrls == null) return;
+        // ตรวจสอบโครงสร้าง Actions ใน Input Action Asset ของคุณ 
+        // (สมมติว่าตั้งชื่อ Action Map ว่า "Movement" และ Action ว่า "Move" และ "Sprint")
         movement = PlayerCtrls.Movement.Move.ReadValue<Vector2>();
         isSprinting = PlayerCtrls.Movement.Sprint.ReadValue<float>() > 0;
-        if (movement != Vector2.zero)
-        {
-            Debug.Log("ค่า Input เข้ามาแล้ว: " + movement);
-        }
     }
 
     private void Move()
     {
-        if (movement == Vector2.zero) return;
-
-        // เลือกความเร็ว
+        // แม้ movement เป็น zero ก็ควรให้ rb.velocity เป็น zero เพื่อป้องกันแรงเฉื่อยค้าง
         float currentSpeed = isSprinting ? sprintSpeed : moveSpeed;
 
-        // ส่วนสำหรับ Debug (ลบออกได้เมื่อใช้งานได้แล้ว)
-        // ถ้าวิ่งอยู่จะขึ้นข้อความใน Console ว่า "Sprinting!"
-        if (isSprinting) Debug.Log("กำลังวิ่งด้วยความเร็ว: " + currentSpeed);
-
-        // คำนวณการเคลื่อนที่
-        Vector2 moveAmount = movement * (currentSpeed * Time.fixedDeltaTime);
-        rb.MovePosition(rb.position + moveAmount);
+        // ใช้ velocity หรือ MovePosition ก็ได้ แต่แนะนำให้คูณ currentSpeed เข้าไปตรงๆ
+        rb.MovePosition(rb.position + movement * currentSpeed * Time.fixedDeltaTime);
     }
 
     private void UpdateAnimationTransitions()
