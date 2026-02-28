@@ -19,12 +19,16 @@ public class GameManager : MonoBehaviour
 
     [Header("Scene Names")]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
+    [SerializeField] private string cutsceneSceneName = "CutsceneScene";
     [SerializeField] private string gameSceneName = "GameScene";
 
     void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+        }
+            
         else
             Destroy(gameObject);
     }
@@ -33,10 +37,14 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         isPaused = false;
+
         UpdateScoreUI();
 
         if (winPanel != null)
             winPanel.SetActive(false);
+
+        if (pauseMenuUI != null)
+            pauseMenuUI.SetActive(false);
     }
 
     void Update()
@@ -48,7 +56,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PlayGame()      => SceneManager.LoadScene(gameSceneName);
+    public void PlayGame()      => SceneManager.LoadScene(cutsceneSceneName);
+
+    public void FinishCutscene()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+        SceneManager.LoadScene(gameSceneName);
+    }
+
     public void BackToGameScene()
     {
         Time.timeScale = 1f;
