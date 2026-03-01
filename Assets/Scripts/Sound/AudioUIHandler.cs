@@ -1,54 +1,55 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class AudioUIHandler : MonoBehaviour
 {
     [Header("UI Elements")]
     public Slider musicSlider;
-    public GameObject checkmarkImage; // ลากรูปติ๊กถูกมาใส่ตรงนี้
+    public Button toggleButton;
+    public GameObject checkmarkImage;
 
     private void OnEnable()
     {
-        RefreshUI();
+        // ทุกครั้งที่เปิดหน้า Setting หรือเปลี่ยน Scene ให้เริ่มค้นหา Manager ใหม่
+        StopAllCoroutines();
+        StartCoroutine(InitializeUI());
     }
 
-    public void RefreshUI()
+    IEnumerator InitializeUI()
     {
-        if (AudioManager.Instance != null && AudioManager.Instance.musicSource != null)
+        // รอ 0.2 วินาที เพื่อให้ AudioManager ตัวที่ซ้ำซ้อนถูก Destroy ทิ้งไปก่อน
+        yield return new WaitForSecondsRealtime(0.2f);
+
+        if (AudioManager.Instance != null)
         {
-            // 1. ตั้งค่า Slider ตามความดังจริงใน AudioSource
+            // 1. ดึงค่าจริงจาก "Instance ที่รอดชีวิต" มาแสดง
             musicSlider.value = AudioManager.Instance.musicSource.volume;
+            checkmarkImage.SetActive(!AudioManager.Instance.musicSource.mute);
 
-            // 2. ตั้งค่าติ๊กถูก ตามสถานะ Mute จริง (ถ้าไม่ Mute = มีติ๊กถูก)
-            bool isMusicOn = !AudioManager.Instance.musicSource.mute;
-            checkmarkImage.SetActive(isMusicOn);
+            // 2. ล้าง Event เก่า (ป้องกันการอ้างอิงถึง Object ที่ตายไปแล้ว)
+            musicSlider.onValueChanged.RemoveAllListeners();
+            toggleButton.onClick.RemoveAllListeners();
 
-            Debug.Log("UI Refreshed: Volume " + musicSlider.value + " | Music On: " + isMusicOn);
+            // 3. เชื่อมต่อใหม่ผ่าน Code 100%
+            musicSlider.onValueChanged.AddListener(OnSliderChanged);
+            toggleButton.onClick.AddListener(OnToggleClicked);
+
+            Debug.Log("UI Sync สำเร็จกับ AudioManager: " + AudioManager.Instance.gameObject.name);
         }
     }
 
-    // เรียกใช้เมื่อเลื่อน Slider (เชื่อมผ่าน OnValueChanged ใน Inspector)
-    public void OnMusicSliderChanged()
+    void OnSliderChanged(float val)
     {
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.SetMusicVolume(musicSlider.value);
-        }
+        AudioManager.Instance.SetMusicVolume(val);
     }
 
-    // เรียกใช้เมื่อกดปุ่มเปิด/ปิด (เชื่อมผ่าน OnClick ใน Inspector)
-    public void ToggleMusic()
+    void OnToggleClicked()
     {
-        if (AudioManager.Instance != null)
-        {
-            // สลับสถานะ (ถ้าเปิดอยู่ให้ปิด ถ้าปิดอยู่ให้เปิด)
-            bool currentIsActive = !AudioManager.Instance.musicSource.mute;
-            bool newStatus = !currentIsActive;
+        bool currentMute = AudioManager.Instance.musicSource.mute;
+        bool nextActiveState = currentMute; // ถ้า Mute เป็น True, Active ใหม่ต้องเป็น True
 
-            AudioManager.Instance.SetMusicActive(newStatus);
-
-            // อัปเดตรูปติ๊กถูกทันที
-            checkmarkImage.SetActive(newStatus);
-        }
+        AudioManager.Instance.SetMusicActive(nextActiveState);
+        checkmarkImage.SetActive(nextActiveState);
     }
 }

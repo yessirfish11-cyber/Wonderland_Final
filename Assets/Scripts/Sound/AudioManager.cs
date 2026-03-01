@@ -1,23 +1,24 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.InputManagerEntry;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-
-    [Header("Audio Sources")]
     public AudioSource musicSource;
 
     private void Awake()
     {
-        // ระบบ Singleton: ทำให้มี AudioManager เพียงตัวเดียวในทุก Scene
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            LoadSettings(); // โหลดค่าที่บันทึกไว้
+            if (musicSource == null) musicSource = GetComponent<AudioSource>();
+            LoadSettings();
         }
         else
         {
+            // ถ้ามีตัวเดิมอยู่แล้ว ตัวที่เพิ่งเกิดใหม่ต้องรีบทำลายตัวเอง
             Destroy(gameObject);
         }
     }
@@ -30,20 +31,13 @@ public class AudioManager : MonoBehaviour
 
     public void SetMusicActive(bool isActive)
     {
-        // musicSource.mute = true หมายถึงปิดเสียง
-        // ดังนั้นถ้า isActive เป็น true (เปิดเสียง) mute ต้องเป็น false
         musicSource.mute = !isActive;
         PlayerPrefs.SetInt("MusicMute", isActive ? 1 : 0);
     }
 
     private void LoadSettings()
     {
-        // ใช้ค่าเริ่มต้น 1.0f (เสียงดังสุด) ถ้ายังไม่เคยบันทึก
-        float vol = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
-        musicSource.volume = vol;
-
-        // 1 = เปิดเสียง, 0 = ปิดเสียง (เริ่มต้นให้เป็น 1)
-        bool isActive = PlayerPrefs.GetInt("MusicMute", 1) == 1;
-        musicSource.mute = !isActive;
+        musicSource.volume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
+        musicSource.mute = PlayerPrefs.GetInt("MusicMute", 1) == 0;
     }
 }
