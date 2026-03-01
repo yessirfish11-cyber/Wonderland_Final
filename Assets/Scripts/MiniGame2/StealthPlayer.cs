@@ -110,7 +110,7 @@ public class StealthPlayer : MonoBehaviour
         if (!enabled)
         {
             movement = Vector2.zero;
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
     }
 }
