@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 48a7825ed606d1a4da8d8192274ff2cc
+guid: eb75f2848edcbc248b92cf467adb00c3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8441011655208523782
-    second: button_continue_0
-  - first:
-      213: 9099562130157525967
-    second: button_continue_1
-  - first:
-      213: -3651848997166605712
-    second: button_continue_2
+      213: -3218532005552536527
+    second: Heart01_UI_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: button_continue_0
+      name: Heart01_UI_0
       rect:
         serializedVersion: 2
-        x: 1765
-        y: 738
-        width: 38
-        height: 40
+        x: 1
+        y: 2
+        width: 30
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,52 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: af72d5a3f908bda80800000000000000
-      internalID: -8441011655208523782
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: button_continue_1
-      rect:
-        serializedVersion: 2
-        x: 1786
-        y: 712
-        width: 459
-        height: 92
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fcbd2abbb83284e70800000000000000
-      internalID: 9099562130157525967
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: button_continue_2
-      rect:
-        serializedVersion: 2
-        x: 2230
-        y: 738
-        width: 38
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 07a94867fa6025dc0800000000000000
-      internalID: -3651848997166605712
+      spriteID: 134c0d6813a7553d0800000000000000
+      internalID: -3218532005552536527
       vertices: []
       indices: 
       edges: []
@@ -175,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      button_continue_0: -8441011655208523782
-      button_continue_1: 9099562130157525967
-      button_continue_2: -3651848997166605712
+      Heart01_UI_0: -3218532005552536527
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

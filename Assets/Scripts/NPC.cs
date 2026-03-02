@@ -7,12 +7,24 @@ using UnityEngine.SceneManagement;
 
 
 [System.Serializable]
+public class DialogueChoice
+{
+    public string choiceText;      // ข้อความบนปุ่ม
+    public int targetIndex;        // ดัชนี (index) ของบทสนทนาที่จะไป
+    public bool isCorrect;         // ตัวเลือกนี้ถูกหรือไม่ (ตามโจทย์: ถ้าผิดให้ย้อนกลับ)
+}
+
+[System.Serializable]
 public class DialogueLine
 {
     public string name;
     public Sprite characterImage;// ชื่อผู้พูด (Player หรือ NPC)
     [TextArea(3, 10)]
     public string sentence;  // ข้อความที่พูด
+
+    [Header("Branching (Optional)")]
+    public List<DialogueChoice> choices; // ถ้า List นี้ว่าง จะไม่มีปุ่มขึ้น
+
     [Header("Tutorial Settings")]
     public Sprite tutorialSprite; // ลากรูปภาพสอนเล่นของ NPC ตัวนี้มาใส่
     [TextArea(2, 5)]
@@ -43,6 +55,11 @@ public class NPC : MonoBehaviour
     private Coroutine typingCoroutine;
     [Header("Custom Tutorial")]
     public GameObject customTutorialPanel;
+
+    [Header("Choice System")]
+    public GameObject choicePanel;      // Panel ที่เก็บปุ่ม Choice
+    public Button[] choiceButtons;      // ลากปุ่ม Choice มาใส่ (เช่น 2 ปุ่ม)
+    public TextMeshProUGUI[] choiceTexts; // Text ของปุ่ม Choice
 
     // Update is called once per frame
     void Update()
@@ -130,31 +147,75 @@ public class NPC : MonoBehaviour
     {
         dialogueText.text = "";
         contButton.SetActive(false);
-        // Debug เช็กว่าใน List มีข้อความจริงไหม
+        choicePanel.SetActive(false); // ปิดปุ่มไว้ก่อน
+
         if (dialogueLines[index] != null)
         {
-            Debug.Log("กำลังจะพิมพ์ข้อความ: " + dialogueLines[index].sentence);
             nameText.text = dialogueLines[index].name;
-
-            if (portraitImage != null)
-                portraitImage.sprite = dialogueLines[index].characterImage;
+            if (portraitImage != null) portraitImage.sprite = dialogueLines[index].characterImage;
 
             foreach (char letter in dialogueLines[index].sentence.ToCharArray())
             {
                 dialogueText.text += letter;
                 yield return new WaitForSeconds(wordSpeed);
             }
+
+            // --- ส่วนที่เพิ่มใหม่: เช็กว่าบรรทัดนี้มีตัวเลือกหรือไม่ ---
+            if (dialogueLines[index].choices != null && dialogueLines[index].choices.Count > 0)
+            {
+                ShowChoices();
+            }
+            else
+            {
+                if (isAutoPlay) StartCoroutine(AutoNextLineTimer());
+            }
+        }
+    }
+
+    void ShowChoices()
+    {
+        choicePanel.SetActive(true);
+        contButton.SetActive(false); // ซ่อนปุ่ม Next ทั่วไป
+
+        for (int i = 0; i < choiceButtons.Length; i++)
+        {
+            if (i < dialogueLines[index].choices.Count)
+            {
+                choiceButtons[i].gameObject.SetActive(true);
+                choiceTexts[i].text = dialogueLines[index].choices[i].choiceText;
+
+                int choiceIdx = i; // ป้องกันปัญหา Closure ใน Listener
+                choiceButtons[i].onClick.RemoveAllListeners();
+                choiceButtons[i].onClick.AddListener(() => OnChoiceSelected(choiceIdx));
+            }
+            else
+            {
+                choiceButtons[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void OnChoiceSelected(int choiceIndex)
+    {
+        DialogueChoice selected = dialogueLines[index].choices[choiceIndex];
+
+        if (selected.isCorrect)
+        {
+            // ถ้าเลือกถูก ไปยัง Index ที่ระบุ
+            index = selected.targetIndex;
         }
         else
         {
-            Debug.LogError("Error: ข้อมูลใน DialogueLines ลำดับที่ " + index + " ว่างเปล่า!");
+            // ถ้าเลือกผิด ย้อนกลับไป 1 บทสนทนา (ตามโจทย์)
+            // ระวังไม่ให้ index ติดลบ
+            index = Mathf.Max(0, index - 1);
         }
 
-        if (isAutoPlay)
-        {
-            StartCoroutine(AutoNextLineTimer());
-        }
+        choicePanel.SetActive(false);
+        StopAllCoroutines();
+        StartCoroutine(Typing());
     }
+
 
     IEnumerator AutoNextLineTimer()
     {

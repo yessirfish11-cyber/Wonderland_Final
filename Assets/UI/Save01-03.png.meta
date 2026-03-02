@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 48a7825ed606d1a4da8d8192274ff2cc
+guid: 4f2a21110a2b7124d9ffc1a3d07288b9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8441011655208523782
-    second: button_continue_0
+      213: -9082430300516857816
+    second: Save01-03_0
   - first:
-      213: 9099562130157525967
-    second: button_continue_1
+      213: -7192249158598828659
+    second: Save01-03_1
   - first:
-      213: -3651848997166605712
-    second: button_continue_2
+      213: -2211974933966237983
+    second: Save01-03_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,11 +106,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: button_continue_0
+      name: Save01-03_0
       rect:
         serializedVersion: 2
         x: 1765
-        y: 738
+        y: 1200
         width: 38
         height: 40
       alignment: 0
@@ -121,18 +121,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: af72d5a3f908bda80800000000000000
-      internalID: -8441011655208523782
+      spriteID: 828c27033c9b4f180800000000000000
+      internalID: -9082430300516857816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: button_continue_1
+      name: Save01-03_1
       rect:
         serializedVersion: 2
         x: 1786
-        y: 712
+        y: 1174
         width: 459
         height: 92
       alignment: 0
@@ -143,18 +143,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fcbd2abbb83284e70800000000000000
-      internalID: 9099562130157525967
+      spriteID: d8d5d951f7fff2c90800000000000000
+      internalID: -7192249158598828659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: button_continue_2
+      name: Save01-03_2
       rect:
         serializedVersion: 2
         x: 2230
-        y: 738
+        y: 1200
         width: 38
         height: 39
       alignment: 0
@@ -165,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 07a94867fa6025dc0800000000000000
-      internalID: -3651848997166605712
+      spriteID: 1eecfd0648c7d41e0800000000000000
+      internalID: -2211974933966237983
       vertices: []
       indices: 
       edges: []
@@ -175,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      button_continue_0: -8441011655208523782
-      button_continue_1: 9099562130157525967
-      button_continue_2: -3651848997166605712
+      Save01-03_0: -9082430300516857816
+      Save01-03_1: -7192249158598828659
+      Save01-03_2: -2211974933966237983
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
