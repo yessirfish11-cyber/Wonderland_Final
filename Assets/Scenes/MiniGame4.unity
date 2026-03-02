@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  chaseSpeed: 7.1
+  chaseSpeed: 5.5
   detectionRange: 70
   playerLayer:
     serializedVersion: 2
