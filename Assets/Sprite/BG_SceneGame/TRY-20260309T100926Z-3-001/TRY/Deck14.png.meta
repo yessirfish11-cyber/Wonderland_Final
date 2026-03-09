@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4ba8d6518b3a1f243abb12d45914e45a
+guid: 992c57b198fa40746b9a2eed9585003d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4156220031237236519
-    second: BG_SOUND_0
+      213: 8493781609288121486
+    second: Deck14_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG_SOUND_0
+      name: Deck14_0
       rect:
         serializedVersion: 2
-        x: 1716
-        y: 856
-        width: 605
-        height: 39
+        x: 201
+        y: 252
+        width: 238
+        height: 136
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9d8ddb5f6e32256c0800000000000000
-      internalID: -4156220031237236519
+      spriteID: e8c3d552f59ffd570800000000000000
+      internalID: 8493781609288121486
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BG_SOUND_0: -4156220031237236519
+      Deck14_0: 8493781609288121486
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
