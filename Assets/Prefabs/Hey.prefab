@@ -48,6 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 1
+  enemyAHitSound: {fileID: 0}
+  enemyBHitSound: {fileID: 8300000, guid: d2110b9b59a57b84a82f397ada93aa3c, type: 3}
+  enemyCHitSound: {fileID: 0}
+  hitVolume: 1
 --- !u!50 &3246504861545863691
 Rigidbody2D:
   serializedVersion: 5
