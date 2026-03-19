@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c8004ee389bd2f741b4b7e8d31bcf06a
+guid: 42ed37e25f1339c4793509d8c1b25835
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3828906124045614636
-    second: Boat_N&K_0
+      213: 3452003437791708593
+    second: Rock_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boat_N&K_0
+      name: Rock_0
       rect:
         serializedVersion: 2
-        x: 202
-        y: 254
-        width: 236
-        height: 67
+        x: 0
+        y: 0
+        width: 202
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c2e7e0a55d1032530800000000000000
-      internalID: 3828906124045614636
+      spriteID: 1b5800156daf7ef20800000000000000
+      internalID: 3452003437791708593
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Boat_N&K_0: 3828906124045614636
+      Rock_0: 3452003437791708593
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

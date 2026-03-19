@@ -8,7 +8,8 @@ public class ObjHits : MonoBehaviour
     {
         EnemyA,  
         EnemyB,  
-        EnemyC   
+        EnemyC,
+        EnemyD   // ชนแล้วตายทันที
     }
     
     public EnemyType enemyType = EnemyType.EnemyA;
@@ -17,6 +18,7 @@ public class ObjHits : MonoBehaviour
     public AudioClip enemyAHitSound;
     public AudioClip enemyBHitSound;
     public AudioClip enemyCHitSound;
+    public AudioClip enemyDHitSound;
 
     [Range(0f, 1f)] public float hitVolume = 1f;
 
@@ -53,6 +55,11 @@ public class ObjHits : MonoBehaviour
                         playerScript.TakeDamage(0, 4f, 2f);
                         PlayHitSound(enemyCHitSound);
                         break;
+
+                    case EnemyType.EnemyD:
+                        playerScript.TakeDamage(playerScript.GetCurrentHealth(), 0f, 0f);
+                        PlayHitSound(enemyDHitSound);
+                        break;
                 }
             }
         
@@ -64,7 +71,6 @@ public class ObjHits : MonoBehaviour
     {
         if (clip != null)
         {
-            // ใช้ PlayClipAtPoint เพราะ GameObject โดน Destroy แล้ว
             AudioSource.PlayClipAtPoint(clip, transform.position, hitVolume);
         }
     }

@@ -6,6 +6,9 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        transform.position += new Vector3(cameraSpeed * Time.deltaTime,0,0);    
+        if (GameObject.FindGameObjectWithTag("Player") == null)
+            return;
+
+        transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
     }
 }
