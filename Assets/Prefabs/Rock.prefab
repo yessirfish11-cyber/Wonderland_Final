@@ -93,6 +93,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca1efbda817c66d4b89d050ecf112826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
+  enemyAHitSound: {fileID: 8300000, guid: 886587135655bca4cbeb730344290dea, type: 3}
+  enemyBHitSound: {fileID: 0}
+  enemyCHitSound: {fileID: 0}
+  hitVolume: 1
 --- !u!50 &8768195862685557850
 Rigidbody2D:
   serializedVersion: 5

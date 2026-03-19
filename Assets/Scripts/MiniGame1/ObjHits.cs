@@ -13,6 +13,13 @@ public class ObjHits : MonoBehaviour
     
     public EnemyType enemyType = EnemyType.EnemyA;
 
+    [Header("Hit Sound Effects")]
+    public AudioClip enemyAHitSound;
+    public AudioClip enemyBHitSound;
+    public AudioClip enemyCHitSound;
+
+    [Range(0f, 1f)] public float hitVolume = 1f;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");    
@@ -33,20 +40,32 @@ public class ObjHits : MonoBehaviour
                 switch (enemyType)
                 {
                     case EnemyType.EnemyA:
-                        playerScript.TakeDamage(2, 2f, 2f); // damage,Speed,cooldown
+                        playerScript.TakeDamage(2, 2f, 2f);
+                        PlayHitSound(enemyAHitSound);
                         break;
                         
                     case EnemyType.EnemyB:
                         playerScript.TakeDamage(1, 3f, 2f);
+                        PlayHitSound(enemyBHitSound);
                         break;
                         
                     case EnemyType.EnemyC:
                         playerScript.TakeDamage(0, 4f, 2f);
+                        PlayHitSound(enemyCHitSound);
                         break;
                 }
             }
         
             Destroy(this.gameObject);
+        }
+    }
+
+    private void PlayHitSound(AudioClip clip)
+    {
+        if (clip != null)
+        {
+            // ใช้ PlayClipAtPoint เพราะ GameObject โดน Destroy แล้ว
+            AudioSource.PlayClipAtPoint(clip, transform.position, hitVolume);
         }
     }
 }

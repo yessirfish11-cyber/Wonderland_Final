@@ -13,11 +13,26 @@ public class Player1 : MonoBehaviour
     private float slowEndTime;
     private float originalSpeed;
 
+    [Header("Paddle Sound")]
+    public AudioClip paddleSound;
+    [Range(0f, 1f)] public float paddleVolume = 1f;
+    private AudioSource audioSource;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentSpeed = playerSpeed;
         originalSpeed = playerSpeed;
+
+        // ตั้งค่า AudioSource สำหรับเสียงพาย
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = paddleSound;
+        audioSource.loop = true;
+        audioSource.volume = paddleVolume;
+        audioSource.playOnAwake = false;
+
+        if (paddleSound != null)
+            audioSource.Play();
     }
 
     void Update()
@@ -57,9 +72,7 @@ public class Player1 : MonoBehaviour
         currentSpeed = originalSpeed - speedReduction;
         
         if (currentSpeed < 0)
-        {
             currentSpeed = 0;
-        }
         
         isSlowed = true;
         slowEndTime = Time.time + duration;
@@ -73,6 +86,10 @@ public class Player1 : MonoBehaviour
 
     private void Die()
     {
+        // หยุดเสียงก่อน Destroy
+        if (audioSource != null && audioSource.isPlaying)
+            audioSource.Stop();
+
         Destroy(gameObject);
     }
 
