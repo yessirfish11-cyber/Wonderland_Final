@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 357068424}
   - component: {fileID: 357068423}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Sub_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,7 +274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 20.8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &357068423
@@ -331,8 +331,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -457.78888, y: -228.71252, z: -438.98987, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 429803428}
   - component: {fileID: 429803427}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BG_Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -495,12 +495,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e984a941438dd47a54c308e369380d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayImage: {fileID: 0}
-  videoDisplay: {fileID: 0}
-  videoPlayer: {fileID: 0}
-  subtitleText: {fileID: 0}
-  fadeGroup: {fileID: 0}
-  storyList: []
+  displayImage: {fileID: 429803427}
+  videoDisplay: {fileID: 1828916640}
+  videoPlayer: {fileID: 1828916642}
+  subtitleText: {fileID: 357068423}
+  fadeGroup: {fileID: 1747381720}
+  storyList:
+  - image: {fileID: 2527826774558546573, guid: a2eced5d934018147b75619ccd794a06, type: 3}
+    videoClip: {fileID: 32900000, guid: 4f886bc65add6294c833e8604352a158, type: 3}
+    subtitle: 
+  - image: {fileID: 3677860823259659522, guid: 23f0806c3ab3c37459992dcefb9ce9c3, type: 3}
+    videoClip: {fileID: 0}
+    subtitle: 
+  - image: {fileID: 7315411847164208195, guid: 604c92b9a6902864e9b506405ba56b3b, type: 3}
+    videoClip: {fileID: 0}
+    subtitle: 
+  - image: {fileID: 21300000, guid: 271b38e768986b542b9ad3175f6a2c2c, type: 3}
+    videoClip: {fileID: 0}
+    subtitle: 
+  - image: {fileID: 21300000, guid: b051a061202d3f742a4e032aaf429a5a, type: 3}
+    videoClip: {fileID: 0}
+    subtitle: 
+  - image: {fileID: 21300000, guid: e5c3946d6c94a5245b480dd0d5b7ded8, type: 3}
+    videoClip: {fileID: 0}
+    subtitle: 
+  - image: {fileID: 21300000, guid: fbd9baca5f1479a4ba9a78f0d0af49f8, type: 3}
+    videoClip: {fileID: 0}
+    subtitle: 
+  - image: {fileID: 21300000, guid: a4d7324d3df8a4444a4b616aa4d38551, type: 3}
+    videoClip: {fileID: 0}
+    subtitle: 
+  - image: {fileID: 21300000, guid: a4d7324d3df8a4444a4b616aa4d38551, type: 3}
+    videoClip: {fileID: 0}
+    subtitle: 
   nextSceneName: GameScene
   typingSpeed: 0.05
 --- !u!1 &961739749
@@ -731,6 +758,7 @@ GameObject:
   - component: {fileID: 1747381718}
   - component: {fileID: 1747381717}
   - component: {fileID: 1747381716}
+  - component: {fileID: 1747381720}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -823,6 +851,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &1747381720
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747381715}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1828916638
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,8 +874,9 @@ GameObject:
   - component: {fileID: 1828916639}
   - component: {fileID: 1828916641}
   - component: {fileID: 1828916640}
+  - component: {fileID: 1828916642}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: Video_Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -880,7 +921,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 8400000, guid: 0d661c0b3d5f1394ab806fa0ba72a61a, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -895,6 +936,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828916638}
   m_CullTransparentMesh: 1
+--- !u!328 &1828916642
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828916638}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 0}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 0d661c0b3d5f1394ab806fa0ba72a61a, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
