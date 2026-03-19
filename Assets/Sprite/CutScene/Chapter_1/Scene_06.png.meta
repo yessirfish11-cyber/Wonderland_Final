@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 41f5e48af1dd9fa49ad86f62b6d3b308
+guid: b051a061202d3f742a4e032aaf429a5a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -262615391957376077
-    second: House03_0
+      213: -2658508710025601885
+    second: Scene_06_0
+  - first:
+      213: -5684793295313513620
+    second: Scene_06_1
+  - first:
+      213: -5324456538332412144
+    second: Scene_06_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: House03_0
+      name: Scene_06_0
       rect:
         serializedVersion: 2
-        x: 112
-        y: 57
-        width: 416
-        height: 533
+        x: 1747
+        y: 1871
+        width: 6
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3b3a4d141b00b5cf0800000000000000
-      internalID: -262615391957376077
+      spriteID: 3ac54a2e9641b1bd0800000000000000
+      internalID: -2658508710025601885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene_06_1
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 897
+        width: 92
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c63d0530e9e8b11b0800000000000000
+      internalID: -5684793295313513620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene_06_2
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 175
+        width: 1677
+        height: 1552
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 017c0b21dfabb16b0800000000000000
+      internalID: -5324456538332412144
       vertices: []
       indices: 
       edges: []
@@ -135,7 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      House03_0: -262615391957376077
+      Scene_06_0: -2658508710025601885
+      Scene_06_1: -5684793295313513620
+      Scene_06_2: -5324456538332412144
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

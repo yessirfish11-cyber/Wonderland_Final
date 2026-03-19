@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 41f5e48af1dd9fa49ad86f62b6d3b308
+guid: 5a5c25846160f5c42b05f9294989fdf0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -262615391957376077
-    second: House03_0
+      213: -3449887916046480793
+    second: Chapter02_Scene11_0
+  - first:
+      213: -2705104058109931840
+    second: Chapter02_Scene11_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: House03_0
+      name: Chapter02_Scene11_0
       rect:
         serializedVersion: 2
-        x: 112
-        y: 57
-        width: 416
-        height: 533
+        x: 109
+        y: 0
+        width: 504
+        height: 767
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3b3a4d141b00b5cf0800000000000000
-      internalID: -262615391957376077
+      spriteID: 76a0329f7398f10d0800000000000000
+      internalID: -3449887916046480793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chapter02_Scene11_1
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 343
+        width: 917
+        height: 737
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cec3eff03a857ad0800000000000000
+      internalID: -2705104058109931840
       vertices: []
       indices: 
       edges: []
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      House03_0: -262615391957376077
+      Chapter02_Scene11_0: -3449887916046480793
+      Chapter02_Scene11_1: -2705104058109931840
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

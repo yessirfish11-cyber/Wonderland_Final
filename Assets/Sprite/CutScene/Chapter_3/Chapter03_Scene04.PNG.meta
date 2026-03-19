@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 41f5e48af1dd9fa49ad86f62b6d3b308
+guid: f3cd380c7fc30f843940cfd8580f41b2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -262615391957376077
-    second: House03_0
+      213: 8265916427902043325
+    second: Chapter03_Scene04_0
+  - first:
+      213: -4895075243064945233
+    second: Chapter03_Scene04_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: House03_0
+      name: Chapter03_Scene04_0
       rect:
         serializedVersion: 2
-        x: 112
-        y: 57
-        width: 416
-        height: 533
+        x: 255
+        y: 208
+        width: 551
+        height: 484
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3b3a4d141b00b5cf0800000000000000
-      internalID: -262615391957376077
+      spriteID: db4ca2c423f66b270800000000000000
+      internalID: 8265916427902043325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chapter03_Scene04_1
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 293
+        width: 705
+        height: 726
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa51e4c6003311cb0800000000000000
+      internalID: -4895075243064945233
       vertices: []
       indices: 
       edges: []
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      House03_0: -262615391957376077
+      Chapter03_Scene04_0: 8265916427902043325
+      Chapter03_Scene04_1: -4895075243064945233
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

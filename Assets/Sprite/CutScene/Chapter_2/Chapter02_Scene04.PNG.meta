@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: 4fa9d595424e22a4aabcddc2fe935807
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6377082137781603485
+    second: Chapter02_Scene04_0
+  - first:
+      213: 1522580371887684366
+    second: Chapter02_Scene04_1
+  - first:
+      213: -6284922408682209792
+    second: Chapter02_Scene04_2
+  - first:
+      213: 8859378936088455774
+    second: Chapter02_Scene04_3
+  - first:
+      213: -5499049570039994852
+    second: Chapter02_Scene04_4
+  - first:
+      213: -8265903288846700468
+    second: Chapter02_Scene04_5
+  - first:
+      213: -425459064088883250
+    second: Chapter02_Scene04_6
+  - first:
+      213: -979090169745564969
+    second: Chapter02_Scene04_7
+  - first:
+      213: -8550196272354589537
+    second: Chapter02_Scene04_8
+  - first:
+      213: -1976574582537700185
+    second: Chapter02_Scene04_9
+  - first:
+      213: 2970412555316054526
+    second: Chapter02_Scene04_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Chapter02_Scene04_0
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 882
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 363f90a359d0087a0800000000000000
+      internalID: -6377082137781603485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chapter02_Scene04_1
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 0
+        width: 682
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0bf85008ca412510800000000000000
+      internalID: 1522580371887684366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chapter02_Scene04_2
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 882
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00eba954e5877c8a0800000000000000
+      internalID: -6284922408682209792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chapter02_Scene04_3
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 736
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5a61201436d2fa70800000000000000
+      internalID: 8859378936088455774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chapter02_Scene04_4
+      rect:
+        serializedVersion: 2
+        x: 1426
+        y: 736
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c16608f1d837fa3b0800000000000000
+      internalID: -5499049570039994852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chapter02_Scene04_5
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 671
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c403f80e0cc994d80800000000000000
+      internalID: -8265903288846700468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chapter02_Scene04_6
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 661
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecf03824c37781af0800000000000000
+      internalID: -425459064088883250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chapter02_Scene04_7
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 661
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7da1d359da29962f0800000000000000
+      internalID: -979090169745564969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chapter02_Scene04_8
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 671
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f948f6a8ac9975980800000000000000
+      internalID: -8550196272354589537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chapter02_Scene04_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 22
+        width: 328
+        height: 562
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ac36c7b3ebc194e0800000000000000
+      internalID: -1976574582537700185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chapter02_Scene04_10
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 22
+        width: 328
+        height: 562
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef949fb2b76093920800000000000000
+      internalID: 2970412555316054526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Chapter02_Scene04_0: -6377082137781603485
+      Chapter02_Scene04_1: 1522580371887684366
+      Chapter02_Scene04_10: 2970412555316054526
+      Chapter02_Scene04_2: -6284922408682209792
+      Chapter02_Scene04_3: 8859378936088455774
+      Chapter02_Scene04_4: -5499049570039994852
+      Chapter02_Scene04_5: -8265903288846700468
+      Chapter02_Scene04_6: -425459064088883250
+      Chapter02_Scene04_7: -979090169745564969
+      Chapter02_Scene04_8: -8550196272354589537
+      Chapter02_Scene04_9: -1976574582537700185
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

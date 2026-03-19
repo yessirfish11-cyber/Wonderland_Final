@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 41f5e48af1dd9fa49ad86f62b6d3b308
+guid: 38394649f4ca02e44ac487174a3e4a4e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -262615391957376077
-    second: House03_0
+      213: 200407460410065455
+    second: Filler01_0
+  - first:
+      213: 1129131148244589597
+    second: Filler01_1
+  - first:
+      213: 7987269922497969179
+    second: Filler01_2
+  - first:
+      213: -6641337296821864356
+    second: Filler01_3
+  - first:
+      213: 1575816421974558759
+    second: Filler01_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: House03_0
+      name: Filler01_0
       rect:
         serializedVersion: 2
-        x: 112
-        y: 57
-        width: 416
-        height: 533
+        x: 214
+        y: 268
+        width: 36
+        height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +127,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3b3a4d141b00b5cf0800000000000000
-      internalID: -262615391957376077
+      spriteID: f228410068df7c200800000000000000
+      internalID: 200407460410065455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Filler01_1
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 247
+        width: 39
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1c92f30cca7baf00800000000000000
+      internalID: 1129131148244589597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Filler01_2
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 247
+        width: 36
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1c37a71dab78de60800000000000000
+      internalID: 7987269922497969179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Filler01_3
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 253
+        width: 39
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5831657aea35d3a0800000000000000
+      internalID: -6641337296821864356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Filler01_4
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 273
+        width: 36
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 728450fcfac6ed510800000000000000
+      internalID: 1575816421974558759
       vertices: []
       indices: 
       edges: []
@@ -135,7 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      House03_0: -262615391957376077
+      Filler01_0: 200407460410065455
+      Filler01_1: 1129131148244589597
+      Filler01_2: 7987269922497969179
+      Filler01_3: -6641337296821864356
+      Filler01_4: 1575816421974558759
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
