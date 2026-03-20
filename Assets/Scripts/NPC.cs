@@ -84,11 +84,11 @@ public class NPC : MonoBehaviour
         }
 
         // ปรับปรุงเงื่อนไขบรรทัดที่ 54 ให้ปลอดภัยขึ้น
-        if (dialoguePanel.activeInHierarchy && index < dialogueLines.Count)
+        if (dialoguePanel != null && dialoguePanel.activeInHierarchy && index < dialogueLines.Count)
         {
             if (dialogueText.text == dialogueLines[index].sentence)
             {
-                contButton.SetActive(true);
+                if (contButton != null) contButton.SetActive(true);
             }
         }
     }
@@ -135,12 +135,25 @@ public class NPC : MonoBehaviour
 
     public void zeroText()
     {
-        dialogueText.text = "";
-        index = 0;
-        dialoguePanel.SetActive(false);
+        // 1. เช็คว่า dialogueText ยังอยู่ไหมก่อนล้างค่า
+        if (dialogueText != null)
+        {
+            dialogueText.text = "";
+        }
 
-        if (playerIsClose)
+        index = 0;
+
+        // 2. เช็คว่า dialoguePanel ยังอยู่ไหมก่อนสั่งปิด (จุดที่เกิด Error บ่อยที่สุด)
+        if (dialoguePanel != null)
+        {
+            dialoguePanel.SetActive(false);
+        }
+
+        // 3. เช็ค interactPrompt ด้วยเพื่อความปลอดภัย
+        if (playerIsClose && interactPrompt != null)
+        {
             interactPrompt.SetActive(true);
+        }
     }
 
     IEnumerator Typing()

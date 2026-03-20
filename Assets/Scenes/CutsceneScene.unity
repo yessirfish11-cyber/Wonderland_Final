@@ -404,6 +404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 765362911}
   - component: {fileID: 765362910}
+  - component: {fileID: 765362912}
   m_Layer: 0
   m_Name: CutsceneController
   m_TagString: Untagged
@@ -423,27 +424,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e984a941438dd47a54c308e369380d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundImage: {fileID: 0}
   displayImage: {fileID: 352207131}
   videoDisplay: {fileID: 1150674670}
   videoPlayer: {fileID: 1150674669}
   subtitleText: {fileID: 960424984}
   fadeGroup: {fileID: 1477719891}
+  audioSource: {fileID: 765362912}
   storyList:
-  - image: {fileID: 7126910479849270986, guid: 4057db5633a4d8f4a91b3a6d2f2090dd, type: 3}
+  - background: {fileID: 0}
+    image: {fileID: 21300000, guid: 02ea149ddb4417342a4f1f3f669a698b, type: 3}
     videoClip: {fileID: 0}
-    subtitle: "\u0E2D\u0E32\u0E23\u0E31\u0E21\u0E20\u0E1A\u0E17"
-  - image: {fileID: 21300000, guid: 02ea149ddb4417342a4f1f3f669a698b, type: 3}
-    videoClip: {fileID: 0}
+    voiceOverList: []
     subtitle: "\u0E40\u0E1E\u0E35\u0E22\u0E07\u0E2B\u0E19\u0E31\u0E07\u0E2A\u0E37\u0E2D\u0E40\u0E25\u0E48\u0E21\u0E2B\u0E19\u0E36\u0E48\u0E07...\u0E41\u0E15\u0E48\u0E17\u0E27\u0E48\u0E32\u0E01\u0E25\u0E31\u0E1A\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E23\u0E49\u0E2D\u0E22\u0E40\u0E23\u0E35\u0E22\u0E07\n\u0E1A\u0E17\u0E1B\u0E23\u0E30\u0E1E\u0E31\u0E19\u0E18\u0E4C\u0E19\u0E31\u0E1A\u0E2A\u0E34\u0E1A\u0E43\u0E2B\u0E49\u0E21\u0E32\u0E1A\u0E23\u0E23\u0E08\u0E1A\u0E01\u0E31\u0E19\u0E44\u0E14\u0E49\u0E2D\u0E22\u0E48\u0E32\u0E07\u0E07\u0E14\u0E07\u0E32\u0E21
       \u0E16\u0E31\u0E01\u0E17\u0E2D\u0E40\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E23\u0E32\u0E27\u0E19\u0E31\u0E1A\u0E23\u0E49\u0E2D\u0E22\u0E1C\u0E48\u0E32\u0E19\u0E1B\u0E25\u0E32\u0E22\u0E1B\u0E32\u0E01\u0E01\u0E32\u0E02\u0E2D\u0E07\u0E40\u0E2B\u0E25\u0E48\u0E32\u0E19\u0E31\u0E01\u0E01\u0E27\u0E35\n\u0E17\u0E35\u0E48\u0E23\u0E48\u0E27\u0E21\u0E2A\u0E23\u0E23\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E21\u0E2D\u0E1A\u0E04\u0E27\u0E32\u0E21\u0E08\u0E23\u0E23\u0E42\u0E25\u0E07\u0E43\u0E08\n\u0E41\u0E25\u0E30\u0E2A\u0E38\u0E19\u0E17\u0E23\u0E35\u0E22\u0E20\u0E32\u0E1E\u0E41\u0E14\u0E48\u0E1C\u0E39\u0E49\u0E2D\u0E48\u0E32\u0E19\u0E43\u0E2B\u0E49\u0E44\u0E14\u0E49\u0E42\u0E25\u0E14\u0E41\u0E25\u0E48\u0E19\u0E44\u0E1B\u0E43\u0E19\n\u0E42\u0E25\u0E01\u0E41\u0E2B\u0E48\u0E07\u0E08\u0E34\u0E19\u0E15\u0E19\u0E32\u0E01\u0E32\u0E23\u0E17\u0E35\u0E48\u0E44\u0E21\u0E48\u0E21\u0E35\u0E27\u0E31\u0E19\u0E08\u0E1A\u0E2A\u0E34\u0E49\u0E19"
-  - image: {fileID: 21300000, guid: f20b44403c111ed47af8ae54a5274ef3, type: 3}
+  - background: {fileID: 0}
+    image: {fileID: 21300000, guid: f20b44403c111ed47af8ae54a5274ef3, type: 3}
     videoClip: {fileID: 0}
+    voiceOverList: []
     subtitle: "\u0E22\u0E32\u0E21\u0E19\u0E35\u0E49\u0E15\u0E32\u0E2B\u0E25\u0E31\u0E1A\u0E25\u0E07
       \u0E27\u0E32\u0E23\u0E35\u0E27\u0E07\u0E1E\u0E32\u0E1C\u0E31\u0E19\u0E1C\u0E27\u0E19  
       \r\n\u0E19\u0E34\u0E25\u0E40\u0E21\u0E06\u0E32\u0E21\u0E34\u0E2D\u0E32\u0E08\u0E17\u0E27\u0E19 
       \u0E40\u0E08\u0E49\u0E32\u0E14\u0E33\u0E14\u0E34\u0E48\u0E07\u0E17\u0E34\u0E49\u0E07\u0E42\u0E25\u0E01\u0E01\u0E32\r\n"
-  - image: {fileID: 0}
+  - background: {fileID: 0}
+    image: {fileID: 0}
     videoClip: {fileID: 32900000, guid: e739b500c90dbfc44b60d5c6d20ee358, type: 3}
+    voiceOverList: []
     subtitle: "\u0E08\u0E34\u0E19\u0E15\u0E19\u0E32\u0E40\u0E2B\u0E19\u0E37\u0E2D\u0E01\u0E32\u0E25
       \u0E25\u0E32\u0E01\u0E14\u0E27\u0E07\u0E08\u0E34\u0E15\u0E1E\u0E32\u0E40\u0E08\u0E49\u0E32\u0E21\u0E32\r\n\u0E44\u0E1B\u0E1C\u0E08\u0E0D\u0E1E\u0E1A\u0E0A\u0E30\u0E15\u0E32
       \u0E2B\u0E32\u0E2B\u0E19\u0E17\u0E32\u0E07\u0E01\u0E25\u0E31\u0E1A\u0E44\u0E1B\u0E40\u0E22\u0E37\u0E2D\u0E19\r\n"
@@ -464,6 +470,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &765362912
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765362909}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &960424983
 GameObject:
   m_ObjectHideFlags: 0

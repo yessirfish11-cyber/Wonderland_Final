@@ -297,7 +297,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -461,6 +461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 841178363}
   - component: {fileID: 841178364}
+  - component: {fileID: 841178365}
   m_Layer: 0
   m_Name: CutScene_Ctrl
   m_TagString: Untagged
@@ -495,41 +496,158 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e984a941438dd47a54c308e369380d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundImage: {fileID: 0}
   displayImage: {fileID: 429803427}
   videoDisplay: {fileID: 1828916640}
   videoPlayer: {fileID: 1828916642}
   subtitleText: {fileID: 357068423}
   fadeGroup: {fileID: 1747381720}
+  audioSource: {fileID: 841178365}
   storyList:
-  - image: {fileID: 2527826774558546573, guid: a2eced5d934018147b75619ccd794a06, type: 3}
+  - background: {fileID: 0}
+    image: {fileID: 2527826774558546573, guid: a2eced5d934018147b75619ccd794a06, type: 3}
     videoClip: {fileID: 32900000, guid: 4f886bc65add6294c833e8604352a158, type: 3}
+    voiceOverList: []
     subtitle: 
-  - image: {fileID: 3677860823259659522, guid: 23f0806c3ab3c37459992dcefb9ce9c3, type: 3}
+  - background: {fileID: 0}
+    image: {fileID: 3677860823259659522, guid: 23f0806c3ab3c37459992dcefb9ce9c3, type: 3}
     videoClip: {fileID: 0}
+    voiceOverList: []
     subtitle: 
-  - image: {fileID: 7315411847164208195, guid: 604c92b9a6902864e9b506405ba56b3b, type: 3}
+  - background: {fileID: 0}
+    image: {fileID: 7315411847164208195, guid: 604c92b9a6902864e9b506405ba56b3b, type: 3}
     videoClip: {fileID: 0}
+    voiceOverList: []
     subtitle: 
-  - image: {fileID: 21300000, guid: 271b38e768986b542b9ad3175f6a2c2c, type: 3}
+  - background: {fileID: 0}
+    image: {fileID: 21300000, guid: 271b38e768986b542b9ad3175f6a2c2c, type: 3}
     videoClip: {fileID: 0}
+    voiceOverList: []
     subtitle: 
-  - image: {fileID: 21300000, guid: b051a061202d3f742a4e032aaf429a5a, type: 3}
+  - background: {fileID: 0}
+    image: {fileID: 21300000, guid: b051a061202d3f742a4e032aaf429a5a, type: 3}
     videoClip: {fileID: 0}
+    voiceOverList: []
     subtitle: 
-  - image: {fileID: 21300000, guid: e5c3946d6c94a5245b480dd0d5b7ded8, type: 3}
+  - background: {fileID: 0}
+    image: {fileID: 21300000, guid: e5c3946d6c94a5245b480dd0d5b7ded8, type: 3}
     videoClip: {fileID: 0}
+    voiceOverList: []
     subtitle: 
-  - image: {fileID: 21300000, guid: fbd9baca5f1479a4ba9a78f0d0af49f8, type: 3}
+  - background: {fileID: 0}
+    image: {fileID: 21300000, guid: fbd9baca5f1479a4ba9a78f0d0af49f8, type: 3}
     videoClip: {fileID: 0}
+    voiceOverList: []
     subtitle: 
-  - image: {fileID: 21300000, guid: a4d7324d3df8a4444a4b616aa4d38551, type: 3}
+  - background: {fileID: 0}
+    image: {fileID: 21300000, guid: a4d7324d3df8a4444a4b616aa4d38551, type: 3}
     videoClip: {fileID: 0}
+    voiceOverList: []
     subtitle: 
-  - image: {fileID: 21300000, guid: a4d7324d3df8a4444a4b616aa4d38551, type: 3}
+  - background: {fileID: 0}
+    image: {fileID: 21300000, guid: a4d7324d3df8a4444a4b616aa4d38551, type: 3}
     videoClip: {fileID: 0}
+    voiceOverList: []
     subtitle: 
   nextSceneName: GameScene
   typingSpeed: 0.05
+--- !u!82 &841178365
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841178362}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0

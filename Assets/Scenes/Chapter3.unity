@@ -297,10 +297,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 99afa13daba868e43a1f1a1f95ccbc7b, type: 2}
+  m_sharedMaterial: {fileID: -2607641141864516015, guid: 99afa13daba868e43a1f1a1f95ccbc7b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -461,6 +461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 841178363}
   - component: {fileID: 841178364}
+  - component: {fileID: 841178365}
   m_Layer: 0
   m_Name: CutScene_Ctrl
   m_TagString: Untagged
@@ -495,32 +496,154 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e984a941438dd47a54c308e369380d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundImage: {fileID: 0}
   displayImage: {fileID: 429803427}
   videoDisplay: {fileID: 1828916640}
   videoPlayer: {fileID: 1828916642}
   subtitleText: {fileID: 357068423}
   fadeGroup: {fileID: 1747381720}
+  audioSource: {fileID: 841178365}
   storyList:
-  - image: {fileID: 21300000, guid: 55a8dfab22eb4734984f1ce763969260, type: 3}
+  - background: {fileID: 0}
+    image: {fileID: 21300000, guid: 55a8dfab22eb4734984f1ce763969260, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: f59b6f06674d78542b43b041f1200e61, type: 3}
+    voiceOverList:
+    - {fileID: 8300000, guid: f73a6cbd6eaa60a44a4e7ed677cf0acb, type: 3}
+    subtitle: "\u0E02\u0E38\u0E19\u0E41\u0E1C\u0E19 : \u0E2D\u0E22\u0E39\u0E48\u0E19\u0E35\u0E48\u0E40\u0E2D\u0E07\u0E23\u0E36\u0E41\u0E21\u0E48\u0E27\u0E31\u0E19"
+  - background: {fileID: 0}
+    image: {fileID: 21300000, guid: f59b6f06674d78542b43b041f1200e61, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: dc843c8bd0db52f47a02c2a46a44bd8e, type: 3}
+    voiceOverList: []
+    subtitle: "\u0E02\u0E38\u0E19\u0E0A\u0E49\u0E32\u0E07 : \u0E41\u0E21\u0E48\u0E27\u0E31\u0E19\u0E17\u0E2D\u0E07\u0E02\u0E2D\u0E07\u0E02\u0E49\u0E32!
+      \u0E22\u0E2D\u0E14\u0E23\u0E31\u0E01\u0E14\u0E27\u0E07\u0E43\u0E08\u0E02\u0E2D\u0E07\u0E02\u0E49\u0E32\u0E2D\u0E22\u0E39\u0E48\u0E19\u0E35\u0E48\u0E40\u0E2D\u0E07"
+  - background: {fileID: 0}
+    image: {fileID: 21300000, guid: dc843c8bd0db52f47a02c2a46a44bd8e, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: f3cd380c7fc30f843940cfd8580f41b2, type: 3}
+    voiceOverList:
+    - {fileID: 8300000, guid: 7be23defd9de89e4499de49f175d7013, type: 3}
+    subtitle: "\u0E44\u0E01\u0E23\u0E17\u0E2D\u0E07 : \u0E40\u0E08\u0E49\u0E32\u0E21\u0E35\u0E40\u0E08\u0E49\u0E32\u0E02\u0E2D\u0E07\u0E41\u0E25\u0E49\u0E27\u0E23\u0E36
+      \u0E41\u0E15\u0E48\u0E40\u0E08\u0E49\u0E32\u0E21\u0E32\u0E2B\u0E25\u0E2D\u0E01\u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\u0E23\u0E31\u0E01\u0E41\u0E25\u0E49\u0E27\u0E2B\u0E19\u0E32\n\u0E1C\u0E39\u0E49\u0E40\u0E25\u0E48\u0E19
+      : (\u0E15\u0E2D\u0E19\u0E44\u0E2B\u0E19?)"
+  - background: {fileID: 0}
+    image: {fileID: 21300000, guid: f3cd380c7fc30f843940cfd8580f41b2, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: 75c268c0487edca4b98c68cc63729e99, type: 3}
+    voiceOverList: []
+    subtitle: "\u0E1C\u0E39\u0E49\u0E40\u0E25\u0E48\u0E19 : (\u0E43\u0E04\u0E23\u0E19\u0E31\u0E01\u0E2B\u0E19\u0E32\u0E27\u0E30?) "
+  - background: {fileID: 0}
+    image: {fileID: 21300000, guid: 75c268c0487edca4b98c68cc63729e99, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: 9b60eb9659b5e9c44b6d165110f03c84, type: 3}
+    voiceOverList: []
+    subtitle: "\u0E02\u0E38\u0E19\u0E0A\u0E49\u0E32\u0E07 : \u0E44\u0E2D\u0E49\u0E41\u0E1C\u0E19!
+      \u0E41\u0E21\u0E48\u0E27\u0E31\u0E19\u0E17\u0E2D\u0E07\u0E2B\u0E19\u0E35\u0E2D\u0E35\u0E01\u0E41\u0E25\u0E49\u0E27"
+  - background: {fileID: 0}
+    image: {fileID: 21300000, guid: 9b60eb9659b5e9c44b6d165110f03c84, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
+    voiceOverList:
+    - {fileID: 8300000, guid: 26501d5dd6eb4774f81a5615fa4f8ba5, type: 3}
+    subtitle: "\u0E02\u0E38\u0E19\u0E41\u0E1C\u0E19 : \u0E15\u0E23\u0E39\u0E40\u0E2B\u0E47\u0E19\u0E41\u0E25\u0E49\u0E27!
+      \u0E44\u0E2D\u0E49\u0E1E\u0E25\u0E32\u0E22\u0E15\u0E23\u0E39\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E40\u0E08\u0E49\u0E32
+      \u0E44\u0E1B\u0E08\u0E31\u0E1A\u0E15\u0E31\u0E27\u0E41\u0E21\u0E48\u0E27\u0E31\u0E19\u0E21\u0E32\u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\n\u0E02\u0E38\u0E19\u0E0A\u0E49\u0E32\u0E07
+      : \u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\n\u0E02\u0E38\u0E19\u0E41\u0E1C\u0E19
+      : \u0E2B\u0E38\u0E1A\u0E1B\u0E32\u0E01!!\n"
   nextSceneName: GameScene
   typingSpeed: 0.05
+--- !u!82 &841178365
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841178362}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0

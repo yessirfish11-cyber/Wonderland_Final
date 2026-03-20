@@ -9,35 +9,43 @@ using TMPro;
 [System.Serializable]
 public class StoryFrame
 {
-    public Sprite image;        // ภาพประกอบ
+    public Sprite background;
+    public Sprite image;
     public VideoClip videoClip;
+    public List<AudioClip> voiceOverList;      // <-- เพิ่มช่องสำหรับใส่เสียงในแต่ละ Frame
     [TextArea(3, 10)]
-    public string subtitle;     // คำบรรยาย
+    public string subtitle;
 }
+
 
 public class CutsceneManager : MonoBehaviour
 {
     [Header("UI Elements")]
+    public Image backgroundImage;
     public Image displayImage;
     public RawImage videoDisplay;   // Raw Image สำหรับวิดีโอ
     public VideoPlayer videoPlayer; // ตัวเล่นวิดีโอ
     public TextMeshProUGUI subtitleText; // หรือใช้ Text ธรรมดาก็ได้ครับ
     public CanvasGroup fadeGroup;        // ใช้ทำ Effect จางเข้า-ออก
 
+    [Header("Audio Settings")]
+    public AudioSource audioSource;
+
     [Header("Settings")]
     public List<StoryFrame> storyList;   // รายการเนื้อเรื่อง
-    public string nextSceneName = "GameScene"; // ชื่อฉากถัดไปที่จะไป
+    public string nextSceneName = ""; // ชื่อฉากถัดไปที่จะไป
     public float typingSpeed = 0.05f; // ความเร็วในการพิมพ์
 
     private int currentIndex = 0;
     private bool isTransitioning = false;
     private bool isTyping = false; // ตรวจสอบว่ากำลังพิมพ์อยู่หรือไม่
     private Coroutine typingCoroutine;
+    private Coroutine audioQueueCoroutine; // สำหรับควบคุมคิวเสียง
 
     void Start()
     {
-        // ซ่อนหน้าจอวิดีโอไว้ก่อนตอนเริ่ม
         if (videoDisplay != null) videoDisplay.gameObject.SetActive(false);
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
 
         if (storyList.Count > 0) StartCoroutine(InitialStart());
     }
@@ -45,15 +53,16 @@ public class CutsceneManager : MonoBehaviour
     IEnumerator InitialStart()
     {
         isTransitioning = true;
-        ShowCurrentFrame(false); // ตั้งค่าภาพแต่ยังไม่พิมพ์
+        ShowCurrentFrame(false);
         fadeGroup.alpha = 0;
         yield return StartCoroutine(Fade(0, 1, 0.5f));
 
         isTransitioning = false;
+
+        // เริ่มเล่นคิวเสียงและพิมพ์ข้อความ
+        audioQueueCoroutine = StartCoroutine(PlayAudioQueue());
         typingCoroutine = StartCoroutine(TypeText(storyList[currentIndex].subtitle));
     }
-
-
 
     void Update()
     {
@@ -61,12 +70,10 @@ public class CutsceneManager : MonoBehaviour
         {
             if (isTyping)
             {
-                // ถ้ากำลังพิมพ์อยู่ แล้วกดปุ่ม ให้แสดงข้อความเต็มทันที
                 StopTypingAndShowFullText();
             }
             else
             {
-                // ถ้าพิมพ์จบแล้ว ถึงจะไปหน้าถัดไป
                 AdvanceStory();
             }
         }
@@ -81,7 +88,6 @@ public class CutsceneManager : MonoBehaviour
         }
         else
         {
-            // ถ้าถึงภาพสุดท้ายแล้ว ให้ไปที่ GameScene
             StartCoroutine(EndCutsceneRoutine());
         }
     }
@@ -90,20 +96,40 @@ public class CutsceneManager : MonoBehaviour
     {
         StoryFrame current = storyList[currentIndex];
 
-        // ตรวจสอบว่ามีวิดีโอในช่องนี้ไหม
+        // 1. จัดการ Background
+        if (current.background != null)
+        {
+            backgroundImage.gameObject.SetActive(true);
+            backgroundImage.sprite = current.background;
+        }
+        else
+        {
+            // ถ้าเฟรมนี้ไม่มี Background อาจจะเลือกปิดไปหรือปล่อยทิ้งไว้ตามความเหมาะสม
+            // backgroundImage.gameObject.SetActive(false); 
+        }
+
+        // 2. จัดการ Content (Video หรือ Image)
         if (current.videoClip != null)
         {
-            displayImage.gameObject.SetActive(false); // ซ่อนภาพนิ่ง
-            videoDisplay.gameObject.SetActive(true);  // เปิดหน้าจอวิดีโอ
-
+            displayImage.gameObject.SetActive(false);
+            videoDisplay.gameObject.SetActive(true);
             videoPlayer.clip = current.videoClip;
             videoPlayer.Play();
         }
         else
         {
-            videoDisplay.gameObject.SetActive(false); // ซ่อนหน้าจอวิดีโอ
-            displayImage.gameObject.SetActive(true);  // เปิดภาพนิ่ง
-            displayImage.sprite = current.image;
+            videoDisplay.gameObject.SetActive(false);
+
+            // ถ้าไม่มีรูปประกอบหลัก (image) ให้ปิดตัวละครไป แต่ถ้ามีก็แสดงผล
+            if (current.image != null)
+            {
+                displayImage.gameObject.SetActive(true);
+                displayImage.sprite = current.image;
+            }
+            else
+            {
+                displayImage.gameObject.SetActive(false);
+            }
 
             if (videoPlayer.isPlaying) videoPlayer.Stop();
         }
@@ -111,21 +137,38 @@ public class CutsceneManager : MonoBehaviour
         if (shouldClearText) subtitleText.text = "";
     }
 
+    // ฟังก์ชันใหม่: เล่นเสียงเรียงตามลำดับใน List
+    IEnumerator PlayAudioQueue()
+    {
+        List<AudioClip> clips = storyList[currentIndex].voiceOverList;
+
+        if (clips != null && clips.Count > 0)
+        {
+            foreach (AudioClip clip in clips)
+            {
+                if (clip == null) continue;
+
+                audioSource.clip = clip;
+                audioSource.Play();
+
+                // รอจนกว่าเสียงปัจจุบันจะเล่นจบ ก่อนจะวนไปเล่นไฟล์ถัดไป
+                yield return new WaitWhile(() => audioSource.isPlaying);
+
+                // เว้นช่วงเล็กน้อยระหว่างเสียง (ถ้าต้องการ)
+                // yield return new WaitForSeconds(0.2f); 
+            }
+        }
+    }
+
     IEnumerator TypeText(string textToType)
     {
         isTyping = true;
         subtitleText.text = "";
-
-        // ถ้าคุณมี Script แก้สระลอย ให้จัดการข้อความก่อนเริ่มพิมพ์ตรงนี้
-        // string fixedText = ThaiFontAdjuster.Adjust(textToType); 
-        // foreach (char letter in fixedText.ToCharArray())
-
         foreach (char letter in textToType.ToCharArray())
         {
             subtitleText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
-
         isTyping = false;
     }
 
@@ -140,7 +183,10 @@ public class CutsceneManager : MonoBehaviour
     {
         isTransitioning = true;
 
-        // Fade Out เฉพาะรูปหรือทั้งหน้าจอ (ตามที่คุณต้องการ)
+        // หยุดเสียงและคิวเสียงเดิมทันทีเมื่อเปลี่ยนเฟรม
+        if (audioQueueCoroutine != null) StopCoroutine(audioQueueCoroutine);
+        audioSource.Stop();
+
         yield return StartCoroutine(Fade(1, 0, 0.5f));
 
         ShowCurrentFrame();
@@ -148,13 +194,18 @@ public class CutsceneManager : MonoBehaviour
         yield return StartCoroutine(Fade(0, 1, 0.5f));
 
         isTransitioning = false;
-        // เริ่มพิมพ์หลังจาก Fade In เสร็จ
+
+        // เริ่มคิวเสียงและเริ่มพิมพ์ใหม่ในเฟรมถัดไป
+        audioQueueCoroutine = StartCoroutine(PlayAudioQueue());
         typingCoroutine = StartCoroutine(TypeText(storyList[currentIndex].subtitle));
     }
 
     IEnumerator EndCutsceneRoutine()
     {
         isTransitioning = true;
+        if (audioQueueCoroutine != null) StopCoroutine(audioQueueCoroutine);
+        audioSource.Stop();
+
         if (fadeGroup != null) yield return StartCoroutine(Fade(1, 0, 1f));
 
         if (GameManager.Instance != null) GameManager.Instance.FinishCutscene();

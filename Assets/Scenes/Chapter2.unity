@@ -119,6 +119,81 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &53205909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 53205910}
+  - component: {fileID: 53205912}
+  - component: {fileID: 53205911}
+  m_Layer: 5
+  m_Name: BG_Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &53205910
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53205909}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1747381719}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &53205911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53205909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &53205912
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53205909}
+  m_CullTransparentMesh: 1
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,10 +372,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 99afa13daba868e43a1f1a1f95ccbc7b, type: 2}
+  m_sharedMaterial: {fileID: -2607641141864516015, guid: 99afa13daba868e43a1f1a1f95ccbc7b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -461,6 +536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 841178363}
   - component: {fileID: 841178364}
+  - component: {fileID: 841178365}
   m_Layer: 0
   m_Name: CutScene_Ctrl
   m_TagString: Untagged
@@ -495,68 +571,227 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e984a941438dd47a54c308e369380d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundImage: {fileID: 53205911}
   displayImage: {fileID: 429803427}
   videoDisplay: {fileID: 1828916640}
   videoPlayer: {fileID: 1828916642}
   subtitleText: {fileID: 357068423}
   fadeGroup: {fileID: 1747381720}
+  audioSource: {fileID: 841178365}
   storyList:
-  - image: {fileID: 21300000, guid: 51ebba0d855f3a643922cc170ca66ffb, type: 3}
+  - background: {fileID: -8420817800383018622, guid: a90c19cec90fbc643998b62b70e7190d, type: 3}
+    image: {fileID: 21300000, guid: 51ebba0d855f3a643922cc170ca66ffb, type: 3}
     videoClip: {fileID: 0}
+    voiceOverList: []
     subtitle: 
-  - image: {fileID: 21300000, guid: a9493b3b8b61f6d4ebdcba0de5aeb3b1, type: 3}
+  - background: {fileID: -8420817800383018622, guid: a90c19cec90fbc643998b62b70e7190d, type: 3}
+    image: {fileID: 21300000, guid: a9493b3b8b61f6d4ebdcba0de5aeb3b1, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: 072a94209b9e7ea43950ba8fdd4bb769, type: 3}
+    voiceOverList: []
+    subtitle: "\u0E1C\u0E39\u0E49\u0E40\u0E25\u0E48\u0E19 : \u0E40\u0E2B\u0E35\u0E49\u0E22!"
+  - background: {fileID: -8420817800383018622, guid: a90c19cec90fbc643998b62b70e7190d, type: 3}
+    image: {fileID: 21300000, guid: 072a94209b9e7ea43950ba8fdd4bb769, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: 4fa9d595424e22a4aabcddc2fe935807, type: 3}
+    voiceOverList: []
+    subtitle: "\u0E0A\u0E32\u0E25\u0E30\u0E27\u0E31\u0E19 : \u0E44\u0E21\u0E48\u0E43\u0E0A\u0E48\u0E40\u0E2B\u0E35\u0E49\u0E22\u0E19\u0E4A\u0E32
+      \u0E40\u0E01\u0E4A\u0E32\u0E08\u0E23\u0E30\u0E40\u0E02\u0E49\u0E40\u0E2D\u0E07\u0E08\u0E49\u0E32\n\u0E02\u0E2D\u0E40\u0E1E\u0E25\u0E32\u0E2A\u0E31\u0E01\u0E1B\u0E23\u0E30\u0E40\u0E14\u0E35\u0E4B\u0E22\u0E27\u0E43\u0E2B\u0E49\u0E1E\u0E35\u0E48\u0E44\u0E14\u0E49\u0E19\u0E33\u0E40\u0E2A\u0E19\u0E2D\u0E15\u0E31\u0E27\u0E40\u0E2D\u0E07\u0E2A\u0E31\u0E01\u0E2B\u0E19\u0E48\u0E2D\u0E22\n\u0E2D\u0E31\u0E19\u0E15\u0E31\u0E27\u0E1E\u0E35\u0E48\u0E19\u0E31\u0E49\u0E19\u0E21\u0E35\u0E19\u0E32\u0E21\u0E27\u0E48\u0E32
+      \"\u0E0A\u0E32\u0E25\u0E30\u0E27\u0E31\u0E19\"\n\u0E08\u0E23\u0E30\u0E40\u0E02\u0E49\u0E2A\u0E38\u0E14\u0E40\u0E01\u0E23\u0E35\u0E22\u0E07\u0E44\u0E01\u0E25\u0E41\u0E2B\u0E48\u0E07\u0E16\u0E49\u0E33\u0E1A\u0E32\u0E14\u0E32\u0E25"
+  - background: {fileID: -8420817800383018622, guid: a90c19cec90fbc643998b62b70e7190d, type: 3}
+    image: {fileID: 21300000, guid: 4fa9d595424e22a4aabcddc2fe935807, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: dd4c554ad281dfa4eb45f70b82cb4c36, type: 3}
+    voiceOverList: []
+    subtitle: "\u0E0A\u0E32\u0E25\u0E30\u0E27\u0E31\u0E19 : \u0E41\u0E25\u0E27\u0E31\u0E19\u0E19\u0E35\u0E49\u0E1E\u0E35\u0E48\u0E21\u0E32\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E08\u0E31\u0E1A\u0E40\u0E08\u0E49\u0E32\u0E44\u0E1B\u0E40\u0E1B\u0E47\u0E19\u0E04\u0E39\u0E48\u0E04\u0E23\u0E2D\u0E07\u0E02\u0E49\u0E32"
+  - background: {fileID: -8420817800383018622, guid: a90c19cec90fbc643998b62b70e7190d, type: 3}
+    image: {fileID: 21300000, guid: dd4c554ad281dfa4eb45f70b82cb4c36, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: fd8ddfc345947d84a948ee9698743ff1, type: 3}
+    voiceOverList: []
+    subtitle: "\u0E0A\u0E32\u0E25\u0E30\u0E27\u0E31\u0E19 : \u0E21\u0E32\u0E21\u0E30
+      \u0E1E\u0E35\u0E48\u0E19\u0E31\u0E49\u0E19\u0E0A\u0E2D\u0E1A\u0E0A\u0E21\u0E01\u0E25\u0E34\u0E48\u0E19\u0E2B\u0E2D\u0E21\u0E02\u0E2D\u0E07\u0E40\u0E08\u0E49\u0E32\u0E22\u0E34\u0E48\u0E07\u0E19\u0E31\u0E01\n\u0E1C\u0E39\u0E49\u0E40\u0E25\u0E48\u0E19
+      : (\u0E44\u0E14\u0E49\u0E44\u0E07\u0E01\u0E31\u0E19... \u0E2D\u0E38\u0E15\u0E2A\u0E48\u0E32\u0E41\u0E2D\u0E1A\u0E15\u0E14\u0E25\u0E30\u0E19\u0E30!)"
+  - background: {fileID: -8286295404520111234, guid: 2290bf51e2fd1f34da532a178230acb7, type: 3}
+    image: {fileID: 21300000, guid: fd8ddfc345947d84a948ee9698743ff1, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: 4c52c018826259e46878714f29b15dd8, type: 3}
+    voiceOverList: []
+    subtitle: "\u0E1C\u0E39\u0E49\u0E40\u0E25\u0E48\u0E19 : (\u0E08\u0E21\u0E19\u0E49\u0E33\u0E2D\u0E35\u0E01\u0E25\u0E30\u0E42\u0E2D\u0E4A\u0E22!)"
+  - background: {fileID: 7878481152932745859, guid: d27ebf69989bbc747a421a00f81aa111, type: 3}
+    image: {fileID: 21300000, guid: 4c52c018826259e46878714f29b15dd8, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: ca998f801c05dee4caf568e8f330dadf, type: 3}
+    voiceOverList: []
+    subtitle: "\u0E0A\u0E32\u0E25\u0E30\u0E27\u0E31\u0E19 : \u0E16\u0E36\u0E07\u0E16\u0E49\u0E33\u0E23\u0E31\u0E01\u0E02\u0E2D\u0E07\u0E40\u0E23\u0E32\u0E41\u0E25\u0E49\u0E27\u0E08\u0E48\u0E30"
+  - background: {fileID: 7878481152932745859, guid: d27ebf69989bbc747a421a00f81aa111, type: 3}
+    image: {fileID: 21300000, guid: ca998f801c05dee4caf568e8f330dadf, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: 5cbe30a9da3b2ce47a4dade3c7e536a8, type: 3}
+    voiceOverList:
+    - {fileID: 8300000, guid: a309af64e452b35438742dadefd3de56, type: 3}
+    subtitle: "\u0E1A\u0E38\u0E04\u0E04\u0E25\u0E1B\u0E23\u0E34\u0E28\u0E19\u0E32
+      : \u0E15\u0E32\u0E22\u0E0B\u0E30\u0E40\u0E16\u0E2D\u0E30! \u0E44\u0E2D\u0E49\u0E08\u0E23\u0E30\u0E40\u0E02\u0E49\u0E21\u0E31\u0E01\u0E21\u0E32\u0E01"
+  - background: {fileID: 7878481152932745859, guid: d27ebf69989bbc747a421a00f81aa111, type: 3}
+    image: {fileID: 21300000, guid: 5cbe30a9da3b2ce47a4dade3c7e536a8, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: 16b73c29e6e433d4781c48c68ca90b64, type: 3}
+    voiceOverList:
+    - {fileID: 8300000, guid: 07110884d4c88fb4ea0b604295f83a15, type: 3}
+    subtitle: "\u0E1A\u0E38\u0E04\u0E04\u0E25\u0E1B\u0E23\u0E34\u0E28\u0E19\u0E32
+      : \u0E40\u0E21\u0E37\u0E48\u0E2D\u0E04\u0E23\u0E39\u0E48\u0E1E\u0E35\u0E48
+      \u0E40\u0E17\u0E48 \u0E2B\u0E23\u0E37\u0E2D\u0E44\u0E21\u0E48\u0E19\u0E49\u0E2D\u0E07\u0E1A\u0E38\u0E29\u0E1A\u0E32"
+  - background: {fileID: 7878481152932745859, guid: d27ebf69989bbc747a421a00f81aa111, type: 3}
+    image: {fileID: 21300000, guid: 16b73c29e6e433d4781c48c68ca90b64, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: 5a5c25846160f5c42b05f9294989fdf0, type: 3}
+    voiceOverList:
+    - {fileID: 8300000, guid: 3c7fe412655a69643ad69b040ef1aaf7, type: 3}
+    subtitle: "\u0E1A\u0E38\u0E04\u0E04\u0E25\u0E1B\u0E23\u0E34\u0E28\u0E19\u0E32
+      : \u0E40\u0E08\u0E49\u0E32\u0E40\u0E1B\u0E47\u0E19\u0E1C\u0E39\u0E49\u0E43\u0E14\u0E01\u0E31\u0E19"
+  - background: {fileID: 7878481152932745859, guid: d27ebf69989bbc747a421a00f81aa111, type: 3}
+    image: {fileID: 21300000, guid: 5a5c25846160f5c42b05f9294989fdf0, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: 60c6df38e2bc51240b312ceeef7e2e35, type: 3}
+    voiceOverList:
+    - {fileID: 8300000, guid: e813cfe271be5df45b3ea260754b4200, type: 3}
+    subtitle: "\u0E1A\u0E38\u0E04\u0E04\u0E25\u0E1B\u0E23\u0E34\u0E28\u0E19\u0E32
+      : \u0E02\u0E49\u0E32\u0E08\u0E33\u0E44\u0E14\u0E49\u0E27\u0E48\u0E32\u0E19\u0E49\u0E2D\u0E07\u0E1A\u0E38\u0E29\u0E1A\u0E32\u0E02\u0E2D\u0E07\u0E02\u0E49\u0E32\n\u0E15\u0E39\u0E49\u0E21\u0E15\u0E49\u0E32\u0E21\u0E01\u0E27\u0E48\u0E32\u0E19\u0E35\u0E49\u0E19\u0E30"
+  - background: {fileID: 7878481152932745859, guid: d27ebf69989bbc747a421a00f81aa111, type: 3}
+    image: {fileID: 21300000, guid: 60c6df38e2bc51240b312ceeef7e2e35, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: 7c7cc443f9c357a43bd5e12fce87b1d9, type: 3}
+    voiceOverList:
+    - {fileID: 8300000, guid: 7843f5cd0092a6049b3ed44fbee4b2c0, type: 3}
+    subtitle: "\u0E1A\u0E38\u0E04\u0E04\u0E25\u0E1B\u0E23\u0E34\u0E28\u0E19\u0E32
+      : \u0E0A\u0E48\u0E32\u0E07\u0E40\u0E16\u0E2D\u0E30\u0E46 \u0E02\u0E49\u0E32\u0E0A\u0E37\u0E48\u0E2D
+      \"\u0E44\u0E01\u0E23\u0E17\u0E2D\u0E07\"\n\u0E02\u0E36\u0E49\u0E19\u0E1A\u0E2D\u0E01\u0E44\u0E1B\u0E01\u0E47\u0E2D\u0E22\u0E48\u0E32\u0E25\u0E37\u0E21\u0E2A\u0E23\u0E23\u0E40\u0E2A\u0E23\u0E34\u0E0D\n\u0E04\u0E27\u0E32\u0E21\u0E14\u0E35\u0E02\u0E2D\u0E07\u0E02\u0E49\u0E32\u0E40\u0E2A\u0E35\u0E22\u0E14\u0E49\u0E27\u0E22\u0E40\u0E25\u0E48\u0E32\n"
+  - background: {fileID: 7878481152932745859, guid: d27ebf69989bbc747a421a00f81aa111, type: 3}
+    image: {fileID: 21300000, guid: 7c7cc443f9c357a43bd5e12fce87b1d9, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: 154ea049f05b8df4e94eb10dffe29ddc, type: 3}
+    voiceOverList: []
+    subtitle: "\u0E44\u0E01\u0E23\u0E17\u0E2D\u0E07 : ...."
+  - background: {fileID: 7878481152932745859, guid: d27ebf69989bbc747a421a00f81aa111, type: 3}
+    image: {fileID: 21300000, guid: 154ea049f05b8df4e94eb10dffe29ddc, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: 5dc3ee78bf8c7c1478ceece0139e09a8, type: 3}
+    voiceOverList:
+    - {fileID: 8300000, guid: 423a640a5f01bd6409a8f75069fdf81e, type: 3}
+    subtitle: "\u0E44\u0E01\u0E23\u0E17\u0E2D\u0E07 : \u0E40\u0E2D\u0E4A\u0E30!!"
+  - background: {fileID: 7878481152932745859, guid: d27ebf69989bbc747a421a00f81aa111, type: 3}
+    image: {fileID: 21300000, guid: 5dc3ee78bf8c7c1478ceece0139e09a8, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: 7312e7aef13607349ae7261fd19e508f, type: 3}
+    voiceOverList:
+    - {fileID: 8300000, guid: a0e2730646695734588d27da8bdade45, type: 3}
+    subtitle: "\u0E44\u0E01\u0E23\u0E17\u0E2D\u0E07 : \u0E0A\u0E34\u0E1A\u0E2B\u0E32\u0E22\u0E1A\u0E31\u0E07\u0E40\u0E01\u0E34\u0E14\u0E41\u0E25\u0E49\u0E27\u0E44\u0E2B\u0E21\u0E25\u0E48\u0E30!\n\u0E40\u0E17\u0E35\u0E22\u0E19\u0E02\u0E49\u0E32\u0E2B\u0E32\u0E22
+      \u0E2B\u0E32\u0E22\u0E44\u0E1B\u0E44\u0E2B\u0E19\u0E44\u0E21\u0E48\u0E23\u0E39\u0E49!\n\u0E16\u0E49\u0E32\u0E44\u0E21\u0E48\u0E21\u0E35\u0E21\u0E31\u0E19\u0E40\u0E23\u0E32\u0E15\u0E34\u0E14\u0E2D\u0E22\u0E39\u0E48\u0E17\u0E35\u0E48\u0E19\u0E35\u0E48\u0E15\u0E25\u0E2D\u0E14\u0E44\u0E1B\u0E41\u0E19\u0E48!"
+  - background: {fileID: 7878481152932745859, guid: d27ebf69989bbc747a421a00f81aa111, type: 3}
+    image: {fileID: 21300000, guid: 7312e7aef13607349ae7261fd19e508f, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: 358e95f82c9976743881758542f64e13, type: 3}
+    voiceOverList:
+    - {fileID: 8300000, guid: ba483999e2198774e82148308803209b, type: 3}
+    subtitle: "\u0E44\u0E01\u0E23\u0E17\u0E2D\u0E07 : \u0E2D\u0E22\u0E39\u0E48\u0E43\u0E19\u0E1B\u0E32\u0E01\u0E08\u0E23\u0E30\u0E40\u0E02\u0E49\u0E1A\u0E48"
+  - background: {fileID: 7878481152932745859, guid: d27ebf69989bbc747a421a00f81aa111, type: 3}
+    image: {fileID: 21300000, guid: 358e95f82c9976743881758542f64e13, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
-  - image: {fileID: 21300000, guid: c96c5ec9913d98d43a140e80d6a98ccc, type: 3}
+    voiceOverList:
+    - {fileID: 8300000, guid: 8f8b6fa74588cef4494c928c5b9dcfee, type: 3}
+    subtitle: "\u0E44\u0E01\u0E23\u0E17\u0E2D\u0E07 : \u0E21\u0E48\u0E32\u0E22\u0E21\u0E35\u0E2D\u0E48\u0E32...\u0E2D\u0E30\u0E2E\u0E37\u0E48\u0E2D\n\u0E2B\u0E23\u0E37\u0E2D\u0E42\u0E0A\u0E04\u0E0A\u0E30\u0E15\u0E32\u0E08\u0E30\u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\u0E40\u0E1B\u0E47\u0E19\u0E40\u0E08\u0E49\u0E32\u0E1A\u0E32\u0E14\u0E32\u0E25\u0E04\u0E19\u0E43\u0E2B\u0E21\u0E48\u0E40\u0E2A\u0E35\u0E22\n\u0E1C\u0E39\u0E49\u0E40\u0E25\u0E48\u0E19
+      : \u0E40\u0E14\u0E35\u0E4B\u0E22\u0E27\u0E02\u0E49\u0E32\u0E0A\u0E48\u0E27\u0E22\u0E2B\u0E32"
+  - background: {fileID: 7878481152932745859, guid: d27ebf69989bbc747a421a00f81aa111, type: 3}
+    image: {fileID: 21300000, guid: c96c5ec9913d98d43a140e80d6a98ccc, type: 3}
     videoClip: {fileID: 0}
-    subtitle: 
+    voiceOverList:
+    - {fileID: 8300000, guid: f82802b4b8fe9a54083d98fd6960addc, type: 3}
+    subtitle: "\u0E44\u0E01\u0E23\u0E17\u0E2D\u0E07 : \u0E41\u0E2B\u0E21\u0E2D\u0E49\u0E32\u0E22\u0E01\u0E47...\u0E40\u0E08\u0E49\u0E32\u0E0A\u0E48\u0E32\u0E07\u0E08\u0E34\u0E15\u0E43\u0E08\u0E14\u0E35
+      \n\u0E40\u0E2B\u0E21\u0E37\u0E2D\u0E19\u0E01\u0E31\u0E1A\u0E43\u0E1A\u0E2B\u0E19\u0E49\u0E32\u0E40\u0E08\u0E49\u0E32\u0E40\u0E25\u0E22\u0E19\u0E30"
   nextSceneName: GameScene
   typingSpeed: 0.05
+--- !u!82 &841178365
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841178362}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,8 +1103,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 429803426}
+  - {fileID: 53205910}
   - {fileID: 1828916639}
+  - {fileID: 429803426}
   - {fileID: 357068422}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
