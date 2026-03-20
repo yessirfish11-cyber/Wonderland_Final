@@ -513,7 +513,8 @@ MonoBehaviour:
   - background: {fileID: 0}
     image: {fileID: 21300000, guid: f59b6f06674d78542b43b041f1200e61, type: 3}
     videoClip: {fileID: 0}
-    voiceOverList: []
+    voiceOverList:
+    - {fileID: 8300000, guid: d862cb1e2e358f149848898ed346edbe, type: 3}
     subtitle: "\u0E02\u0E38\u0E19\u0E0A\u0E49\u0E32\u0E07 : \u0E41\u0E21\u0E48\u0E27\u0E31\u0E19\u0E17\u0E2D\u0E07\u0E02\u0E2D\u0E07\u0E02\u0E49\u0E32!
       \u0E22\u0E2D\u0E14\u0E23\u0E31\u0E01\u0E14\u0E27\u0E07\u0E43\u0E08\u0E02\u0E2D\u0E07\u0E02\u0E49\u0E32\u0E2D\u0E22\u0E39\u0E48\u0E19\u0E35\u0E48\u0E40\u0E2D\u0E07"
   - background: {fileID: 0}
@@ -532,7 +533,8 @@ MonoBehaviour:
   - background: {fileID: 0}
     image: {fileID: 21300000, guid: 75c268c0487edca4b98c68cc63729e99, type: 3}
     videoClip: {fileID: 0}
-    voiceOverList: []
+    voiceOverList:
+    - {fileID: 8300000, guid: 8b336e1788b83334a9b4ba5fcee20167, type: 3}
     subtitle: "\u0E02\u0E38\u0E19\u0E0A\u0E49\u0E32\u0E07 : \u0E44\u0E2D\u0E49\u0E41\u0E1C\u0E19!
       \u0E41\u0E21\u0E48\u0E27\u0E31\u0E19\u0E17\u0E2D\u0E07\u0E2B\u0E19\u0E35\u0E2D\u0E35\u0E01\u0E41\u0E25\u0E49\u0E27"
   - background: {fileID: 0}
@@ -540,10 +542,12 @@ MonoBehaviour:
     videoClip: {fileID: 0}
     voiceOverList:
     - {fileID: 8300000, guid: 26501d5dd6eb4774f81a5615fa4f8ba5, type: 3}
+    - {fileID: 8300000, guid: af7a4cd3e4195db42b9833b9c595c231, type: 3}
+    - {fileID: 8300000, guid: cfb98809043dac84988439dfebcbc52c, type: 3}
     subtitle: "\u0E02\u0E38\u0E19\u0E41\u0E1C\u0E19 : \u0E15\u0E23\u0E39\u0E40\u0E2B\u0E47\u0E19\u0E41\u0E25\u0E49\u0E27!
       \u0E44\u0E2D\u0E49\u0E1E\u0E25\u0E32\u0E22\u0E15\u0E23\u0E39\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E40\u0E08\u0E49\u0E32
       \u0E44\u0E1B\u0E08\u0E31\u0E1A\u0E15\u0E31\u0E27\u0E41\u0E21\u0E48\u0E27\u0E31\u0E19\u0E21\u0E32\u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\n\u0E02\u0E38\u0E19\u0E0A\u0E49\u0E32\u0E07
-      : \u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\n\u0E02\u0E38\u0E19\u0E41\u0E1C\u0E19
+      : \u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32!!\n\u0E02\u0E38\u0E19\u0E41\u0E1C\u0E19
       : \u0E2B\u0E38\u0E1A\u0E1B\u0E32\u0E01!!\n"
   nextSceneName: GameScene
   typingSpeed: 0.05

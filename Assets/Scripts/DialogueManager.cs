@@ -3,44 +3,76 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
     public NPC currentTalkingNPC;
 
+    [Header("Result UI")]
+    public GameObject resultPanel;
+    public TextMeshProUGUI resultText;
+    public Button closeResultButton;
+
+    [Header("Selection UI")]
+    public GameObject boatSelectionPanel;
+
     [Header("Tutorial UI")]
-    public GameObject tutorialPanel; // ลาก Tutorial Panel มาใส่ใน Inspector
-    public Image tutorialImage;      // (Option) ถ้าต้องการเปลี่ยนรูปสอนตาม NPC
+    public GameObject tutorialPanel;
+
+    public bool isWaitingForSelection = false;
 
     void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
-        if (tutorialPanel != null) tutorialPanel.SetActive(false);
+        resultPanel.SetActive(false);
+        tutorialPanel.SetActive(false);
     }
 
-    // ฟังก์ชันใหม่: แสดงหน้าวิธีเล่น
-    public void ShowTutorial()
+    public void PrepareSelectionPhase()
     {
-        if (tutorialPanel != null)
-        {
-            tutorialPanel.SetActive(true);
-
-            // ถ้าอยากให้รูปวิธีเล่นเปลี่ยนตาม NPC (ถ้าคุณเพิ่มตัวแปรใน NPC แล้ว)
-            // if (currentTalkingNPC.tutorialSprite != null) 
-            //    tutorialImage.sprite = currentTalkingNPC.tutorialSprite;
-        }
-        else
-        {
-            // ถ้าไม่มีหน้า Tutorial ให้โหลดซีนไปเลยกันเกมค้าง
-            StartMiniGameFromCustomPanel();
-        }
+        isWaitingForSelection = true;
+        Debug.Log("คุยจบแล้ว กรุณาไปเลือกวัตถุในฉาก");
     }
 
-    // ฟังก์ชันใหม่: ปุ่ม "เริ่มเกม" ในหน้า Tutorial จะมาเรียกใช้อันนี้
-    public void StartMiniGameFromCustomPanel()
+    public void ShowResult(string message, bool isCorrect)
+    {
+        if (currentTalkingNPC == null) return;
+
+        isWaitingForSelection = false; // ปิดโหมดรอเลือก (เลือกได้ครั้งเดียว)
+
+        // เปิด DialogueBox เดิมของ NPC ขึ้นมาใหม่
+        currentTalkingNPC.dialoguePanel.SetActive(true);
+        currentTalkingNPC.nameText.text = isCorrect ? "ระบบ: ถูกต้อง" : "ระบบ: ไม่ถูกต้อง";
+
+        // แสดงข้อความ Feedback
+        currentTalkingNPC.StopAllCoroutines();
+        currentTalkingNPC.dialogueText.text = message;
+
+        // เปลี่ยนปุ่ม Continue ให้ไปเปิด Tutorial แทน
+        currentTalkingNPC.contButton.SetActive(true);
+        Button btn = currentTalkingNPC.contButton.GetComponent<Button>();
+        btn.onClick.RemoveAllListeners();
+        btn.onClick.AddListener(TransitionToTutorial);
+    }
+
+    void TransitionToTutorial()
+    {
+        currentTalkingNPC.dialoguePanel.SetActive(false);
+        if (tutorialPanel != null) tutorialPanel.SetActive(true);
+    }
+
+    void ShowTutorial()
+    {
+        resultPanel.SetActive(false);
+        tutorialPanel.SetActive(true);
+    }
+
+    // เรียกใช้จากปุ่มในหน้า Tutorial
+    public void StartGame()
     {
         if (currentTalkingNPC != null)
         {
@@ -48,21 +80,43 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    // สำหรับปุ่ม Skip
-    public void OnSkipClicked()
-    {
-        if (currentTalkingNPC != null) currentTalkingNPC.SkipToLastLine();
-    }
-
-    // สำหรับปุ่ม Auto
     public void OnAutoClicked()
     {
         if (currentTalkingNPC != null) currentTalkingNPC.ToggleAutoPlay();
     }
 
-    // สำหรับปุ่ม Continue (ปุ่มลูกศรที่ขึ้นตอนพิมพ์จบ)
+    public void OnSkipClicked()
+    {
+        if (currentTalkingNPC != null) currentTalkingNPC.SkipToLastLine();
+    }
+
+    // สำหรับปุ่ม Continue (ลูกศร)
     public void OnContinueClicked()
     {
         if (currentTalkingNPC != null) currentTalkingNPC.NextLine();
     }
+
+    // ฟังก์ชันนี้จะผูกกับปุ่มเรือ 3 ปุ่ม
+    public void SelectBoat(int boatIndex)
+    {
+        boatSelectionPanel.SetActive(false); // ปิดหน้าเลือกเรือทันทีที่กด
+
+        string feedback = "";
+        bool correct = false;
+
+        // สมมติว่าลำที่ 2 (Index 1) คือลำที่ถูก
+        if (boatIndex == 1)
+        {
+            feedback = "ถูกต้อง! เรือลำนี้แข็งแรงที่สุด เหมาะกับการเดินทาง";
+            correct = true;
+        }
+        else
+        {
+            feedback = "แย่แล้ว! เรือลำนี้ดูเหมือนจะมีรอยรั่วนะ";
+            correct = false;
+        }
+
+        ShowResult(feedback, correct); // เรียกใช้ ShowResult เดิมที่เราเขียนไว้
+    }
+
 }
