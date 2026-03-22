@@ -34,7 +34,7 @@ public class NPC : MonoBehaviour
     public string nextSceneName; // ชื่อซีนที่จะไปคุยต่อ
 
     [Header("Flow Control")]
-    public bool isInDialogueScene = false; // ติ๊กถูกถ้าสคริปต์นี้อยู่ในซีนที่สอง
+    public bool isInDialogueScene; // ติ๊กถูกถ้าสคริปต์นี้อยู่ในซีนที่สอง
     public GameObject tutorialPanel;
 
     private int index;
@@ -100,19 +100,34 @@ public class NPC : MonoBehaviour
         }
     }
 
-    void FinishDialogue()
+    public void FinishDialogue()
     {
-        dialoguePanel.SetActive(false);
+        dialoguePanel.SetActive(false); // ปิดหน้าต่างคุย
 
-        if (!isInDialogueScene)
+        // ตรวจสอบว่า NPC ตัวนี้อยู่ในฉากที่ต้อง "เลือกของ" หรือเปล่า?
+        // (ใช้ตัวแปร Is In Dialogue Scene ใน Inspector ที่คุณมีอยู่แล้ว)
+        if (isInDialogueScene)
         {
-            // ถ้าอยู่ใน Scene แรก ให้เปลี่ยนไป Scene ถัดไป
-            SceneManager.LoadScene(nextSceneName);
+            // กรณี Scene เลือกเรือ: ให้ Manager รอการกด E ที่กองไม้
+            if (DialogueManager.Instance != null)
+            {
+                DialogueManager.Instance.currentTalkingNPC = this;
+                DialogueManager.Instance.PrepareSelectionPhase();
+            }
+            Debug.Log("จบการสนทนา: เข้าสู่ช่วงเลือกเรือในฉากนี้");
         }
         else
         {
-            // ถ้าอยู่ใน Scene ที่สอง (คุยจบแล้ว) ให้ผู้เล่นไปเดินเลือกคำตอบเอง
-            Debug.Log("คุยจบแล้ว! เชิญผู้เล่นเดินไปเลือกคำตอบที่จุดกด E");
+            // กรณี Scene แรก (GameScene): ให้โหลด Scene ถัดไปทันที
+            Debug.Log("จบการสนทนา: กำลังเปลี่ยนไป Scene ถัดไป...");
+            if (!string.IsNullOrEmpty(nextSceneName))
+            {
+                SceneManager.LoadScene(nextSceneName);
+            }
+            else
+            {
+                Debug.LogError("ลืมใส่ชื่อ Next Scene Name ใน Inspector ของ NPC!");
+            }
         }
     }
 

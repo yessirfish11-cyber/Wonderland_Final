@@ -67,7 +67,7 @@ public class PlayerCtrl : MonoBehaviour
         float currentSpeed = isSprinting ? sprintSpeed : moveSpeed;
 
         // ใช้ velocity หรือ MovePosition ก็ได้ แต่แนะนำให้คูณ currentSpeed เข้าไปตรงๆ
-        rb.MovePosition(rb.position + movement * currentSpeed * Time.fixedDeltaTime);
+        rb.linearVelocity = movement * currentSpeed;
     }
 
     private void UpdateAnimationTransitions()

@@ -40,35 +40,44 @@ public class DialogueManager : MonoBehaviour
 
     public void ShowResult(string message, bool isCorrect)
     {
-        if (currentTalkingNPC == null) return;
+        // เปิด DialogueBox เพื่อโชว์ผลลัพธ์
+        if (resultPanel != null)
+        {
+            resultPanel.SetActive(true);
+            if (resultText != null) resultText.text = message;
 
-        isWaitingForSelection = false; // ปิดโหมดรอเลือก (เลือกได้ครั้งเดียว)
+            if (closeResultButton != null)
+            {
+                closeResultButton.gameObject.SetActive(true);
+                closeResultButton.onClick.RemoveAllListeners();
 
-        // เปิด DialogueBox เดิมของ NPC ขึ้นมาใหม่
-        currentTalkingNPC.dialoguePanel.SetActive(true);
-        currentTalkingNPC.nameText.text = isCorrect ? "ระบบ: ถูกต้อง" : "ระบบ: ไม่ถูกต้อง";
+                if (isCorrect)
+                {
+                    // ถ้าถูก: กดแล้วไปหน้า Tutorial
+                    closeResultButton.onClick.AddListener(TransitionToTutorial);
+                }
+                else
+                {
+                    // ถ้าผิด: กดแล้วให้กลับไปเปิดหน้าเลือกเรือใหม่
+                    closeResultButton.onClick.AddListener(BackToSelection);
+                }
+            }
+        }
+    }
 
-        // แสดงข้อความ Feedback
-        currentTalkingNPC.StopAllCoroutines();
-        currentTalkingNPC.dialogueText.text = message;
-
-        // เปลี่ยนปุ่ม Continue ให้ไปเปิด Tutorial แทน
-        currentTalkingNPC.contButton.SetActive(true);
-        Button btn = currentTalkingNPC.contButton.GetComponent<Button>();
-        btn.onClick.RemoveAllListeners();
-        btn.onClick.AddListener(TransitionToTutorial);
+    // ฟังก์ชันสำหรับกรณีตอบผิด: ปิด DialogueBox แล้วเปิดหน้าเลือกเรือใหม่
+    void BackToSelection()
+    {
+        if (resultPanel != null) resultPanel.SetActive(false);
+        if (boatSelectionPanel != null) boatSelectionPanel.SetActive(true);
+        isWaitingForSelection = true; // มั่นใจว่ายังอยู่ในโหมดเลือก
     }
 
     void TransitionToTutorial()
     {
-        currentTalkingNPC.dialoguePanel.SetActive(false);
+        isWaitingForSelection = false; // จบช่วงเลือกของจริง
+        if (resultPanel != null) resultPanel.SetActive(false);
         if (tutorialPanel != null) tutorialPanel.SetActive(true);
-    }
-
-    void ShowTutorial()
-    {
-        resultPanel.SetActive(false);
-        tutorialPanel.SetActive(true);
     }
 
     // เรียกใช้จากปุ่มในหน้า Tutorial
@@ -99,24 +108,24 @@ public class DialogueManager : MonoBehaviour
     // ฟังก์ชันนี้จะผูกกับปุ่มเรือ 3 ปุ่ม
     public void SelectBoat(int boatIndex)
     {
-        boatSelectionPanel.SetActive(false); // ปิดหน้าเลือกเรือทันทีที่กด
+        boatSelectionPanel.SetActive(false);
 
         string feedback = "";
         bool correct = false;
 
-        // สมมติว่าลำที่ 2 (Index 1) คือลำที่ถูก
+        // สมมติ Index 1 คือลำที่ถูก
         if (boatIndex == 1)
         {
-            feedback = "ถูกต้อง! เรือลำนี้แข็งแรงที่สุด เหมาะกับการเดินทาง";
+            feedback = "ข้าว่าแล้วเจ้านี่ตาถึงเสียจริง";
             correct = true;
         }
         else
         {
-            feedback = "แย่แล้ว! เรือลำนี้ดูเหมือนจะมีรอยรั่วนะ";
+            feedback = "ข้าก็พอดูออกละว่าเจ้ามันเบาปัญญาน่ะ เห้อ…";
             correct = false;
         }
 
-        ShowResult(feedback, correct); // เรียกใช้ ShowResult เดิมที่เราเขียนไว้
+        ShowResult(feedback, correct);
     }
 
 }

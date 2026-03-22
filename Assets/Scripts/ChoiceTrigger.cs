@@ -12,9 +12,9 @@ public class ChoiceTrigger : MonoBehaviour
         // ถ้าคุยจบแล้ว และกด E ที่กองไม้
         if (playerIsInside && DialogueManager.Instance.isWaitingForSelection && Input.GetKeyDown(KeyCode.E))
         {
-            boatSelectionPanel.SetActive(true); // เปิดหน้าเลือกเรือ
-            interactPrompt.SetActive(false);
-            // ปิดการเคลื่อนที่ผู้เล่น (ถ้ามีสคริปต์คุมตัวละคร)
+            // เปิดหน้า Panel เลือกเรือ 3 ลำ
+            boatSelectionPanel.SetActive(true);
+            interactPrompt.SetActive(false); // ปิดปุ่ม E
         }
     }
 
