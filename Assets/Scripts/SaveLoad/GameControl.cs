@@ -22,14 +22,22 @@ public class GameControl : MonoBehaviour
 
     void Start()
     {
-        // ส่วนเดิม: โหลดข้อมูลเมื่อข้ามมาจาก Main Menu
-        if (SaveSystem2D.selectedSlot != -1 && player != null)
+        // แก้ไขจุดที่ 1: ตรวจสอบ Slot ที่เลือกมาจากหน้าอื่น
+        if (SaveSystem2D.selectedSlot != -1)
         {
-            LoadFromSlot(SaveSystem2D.selectedSlot);
-            SaveSystem2D.selectedSlot = -1;
+            PlayerData data = SaveSystem2D.Load(SaveSystem2D.selectedSlot);
+
+            // เช็คว่าเราอยู่ใน Scene ที่ถูกต้องตามไฟล์เซฟหรือยัง
+            if (data != null && SceneManager.GetActiveScene().name == data.sceneName)
+            {
+                if (player != null)
+                {
+                    player.transform.position = new Vector2(data.x, data.y);
+                }
+                SaveSystem2D.selectedSlot = -1; // โหลดเสร็จแล้วรีเซ็ต
+            }
         }
 
-        // 2. อัปเดตตัวหนังสือทันทีที่เริ่ม Scene
         UpdateSlotLabels();
     }
 
@@ -69,11 +77,12 @@ public class GameControl : MonoBehaviour
     // --- ฟังก์ชันสำหรับปุ่มใน Main Menu ---
     public void MainMenu_LoadSlot(int slot)
     {
-        if (System.IO.File.Exists(Application.persistentDataPath + "/save_" + slot + ".json"))
+        PlayerData data = SaveSystem2D.Load(slot);
+        if (data != null)
         {
             SaveSystem2D.selectedSlot = slot;
-            // ใส่ชื่อ Scene เกมของคุณตรงนี้
-            SceneManager.LoadScene("GameScene");
+            // แก้ไขจุดที่ 2: โหลด Scene ตามที่บันทึกไว้ในข้อมูล
+            SceneManager.LoadScene(data.sceneName);
         }
     }
 
@@ -94,17 +103,30 @@ public class GameControl : MonoBehaviour
     // --- ฟังก์ชันสำหรับปุ่มใน Game Scene ---
     public void Game_SaveSlot(int slot)
     {
+        if (player == null) return; // ถ้าไม่มีตัวละครในซีนนี้ ห้ามเซฟ
+
         SaveSystem2D.Save(slot, player.transform.position);
-        UpdateSlotLabels(); // อัปเดตวันที่ใน UI ทันที
-                            // savePanel.SetActive(false); // (เลือกได้) จะให้ปิดหน้าต่างทันทีหลังเซฟไหม?
+        UpdateSlotLabels();
     }
 
     public void Game_LoadSlot(int slot)
     {
-        if (System.IO.File.Exists(Application.persistentDataPath + "/save_" + slot + ".json"))
+        PlayerData data = SaveSystem2D.Load(slot);
+        if (data != null)
         {
-            LoadFromSlot(slot);
-            if (loadPanel != null) loadPanel.SetActive(false); // โหลดเสร็จแล้วปิดหน้าต่าง
+            // แก้ไขจุดที่ 3: เช็คว่าไฟล์ที่โหลดอยู่ซีนเดียวกับปัจจุบันไหม
+            if (data.sceneName == SceneManager.GetActiveScene().name)
+            {
+                // ถ้าซีนเดียวกัน แค่วาร์ปตัวละคร
+                if (player != null) player.transform.position = new Vector2(data.x, data.y);
+                if (loadPanel != null) loadPanel.SetActive(false);
+            }
+            else
+            {
+                // ถ้าคนละซีน ให้ส่ง Slot ไปรอแล้วโหลดซีนใหม่
+                SaveSystem2D.selectedSlot = slot;
+                SceneManager.LoadScene(data.sceneName);
+            }
         }
     }
 

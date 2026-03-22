@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public static class SaveSystem2D
@@ -11,11 +12,12 @@ public static class SaveSystem2D
 
     public static void Save(int slot, Vector2 pos)
     {
-        // ดึงเวลาปัจจุบันในรูปแบบ "ว/ด/ป ชม:นาที"
         string currentTime = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+        string currentScene = SceneManager.GetActiveScene().name; // ดึงชื่อซีนปัจจุบัน
 
-        PlayerData data = new PlayerData(pos.x, pos.y, currentTime);
+        PlayerData data = new PlayerData(pos.x, pos.y, currentTime, currentScene);
         File.WriteAllText(GetPath(slot), JsonUtility.ToJson(data));
+        Debug.Log("Saved to Scene: " + currentScene);
     }
 
     public static PlayerData Load(int slot)
