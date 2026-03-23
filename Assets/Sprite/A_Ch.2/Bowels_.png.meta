@@ -1,40 +1,25 @@
 fileFormatVersion: 2
-guid: f0007d104a8c21a41adfdebc079bdd08
+guid: 8b97bad6f9678054cb4a5c2e80ca59c5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6085338041668243844
-    second: Jar_0
+      213: -654302234727896323
+    second: Bowels__0
   - first:
-      213: 5396595176006890396
-    second: Jar_1
+      213: 1487288031503965817
+    second: Bowels__1
   - first:
-      213: -7001753983175476317
-    second: Jar_2
+      213: -4726945244142134549
+    second: Bowels__2
   - first:
-      213: -1040154090823732185
-    second: Jar_3
+      213: 1500712491501311396
+    second: Bowels__3
   - first:
-      213: -3268130221690039485
-    second: Jar_4
+      213: 7443355599451362792
+    second: Bowels__4
   - first:
-      213: -417180884472134599
-    second: Jar_5
-  - first:
-      213: 7565231978360970800
-    second: Jar_6
-  - first:
-      213: 3033065238313471084
-    second: Jar_7
-  - first:
-      213: -8239079820139811020
-    second: Jar_8
-  - first:
-      213: 5862834442008449190
-    second: Jar_9
-  - first:
-      213: -4232640302411304020
-    second: Jar_10
+      213: -5965502443537826899
+    second: Bowels__5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -67,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -81,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -104,7 +89,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -130,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jar_0
+      name: Bowels__0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 128
-        height: 128
+        x: 20
+        y: 319
+        width: 291
+        height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4819ec715b6737450800000000000000
-      internalID: 6085338041668243844
+      spriteID: dfaac4b85937be6f0800000000000000
+      internalID: -654302234727896323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jar_1
+      name: Bowels__1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 128
+        x: 337
+        y: 311
+        width: 291
+        height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c933a7e58be84ea40800000000000000
-      internalID: 5396595176006890396
+      spriteID: 97edb7ca598e3a410800000000000000
+      internalID: 1487288031503965817
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jar_2
+      name: Bowels__2
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 128
-        height: 128
+        x: 20
+        y: 251
+        width: 296
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3ab362469d5c4de90800000000000000
-      internalID: -7001753983175476317
+      spriteID: bea9f2a4854866eb0800000000000000
+      internalID: -4726945244142134549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jar_3
+      name: Bowels__3
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
-        width: 128
-        height: 128
+        x: 332
+        y: 243
+        width: 296
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 72438c88d51a091f0800000000000000
-      internalID: -1040154090823732185
+      spriteID: 4a55de55f0a93d410800000000000000
+      internalID: 1500712491501311396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jar_4
+      name: Bowels__4
       rect:
         serializedVersion: 2
-        x: 512
-        y: 0
-        width: 128
-        height: 128
+        x: 33
+        y: 176
+        width: 296
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,8 +218,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3435270f0e445a2d0800000000000000
-      internalID: -3268130221690039485
+      spriteID: 8e5963a2b7c1c4760800000000000000
+      internalID: 7443355599451362792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bowels__5
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 168
+        width: 296
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dabf33a5227463da0800000000000000
+      internalID: -5965502443537826899
       vertices: []
       indices: 
       edges: []
@@ -243,7 +250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1cac0d0fad3fda84ba41c24d2bcdda3b
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -253,11 +260,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Jar_0: 6085338041668243844
-      Jar_1: 5396595176006890396
-      Jar_2: -7001753983175476317
-      Jar_3: -1040154090823732185
-      Jar_4: -3268130221690039485
+      Bowels__0: -654302234727896323
+      Bowels__1: 1487288031503965817
+      Bowels__2: -4726945244142134549
+      Bowels__3: 1500712491501311396
+      Bowels__4: 7443355599451362792
+      Bowels__5: -5965502443537826899
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

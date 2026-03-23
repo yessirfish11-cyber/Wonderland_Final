@@ -11,7 +11,7 @@ public class PlayerCtrl : MonoBehaviour
     private Vector2 movement;
     private Rigidbody2D rb;
     private Animator animator;
-    private int lastDirectionState = 2;
+    public int lastDirectionState = 2;
 
     private bool isSprinting;
     
@@ -74,25 +74,37 @@ public class PlayerCtrl : MonoBehaviour
     {
         if (movement != Vector2.zero)
         {
-            // 1. คำนวณหาทิศทางที่กด และอัปเดต lastDirectionState
+            // หาค่าทิศทาง 1, 2, 3, 4 เหมือนเดิม
             if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
             {
-                lastDirectionState = movement.x > 0 ? 4 : 3; // ขวา หรือ ซ้าย
+                lastDirectionState = movement.x > 0 ? 4 : 3;
             }
             else
             {
-                lastDirectionState = movement.y > 0 ? 1 : 2; // บน หรือ ล่าง
+                lastDirectionState = movement.y > 0 ? 1 : 2;
             }
 
-            // ส่งค่า State ของการเดิน (1-4) ไปที่ Animator
-            animator.SetInteger("State", lastDirectionState);
+            // --- เพิ่มส่วนนี้ ---
+            if (isSprinting)
+            {
+                // ถ้าวิ่ง ให้ส่งค่าเป็นหลักร้อย (100, 200, 300, 400)
+                animator.SetInteger("State", lastDirectionState * 100);
+            }
+            else
+            {
+                // ถ้าเดินปกติ ให้ส่งค่า 1, 2, 3, 4
+                animator.SetInteger("State", lastDirectionState);
+            }
         }
         else
         {
-            // 2. ถ้าหยุดเดิน ให้เช็คว่าทิศทางล่าสุดคืออะไร แล้วส่งค่า Idle ของทิศนั้นไป
-            // เราจะกำหนดค่า Idle ให้เป็นเลขลบหรือเลขหลักสิบก็ได้ครับ 
-            // ในที่นี้ผมขอใช้: 10=IdleW, 20=IdleS, 30=IdleA, 40=IdleD
+            // ถ้าหยุดเดิน ส่งค่า Idle 10, 20, 30, 40
             animator.SetInteger("State", lastDirectionState * 10);
         }
+    }
+
+    public int GetLastDirection()
+    {
+        return lastDirectionState;
     }
 }

@@ -28,10 +28,19 @@ public class NPC : MonoBehaviour
     private Coroutine typingCoroutine;
     private Coroutine autoNextLineCoroutine;
 
+    [Header("Player Reference")]
+    public GameObject player;
+    private Animator playerAnim;// ลากตัวละคร Player มาใส่ใน Inspector ของ NPC ทุกตัว
+
     [Header("Settings")]
     public List<DialogueLine> dialogueLines;
     public float wordSpeed = 0.05f;
     public string nextSceneName; // ชื่อซีนที่จะไปคุยต่อ
+
+    public enum AfterDialogueAction { ChangeScene, TriggerSelection, JustStay }
+
+    [Header("Behavior Settings")]
+    public AfterDialogueAction actionAfterFinish;
 
     [Header("Flow Control")]
     public bool isInDialogueScene; // ติ๊กถูกถ้าสคริปต์นี้อยู่ในซีนที่สอง
@@ -58,6 +67,29 @@ public class NPC : MonoBehaviour
 
     public void StartDialogue()
     {
+        // 1. ดึง Component จาก Player มาเก็บไว้ก่อน
+        if (player != null)
+        {
+            PlayerCtrl playerScript = player.GetComponent<PlayerCtrl>();
+            playerAnim = player.GetComponent<Animator>(); // ดึง Animator ของตัวละคร
+            Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+
+            if (playerScript != null && playerAnim != null)
+            {
+                // หยุดตัวละครไม่ให้ไถล
+                if (rb != null) rb.linearVelocity = Vector2.zero;
+
+                // ดึงทิศทางล่าสุด (ต้องไปแก้ lastDirectionState เป็น public ใน PlayerCtrl ก่อนนะ)
+                int lastDir = playerScript.lastDirectionState;
+
+                // ส่งค่า Idle ไปที่ Animator (เช่น 10, 20, 30, 40)
+                playerAnim.SetInteger("State", lastDir * 10);
+
+                // ปิดสคริปต์เดิน
+                playerScript.enabled = false;
+            }
+        }
+
         index = 0;
         dialoguePanel.SetActive(true);
         interactPrompt.SetActive(false);
@@ -104,30 +136,38 @@ public class NPC : MonoBehaviour
     {
         dialoguePanel.SetActive(false); // ปิดหน้าต่างคุย
 
-        // ตรวจสอบว่า NPC ตัวนี้อยู่ในฉากที่ต้อง "เลือกของ" หรือเปล่า?
-        // (ใช้ตัวแปร Is In Dialogue Scene ใน Inspector ที่คุณมีอยู่แล้ว)
-        if (isInDialogueScene)
+        // 3. เปิดสคริปต์เดินคืนให้ Player
+        if (player != null)
         {
-            // กรณี Scene เลือกเรือ: ให้ Manager รอการกด E ที่กองไม้
-            if (DialogueManager.Instance != null)
-            {
-                DialogueManager.Instance.currentTalkingNPC = this;
-                DialogueManager.Instance.PrepareSelectionPhase();
-            }
-            Debug.Log("จบการสนทนา: เข้าสู่ช่วงเลือกเรือในฉากนี้");
+            PlayerCtrl playerScript = player.GetComponent<PlayerCtrl>();
+            if (playerScript != null) playerScript.enabled = true;
         }
-        else
+
+        // ตรวจสอบเงื่อนไขตามที่เราเลือกไว้ใน Inspector
+        switch (actionAfterFinish)
         {
-            // กรณี Scene แรก (GameScene): ให้โหลด Scene ถัดไปทันที
-            Debug.Log("จบการสนทนา: กำลังเปลี่ยนไป Scene ถัดไป...");
-            if (!string.IsNullOrEmpty(nextSceneName))
-            {
-                SceneManager.LoadScene(nextSceneName);
-            }
-            else
-            {
-                Debug.LogError("ลืมใส่ชื่อ Next Scene Name ใน Inspector ของ NPC!");
-            }
+            case AfterDialogueAction.ChangeScene:
+                Debug.Log("จบการสนทนา: เปลี่ยนซีน...");
+                if (!string.IsNullOrEmpty(nextSceneName))
+                {
+                    SceneManager.LoadScene(nextSceneName);
+                }
+                break;
+
+            case AfterDialogueAction.TriggerSelection:
+                Debug.Log("จบการสนทนา: เข้าสู่ช่วงเลือกของ");
+                if (DialogueManager.Instance != null)
+                {
+                    DialogueManager.Instance.currentTalkingNPC = this;
+                    DialogueManager.Instance.PrepareSelectionPhase();
+                }
+                break;
+
+            case AfterDialogueAction.JustStay:
+                Debug.Log("จบการสนทนา: อยู่ซีนเดิม (คุยเล่นปกติ)");
+                // ไม่ต้องทำอะไร แค่ปิด Dialogue Panel (ซึ่งทำไปแล้วบรรทัดแรก)
+                // ผู้เล่นจะสามารถเดินต่อได้ทันทีในซีนเดิม
+                break;
         }
     }
 
