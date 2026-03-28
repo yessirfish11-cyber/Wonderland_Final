@@ -15,6 +15,8 @@ public class DialogueLine
 
 public class NPC : MonoBehaviour
 {
+    public enum AfterDialogueAction { ChangeScene, TriggerSelection, JustStay, UnlockTransition }
+
     [Header("UI Reference")]
     public GameObject dialoguePanel;
     public TextMeshProUGUI nameText;
@@ -37,10 +39,11 @@ public class NPC : MonoBehaviour
     public float wordSpeed = 0.05f;
     public string nextSceneName; // ชื่อซีนที่จะไปคุยต่อ
 
-    public enum AfterDialogueAction { ChangeScene, TriggerSelection, JustStay }
-
     [Header("Behavior Settings")]
     public AfterDialogueAction actionAfterFinish;
+
+    [Header("External Trigger")]
+    public SceneTransitionTrigger targetTrigger;
 
     [Header("Flow Control")]
     public bool isInDialogueScene; // ติ๊กถูกถ้าสคริปต์นี้อยู่ในซีนที่สอง
@@ -49,9 +52,11 @@ public class NPC : MonoBehaviour
     private int index;
     private bool playerIsClose;
     private bool isTyping;
+    private bool hasFinishedDialogue;
 
     void Update()
     {
+        // กด E เพื่อเริ่มคุย หรือกดเพื่อไปประโยคถัดไป
         if (Input.GetKeyDown(KeyCode.E) && playerIsClose)
         {
             if (!dialoguePanel.activeInHierarchy)
@@ -67,38 +72,22 @@ public class NPC : MonoBehaviour
 
     public void StartDialogue()
     {
-        // 1. ดึง Component จาก Player มาเก็บไว้ก่อน
-        if (player != null)
-        {
-            PlayerCtrl playerScript = player.GetComponent<PlayerCtrl>();
-            playerAnim = player.GetComponent<Animator>(); // ดึง Animator ของตัวละคร
-            Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
-
-            if (playerScript != null && playerAnim != null)
-            {
-                // หยุดตัวละครไม่ให้ไถล
-                if (rb != null) rb.linearVelocity = Vector2.zero;
-
-                // ดึงทิศทางล่าสุด (ต้องไปแก้ lastDirectionState เป็น public ใน PlayerCtrl ก่อนนะ)
-                int lastDir = playerScript.lastDirectionState;
-
-                // ส่งค่า Idle ไปที่ Animator (เช่น 10, 20, 30, 40)
-                playerAnim.SetInteger("State", lastDir * 10);
-
-                // ปิดสคริปต์เดิน
-                playerScript.enabled = false;
-            }
-        }
+        TogglePlayerControl(false); // หยุดตัวละคร
 
         index = 0;
         dialoguePanel.SetActive(true);
         interactPrompt.SetActive(false);
-        StartCoroutine(TypeSentence());
-        DialogueManager.Instance.currentTalkingNPC = this;
+
+        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+        typingCoroutine = StartCoroutine(TypeSentence());
+
+        if (DialogueManager.Instance != null)
+            DialogueManager.Instance.currentTalkingNPC = this;
     }
 
     IEnumerator TypeSentence()
     {
+        isTyping = true;
         dialogueText.text = "";
         contButton.SetActive(false);
         nameText.text = dialogueLines[index].name;
@@ -109,7 +98,7 @@ public class NPC : MonoBehaviour
             yield return new WaitForSeconds(wordSpeed);
         }
 
-        // เมื่อพิมพ์จบประโยค
+        isTyping = false;
         contButton.SetActive(true);
 
         if (isAutoPlay)
@@ -124,7 +113,8 @@ public class NPC : MonoBehaviour
         if (index < dialogueLines.Count - 1)
         {
             index++;
-            StartCoroutine(TypeSentence());
+            if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+            typingCoroutine = StartCoroutine(TypeSentence());
         }
         else
         {
@@ -134,20 +124,23 @@ public class NPC : MonoBehaviour
 
     public void FinishDialogue()
     {
-        dialoguePanel.SetActive(false); // ปิดหน้าต่างคุย
+        dialoguePanel.SetActive(false);
+        TogglePlayerControl(true); // ให้ผู้เล่นเดินได้ปกติ
 
-        // 3. เปิดสคริปต์เดินคืนให้ Player
-        if (player != null)
-        {
-            PlayerCtrl playerScript = player.GetComponent<PlayerCtrl>();
-            if (playerScript != null) playerScript.enabled = true;
-        }
-
-        // ตรวจสอบเงื่อนไขตามที่เราเลือกไว้ใน Inspector
+        // แยก Logic ตาม Action ที่เลือกใน Inspector
         switch (actionAfterFinish)
         {
+            case AfterDialogueAction.UnlockTransition:
+                // คุยจบแล้ว "ปลดล็อก" จุดวาร์ปที่อยู่ห่างออกไป (ผู้เล่นต้องเดินไปชนเอง)
+                if (targetTrigger != null)
+                {
+                    targetTrigger.UnlockTrigger();
+                    Debug.Log("UnlockTransition: จุดวาร์ปเปิดแล้ว เดินไปชนได้เลย");
+                }
+                break;
+
             case AfterDialogueAction.ChangeScene:
-                Debug.Log("จบการสนทนา: เปลี่ยนซีน...");
+                // คุยจบแล้ว "วาร์ปทันที" (ไม่ต้องเดินไปไหน)
                 if (!string.IsNullOrEmpty(nextSceneName))
                 {
                     SceneManager.LoadScene(nextSceneName);
@@ -155,7 +148,7 @@ public class NPC : MonoBehaviour
                 break;
 
             case AfterDialogueAction.TriggerSelection:
-                Debug.Log("จบการสนทนา: เข้าสู่ช่วงเลือกของ");
+                // คุยจบแล้ว "เปิดระบบเลือกช้อยส์/เลือกเรือ"
                 if (DialogueManager.Instance != null)
                 {
                     DialogueManager.Instance.currentTalkingNPC = this;
@@ -164,10 +157,24 @@ public class NPC : MonoBehaviour
                 break;
 
             case AfterDialogueAction.JustStay:
-                Debug.Log("จบการสนทนา: อยู่ซีนเดิม (คุยเล่นปกติ)");
-                // ไม่ต้องทำอะไร แค่ปิด Dialogue Panel (ซึ่งทำไปแล้วบรรทัดแรก)
-                // ผู้เล่นจะสามารถเดินต่อได้ทันทีในซีนเดิม
+                // คุยจบแล้ว "ไม่มีอะไรเกิดขึ้น" (คุยเล่นปกติ)
                 break;
+        }
+    }
+
+    private void TogglePlayerControl(bool canMove)
+    {
+        if (player != null)
+        {
+            PlayerCtrl playerScript = player.GetComponent<PlayerCtrl>();
+            Animator playerAnim = player.GetComponent<Animator>();
+            Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+
+            if (playerScript != null)
+            {
+                if (!canMove && rb != null) rb.linearVelocity = Vector2.zero; // หยุดตัวละคร
+                playerScript.enabled = canMove;
+            }
         }
     }
 
