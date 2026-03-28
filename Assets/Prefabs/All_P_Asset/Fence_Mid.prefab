@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 122598598659368917}
   - component: {fileID: 2928322454934396568}
   - component: {fileID: 2265985323333421649}
-  - component: {fileID: 3820064141554895846}
   m_Layer: 0
   m_Name: Fence_Mid
   m_TagString: Untagged
@@ -135,17 +134,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.1, y: 0.3}
   m_EdgeRadius: 0
---- !u!114 &3820064141554895846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5889375558316035355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b97f48be109849c48984121f264ad2e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: 0
-  isStatic: 1

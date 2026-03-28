@@ -520,32 +520,32 @@ MonoBehaviour:
     voiceOverList: []
     subtitle: 
   - background: {fileID: 0}
-    image: {fileID: 21300000, guid: 271b38e768986b542b9ad3175f6a2c2c, type: 3}
+    image: {fileID: -1286218599853773326, guid: 271b38e768986b542b9ad3175f6a2c2c, type: 3}
     videoClip: {fileID: 0}
     voiceOverList: []
     subtitle: 
   - background: {fileID: 0}
-    image: {fileID: 21300000, guid: b051a061202d3f742a4e032aaf429a5a, type: 3}
+    image: {fileID: -2658508710025601885, guid: b051a061202d3f742a4e032aaf429a5a, type: 3}
     videoClip: {fileID: 0}
     voiceOverList: []
     subtitle: 
   - background: {fileID: 0}
-    image: {fileID: 21300000, guid: e5c3946d6c94a5245b480dd0d5b7ded8, type: 3}
+    image: {fileID: 390594795338066448, guid: e5c3946d6c94a5245b480dd0d5b7ded8, type: 3}
     videoClip: {fileID: 0}
     voiceOverList: []
     subtitle: 
   - background: {fileID: 0}
-    image: {fileID: 21300000, guid: fbd9baca5f1479a4ba9a78f0d0af49f8, type: 3}
+    image: {fileID: -5251339336534988586, guid: fbd9baca5f1479a4ba9a78f0d0af49f8, type: 3}
     videoClip: {fileID: 0}
     voiceOverList: []
     subtitle: 
   - background: {fileID: 0}
-    image: {fileID: 21300000, guid: a4d7324d3df8a4444a4b616aa4d38551, type: 3}
+    image: {fileID: -2891966952907841576, guid: a4d7324d3df8a4444a4b616aa4d38551, type: 3}
     videoClip: {fileID: 0}
     voiceOverList: []
     subtitle: 
   - background: {fileID: 0}
-    image: {fileID: 21300000, guid: a4d7324d3df8a4444a4b616aa4d38551, type: 3}
+    image: {fileID: -2891966952907841576, guid: a4d7324d3df8a4444a4b616aa4d38551, type: 3}
     videoClip: {fileID: 0}
     voiceOverList: []
     subtitle: 

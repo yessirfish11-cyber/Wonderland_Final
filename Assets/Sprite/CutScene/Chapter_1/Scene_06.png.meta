@@ -5,12 +5,6 @@ TextureImporter:
   - first:
       213: -2658508710025601885
     second: Scene_06_0
-  - first:
-      213: -5684793295313513620
-    second: Scene_06_1
-  - first:
-      213: -5324456538332412144
-    second: Scene_06_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -52,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -80,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -109,10 +103,10 @@ TextureImporter:
       name: Scene_06_0
       rect:
         serializedVersion: 2
-        x: 1747
-        y: 1871
-        width: 6
-        height: 9
+        x: 510
+        y: 94
+        width: 908
+        height: 922
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,55 +121,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Scene_06_1
-      rect:
-        serializedVersion: 2
-        x: 105
-        y: 897
-        width: 92
-        height: 103
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c63d0530e9e8b11b0800000000000000
-      internalID: -5684793295313513620
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Scene_06_2
-      rect:
-        serializedVersion: 2
-        x: 169
-        y: 175
-        width: 1677
-        height: 1552
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 017c0b21dfabb16b0800000000000000
-      internalID: -5324456538332412144
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -186,8 +136,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Scene_06_0: -2658508710025601885
-      Scene_06_1: -5684793295313513620
-      Scene_06_2: -5324456538332412144
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
