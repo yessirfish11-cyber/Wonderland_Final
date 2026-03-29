@@ -626,14 +626,14 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: ca998f801c05dee4caf568e8f330dadf, type: 3}
     videoClip: {fileID: 0}
     voiceOverList:
-    - {fileID: 8300000, guid: 0374af902efec8d46b8733c9f2937541, type: 3}
+    - {fileID: 8300000, guid: 7e1c0f27fe0ef4c469b7f0afc885b715, type: 3}
     subtitle: "\u0E1A\u0E38\u0E04\u0E04\u0E25\u0E1B\u0E23\u0E34\u0E28\u0E19\u0E32
       : \u0E15\u0E32\u0E22\u0E0B\u0E30\u0E40\u0E16\u0E2D\u0E30! \u0E44\u0E2D\u0E49\u0E08\u0E23\u0E30\u0E40\u0E02\u0E49\u0E21\u0E31\u0E01\u0E21\u0E32\u0E01"
   - background: {fileID: -5723907525996647667, guid: e40d4dbc47b8bd94a98bf364973f983c, type: 3}
     image: {fileID: 21300000, guid: 5cbe30a9da3b2ce47a4dade3c7e536a8, type: 3}
     videoClip: {fileID: 0}
     voiceOverList:
-    - {fileID: 8300000, guid: 07110884d4c88fb4ea0b604295f83a15, type: 3}
+    - {fileID: 8300000, guid: b251ae415b027e74193b90218f8d47a3, type: 3}
     subtitle: "\u0E1A\u0E38\u0E04\u0E04\u0E25\u0E1B\u0E23\u0E34\u0E28\u0E19\u0E32
       : \u0E40\u0E21\u0E37\u0E48\u0E2D\u0E04\u0E23\u0E39\u0E48\u0E1E\u0E35\u0E48
       \u0E40\u0E17\u0E48 \u0E2B\u0E23\u0E37\u0E2D\u0E44\u0E21\u0E48\u0E19\u0E49\u0E2D\u0E07\u0E1A\u0E38\u0E29\u0E1A\u0E32"
@@ -641,21 +641,21 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: 16b73c29e6e433d4781c48c68ca90b64, type: 3}
     videoClip: {fileID: 0}
     voiceOverList:
-    - {fileID: 8300000, guid: 3c7fe412655a69643ad69b040ef1aaf7, type: 3}
+    - {fileID: 8300000, guid: c1b8f1f273a1349408643f11f8f8f086, type: 3}
     subtitle: "\u0E1A\u0E38\u0E04\u0E04\u0E25\u0E1B\u0E23\u0E34\u0E28\u0E19\u0E32
       : \u0E40\u0E08\u0E49\u0E32\u0E40\u0E1B\u0E47\u0E19\u0E1C\u0E39\u0E49\u0E43\u0E14\u0E01\u0E31\u0E19"
   - background: {fileID: -5723907525996647667, guid: e40d4dbc47b8bd94a98bf364973f983c, type: 3}
     image: {fileID: 21300000, guid: 5a5c25846160f5c42b05f9294989fdf0, type: 3}
     videoClip: {fileID: 0}
     voiceOverList:
-    - {fileID: 8300000, guid: e813cfe271be5df45b3ea260754b4200, type: 3}
+    - {fileID: 8300000, guid: cf349f124e7f150429e1b753dbbc14eb, type: 3}
     subtitle: "\u0E1A\u0E38\u0E04\u0E04\u0E25\u0E1B\u0E23\u0E34\u0E28\u0E19\u0E32
       : \u0E02\u0E49\u0E32\u0E08\u0E33\u0E44\u0E14\u0E49\u0E27\u0E48\u0E32\u0E19\u0E49\u0E2D\u0E07\u0E1A\u0E38\u0E29\u0E1A\u0E32\u0E02\u0E2D\u0E07\u0E02\u0E49\u0E32\n\u0E15\u0E39\u0E49\u0E21\u0E15\u0E49\u0E32\u0E21\u0E01\u0E27\u0E48\u0E32\u0E19\u0E35\u0E49\u0E19\u0E30"
   - background: {fileID: -5723907525996647667, guid: e40d4dbc47b8bd94a98bf364973f983c, type: 3}
     image: {fileID: 21300000, guid: 60c6df38e2bc51240b312ceeef7e2e35, type: 3}
     videoClip: {fileID: 0}
     voiceOverList:
-    - {fileID: 8300000, guid: 7843f5cd0092a6049b3ed44fbee4b2c0, type: 3}
+    - {fileID: 8300000, guid: 7a796b9fd6253f04c9468d3e73b9e40f, type: 3}
     subtitle: "\u0E1A\u0E38\u0E04\u0E04\u0E25\u0E1B\u0E23\u0E34\u0E28\u0E19\u0E32
       : \u0E0A\u0E48\u0E32\u0E07\u0E40\u0E16\u0E2D\u0E30\u0E46 \u0E02\u0E49\u0E32\u0E0A\u0E37\u0E48\u0E2D
       \"\u0E44\u0E01\u0E23\u0E17\u0E2D\u0E07\"\n\u0E02\u0E36\u0E49\u0E19\u0E1A\u0E2D\u0E01\u0E44\u0E1B\u0E01\u0E47\u0E2D\u0E22\u0E48\u0E32\u0E25\u0E37\u0E21\u0E2A\u0E23\u0E23\u0E40\u0E2A\u0E23\u0E34\u0E0D\n\u0E04\u0E27\u0E32\u0E21\u0E14\u0E35\u0E02\u0E2D\u0E07\u0E02\u0E49\u0E32\u0E40\u0E2A\u0E35\u0E22\u0E14\u0E49\u0E27\u0E22\u0E40\u0E25\u0E48\u0E32\n"
@@ -668,33 +668,33 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: 154ea049f05b8df4e94eb10dffe29ddc, type: 3}
     videoClip: {fileID: 0}
     voiceOverList:
-    - {fileID: 8300000, guid: 423a640a5f01bd6409a8f75069fdf81e, type: 3}
+    - {fileID: 8300000, guid: 2f62a2d039acd1a4099bf82fa0455af9, type: 3}
     subtitle: "\u0E44\u0E01\u0E23\u0E17\u0E2D\u0E07 : \u0E40\u0E2D\u0E4A\u0E30!!"
   - background: {fileID: -5723907525996647667, guid: e40d4dbc47b8bd94a98bf364973f983c, type: 3}
     image: {fileID: 21300000, guid: 5dc3ee78bf8c7c1478ceece0139e09a8, type: 3}
     videoClip: {fileID: 0}
     voiceOverList:
-    - {fileID: 8300000, guid: a0e2730646695734588d27da8bdade45, type: 3}
+    - {fileID: 8300000, guid: ee40aa7628920ad44a00613a4813f55e, type: 3}
     subtitle: "\u0E44\u0E01\u0E23\u0E17\u0E2D\u0E07 : \u0E0A\u0E34\u0E1A\u0E2B\u0E32\u0E22\u0E1A\u0E31\u0E07\u0E40\u0E01\u0E34\u0E14\u0E41\u0E25\u0E49\u0E27\u0E44\u0E2B\u0E21\u0E25\u0E48\u0E30!\n\u0E40\u0E17\u0E35\u0E22\u0E19\u0E02\u0E49\u0E32\u0E2B\u0E32\u0E22
       \u0E2B\u0E32\u0E22\u0E44\u0E1B\u0E44\u0E2B\u0E19\u0E44\u0E21\u0E48\u0E23\u0E39\u0E49!\n\u0E16\u0E49\u0E32\u0E44\u0E21\u0E48\u0E21\u0E35\u0E21\u0E31\u0E19\u0E40\u0E23\u0E32\u0E15\u0E34\u0E14\u0E2D\u0E22\u0E39\u0E48\u0E17\u0E35\u0E48\u0E19\u0E35\u0E48\u0E15\u0E25\u0E2D\u0E14\u0E44\u0E1B\u0E41\u0E19\u0E48!"
   - background: {fileID: -5723907525996647667, guid: e40d4dbc47b8bd94a98bf364973f983c, type: 3}
     image: {fileID: 21300000, guid: 7312e7aef13607349ae7261fd19e508f, type: 3}
     videoClip: {fileID: 0}
     voiceOverList:
-    - {fileID: 8300000, guid: ba483999e2198774e82148308803209b, type: 3}
+    - {fileID: 8300000, guid: 56ad11f758cb7734c8058d4855775ff3, type: 3}
     subtitle: "\u0E44\u0E01\u0E23\u0E17\u0E2D\u0E07 : \u0E2D\u0E22\u0E39\u0E48\u0E43\u0E19\u0E1B\u0E32\u0E01\u0E08\u0E23\u0E30\u0E40\u0E02\u0E49\u0E1A\u0E48"
   - background: {fileID: -5723907525996647667, guid: e40d4dbc47b8bd94a98bf364973f983c, type: 3}
     image: {fileID: 21300000, guid: 358e95f82c9976743881758542f64e13, type: 3}
     videoClip: {fileID: 0}
     voiceOverList:
-    - {fileID: 8300000, guid: 8f8b6fa74588cef4494c928c5b9dcfee, type: 3}
+    - {fileID: 8300000, guid: 71141a528c0fc8e4ea2b1720018417a3, type: 3}
     subtitle: "\u0E44\u0E01\u0E23\u0E17\u0E2D\u0E07 : \u0E21\u0E48\u0E32\u0E22\u0E21\u0E35\u0E2D\u0E48\u0E32...\u0E2D\u0E30\u0E2E\u0E37\u0E48\u0E2D\n\u0E2B\u0E23\u0E37\u0E2D\u0E42\u0E0A\u0E04\u0E0A\u0E30\u0E15\u0E32\u0E08\u0E30\u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\u0E40\u0E1B\u0E47\u0E19\u0E40\u0E08\u0E49\u0E32\u0E1A\u0E32\u0E14\u0E32\u0E25\u0E04\u0E19\u0E43\u0E2B\u0E21\u0E48\u0E40\u0E2A\u0E35\u0E22\n\u0E1C\u0E39\u0E49\u0E40\u0E25\u0E48\u0E19
       : \u0E40\u0E14\u0E35\u0E4B\u0E22\u0E27\u0E02\u0E49\u0E32\u0E0A\u0E48\u0E27\u0E22\u0E2B\u0E32"
   - background: {fileID: -5723907525996647667, guid: e40d4dbc47b8bd94a98bf364973f983c, type: 3}
     image: {fileID: 21300000, guid: c96c5ec9913d98d43a140e80d6a98ccc, type: 3}
     videoClip: {fileID: 0}
     voiceOverList:
-    - {fileID: 8300000, guid: f82802b4b8fe9a54083d98fd6960addc, type: 3}
+    - {fileID: 8300000, guid: ca09469b0eee1e24cb9a71fb6e2ceca3, type: 3}
     subtitle: "\u0E44\u0E01\u0E23\u0E17\u0E2D\u0E07 : \u0E41\u0E2B\u0E21\u0E2D\u0E49\u0E32\u0E22\u0E01\u0E47...\u0E40\u0E08\u0E49\u0E32\u0E0A\u0E48\u0E32\u0E07\u0E08\u0E34\u0E15\u0E43\u0E08\u0E14\u0E35
       \n\u0E40\u0E2B\u0E21\u0E37\u0E2D\u0E19\u0E01\u0E31\u0E1A\u0E43\u0E1A\u0E2B\u0E19\u0E49\u0E32\u0E40\u0E08\u0E49\u0E32\u0E40\u0E25\u0E22\u0E19\u0E30"
   nextSceneName: GameS2

@@ -433,9 +433,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 7126910479849270986, guid: 4057db5633a4d8f4a91b3a6d2f2090dd, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -505,6 +505,11 @@ MonoBehaviour:
   audioSource: {fileID: 841178365}
   storyList:
   - background: {fileID: 0}
+    image: {fileID: 0}
+    videoClip: {fileID: 32900000, guid: 8ff0a32455dd8064cb4f70cf5a2d960d, type: 3}
+    voiceOverList: []
+    subtitle: 
+  - background: {fileID: 0}
     image: {fileID: 2527826774558546573, guid: a2eced5d934018147b75619ccd794a06, type: 3}
     videoClip: {fileID: 32900000, guid: 4f886bc65add6294c833e8604352a158, type: 3}
     voiceOverList: []
@@ -535,7 +540,7 @@ MonoBehaviour:
     voiceOverList: []
     subtitle: 
   - background: {fileID: 0}
-    image: {fileID: -5251339336534988586, guid: fbd9baca5f1479a4ba9a78f0d0af49f8, type: 3}
+    image: {fileID: -4613582995679433411, guid: fbd9baca5f1479a4ba9a78f0d0af49f8, type: 3}
     videoClip: {fileID: 0}
     voiceOverList: []
     subtitle: 
@@ -1086,7 +1091,7 @@ VideoPlayer:
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
-  m_Looping: 0
+  m_Looping: 1
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
