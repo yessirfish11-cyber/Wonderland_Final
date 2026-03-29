@@ -30,7 +30,6 @@ public class CollectibleItem : MonoBehaviour
     [SerializeField] private AudioClip collectSound;
 
     [Tooltip("ระยะ Fade Out ก่อน Destroy (วินาที, ใส่ 0 = ลบทันที)")]
-    [SerializeField] private float fadeOutDuration = 0.3f;
 
     // ─────────────────────────────────────────────
     // Private State

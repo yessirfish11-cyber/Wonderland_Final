@@ -1,10 +1,52 @@
 fileFormatVersion: 2
-guid: 2eef83f71e583a747a2e1b977e3ddfa3
+guid: 39882aba4787496439fdda9df187e3d8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5555922852085099454
-    second: Bowels_-1(1)_0
+      213: 5211730004006995597
+    second: Bang2_0
+  - first:
+      213: -7466944211962050644
+    second: Bang2_1
+  - first:
+      213: 3144751107012303111
+    second: Bang2_2
+  - first:
+      213: 309586772366965280
+    second: Bang2_3
+  - first:
+      213: -1975461505115898727
+    second: Bang2_4
+  - first:
+      213: -7409985422710081913
+    second: Bang2_5
+  - first:
+      213: -3823739317683000640
+    second: Bang2_6
+  - first:
+      213: -5522316236285177360
+    second: Bang2_7
+  - first:
+      213: -1392560139426199866
+    second: Bang2_8
+  - first:
+      213: 5392069437148742925
+    second: Bang2_9
+  - first:
+      213: -7370259480818135730
+    second: Bang2_10
+  - first:
+      213: -302211226114242777
+    second: Bang2_11
+  - first:
+      213: 8609066960242070764
+    second: Bang2_12
+  - first:
+      213: -5916173711577755858
+    second: Bang2_13
+  - first:
+      213: -8171539937318861714
+    second: Bang2_14
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +79,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -74,7 +116,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -100,13 +142,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bowels_-1(1)_0
+      name: Bang2_0
       rect:
         serializedVersion: 2
-        x: 319
-        y: 254
-        width: 66
-        height: 66
+        x: 0
+        y: 0
+        width: 7686
+        height: 3915
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +157,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ebbe10eb56a9a1d40800000000000000
-      internalID: 5555922852085099454
+      spriteID: d86051263d8c35840800000000000000
+      internalID: 5211730004006995597
       vertices: []
       indices: 
       edges: []
@@ -125,7 +167,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: aa94703fc6191524e805ef7fb1d7066f
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +177,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bowels_-1(1)_0: 5555922852085099454
+      Bang2_0: 5211730004006995597
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
