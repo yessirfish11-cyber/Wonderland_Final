@@ -32,7 +32,13 @@ public class EnemyDestroyer : MonoBehaviour
     public GameObject destructionEffectPrefab;
     
     [Header("Sound (Optional)")]
+    [Tooltip("เสียงตอน Object แตก (เล่นพร้อม Frame แรกของการแตก)")]
     public AudioClip destructionSound;
+    [Tooltip("ระดับเสียง 0-1")]
+    [Range(0f, 1f)] public float destructionVolume = 1f;
+
+    public AudioClip attackSound;
+    [Range(0f, 1f)] public float attackVolume = 1f;
     private AudioSource audioSource;
 
     private PlayerMiniGame4 player;
@@ -140,11 +146,15 @@ public class EnemyDestroyer : MonoBehaviour
     {
         // 1. เริ่ม Attack Animation
         SetAnimationState(true);
-        
-        // 2. รอให้ Animation เล่นนิดหน่อย (ถ้ามี)
+
+        // 🔊 เล่นเสียงโจมตี
+        if (audioSource != null && attackSound != null)
+            audioSource.PlayOneShot(attackSound, attackVolume);
+
+        // 2. รอ Animation
         yield return new WaitForSeconds(0.2f);
-        
-        // 3. ทำลาย Object พร้อม Animation
+
+        // 3. ทำลาย Object
         yield return StartCoroutine(PlayDestructionAnimation(spot));
     }
 
@@ -155,10 +165,6 @@ public class EnemyDestroyer : MonoBehaviour
         if (spot == null) yield break;
 
         Debug.Log($"[EnemyDestroyer] 💥 ทำลาย '{spot.name}'!");
-
-        // เสียง
-        if (audioSource != null && destructionSound != null)
-            audioSource.PlayOneShot(destructionSound);
 
         // เช็ค Player
         InteractableObjectMG4 interactable = spot.GetComponent<InteractableObjectMG4>();
@@ -186,6 +192,11 @@ public class EnemyDestroyer : MonoBehaviour
                 if (destructionSprites[i] != null)
                 {
                     sr.sprite = destructionSprites[i];
+
+                    // เล่นเสียงพร้อม Frame แรกที่ Object เริ่มแตก
+                    if (i == 0 && audioSource != null && destructionSound != null)
+                        audioSource.PlayOneShot(destructionSound, destructionVolume);
+
                     Debug.Log($"[EnemyDestroyer] Frame {i}: {destructionSprites[i].name}");
                     yield return new WaitForSeconds(frameTime);
                 }

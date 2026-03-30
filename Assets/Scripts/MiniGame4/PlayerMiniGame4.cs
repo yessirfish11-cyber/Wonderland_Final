@@ -18,6 +18,10 @@ public class PlayerMiniGame4 : MonoBehaviour
     public float interactRange = 1.5f;
     public LayerMask interactableLayer;
 
+    public AudioClip hurtSound;
+    [Range(0f, 1f)] public float hurtVolume = 1f;
+    private AudioSource audioSource;
+
     [Header("Animation")]
     // State: 1=Up 2=Down 3=Left 4=Right, Idle=10/20/30/40
 
@@ -37,12 +41,19 @@ public class PlayerMiniGame4 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null && hurtSound != null)
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Start()
     {
         currentLives = maxLives;
         currentSpeed = walkSpeed;
+
+        // แสดง Heart UI เต็มตั้งแต่ต้น
+        UIManager4.Instance?.UpdateHearts(currentLives, maxLives);
     }
 
     void Update()
@@ -142,7 +153,14 @@ public class PlayerMiniGame4 : MonoBehaviour
         if (isInvincible || isHiding) return;
 
         currentLives--;
+
+        // 🔊 เล่นเสียงตอนเลือดลด
+        if (audioSource != null && hurtSound != null)
+            audioSource.PlayOneShot(hurtSound, hurtVolume);
+
         Debug.Log($"[Player] HP: {currentLives}/{maxLives}");
+
+        UIManager4.Instance?.UpdateHearts(currentLives, maxLives);
 
         if (currentLives <= 0)
             Die();
@@ -187,7 +205,6 @@ public class PlayerMiniGame4 : MonoBehaviour
             if (animator != null)
             {
                 animator.SetBool("IsHiding", true);
-                // หยุด State ไม่ให้ขัด
                 animator.SetInteger("State", 0);
             }
         }
@@ -198,25 +215,19 @@ public class PlayerMiniGame4 : MonoBehaviour
             if (animator != null)
             {
                 animator.SetBool("IsHiding", false);
-                // กลับ idle หน้าตรงหลังออกจากซ่อน
                 animator.SetInteger("State", lastDirectionState * 10);
             }
         }
     }
 
-    /// <summary>
-    /// เรียกจาก InteractableObjectMG4 เมื่อเก็บไอเทม
-    /// </summary>
     public void CollectItem(bool isFinalItem = false)
     {
         if (isFinalItem)
         {
-            // เก็บ Final Item = ชนะเลย!
             Win();
         }
         else
         {
-            // เก็บไอเทมปกติ = แจ้ง CollectionManager
             if (CollectionManager.Instance != null)
             {
                 CollectionManager.Instance.OnItemCollected();
