@@ -22,6 +22,10 @@ public class PlayerMiniGame3 : MonoBehaviour
     // เดิน:  1=Up  2=Down  3=Left  4=Right
     // Idle: 10=Up 20=Down 30=Left 40=Right
 
+    [Header("Sound")]
+    public AudioClip damageSound; // ลาก AudioClip ใส่ใน Inspector
+    private AudioSource audioSource;
+
     // Private refs
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -37,16 +41,21 @@ public class PlayerMiniGame3 : MonoBehaviour
     // ─────────────────────────────────────────
     void Awake()
     {
-        rb           = GetComponent<Rigidbody2D>();
+        rb             = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        animator     = GetComponent<Animator>();
+        animator       = GetComponent<Animator>();
+
+        // เพิ่มบรรทัดนี้
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Start()
     {
         currentLives = maxLives;
+        UIManager3.Instance?.UpdateHearts(currentLives, maxLives); // แสดงหัวใจตอนเริ่ม
     }
-
     // ─────────────────────────────────────────
     void Update()
     {
@@ -161,6 +170,12 @@ public class PlayerMiniGame3 : MonoBehaviour
 
         currentLives--;
         Debug.Log("Player HP: " + currentLives);
+
+        // เล่นเสียงโดนดาเมจ
+        if (damageSound != null)
+            audioSource.PlayOneShot(damageSound);
+
+        UIManager3.Instance?.UpdateHearts(currentLives, maxLives);
 
         if (currentLives <= 0)
             Die();

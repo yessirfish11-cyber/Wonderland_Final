@@ -24,6 +24,10 @@ public class EnemyVisionCone : MonoBehaviour
     [Header("Cone Mesh")]
     public int rayCount = 30;
 
+    [Header("Sound")]
+    public AudioClip attackSound; // ลาก AudioClip ใส่ใน Inspector
+    private AudioSource audioSource;
+
     // Components
     private Animator    animator;
     private GameObject  coneChild;
@@ -39,6 +43,11 @@ public class EnemyVisionCone : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        // เพิ่มบรรทัดนี้
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
 
         Debug.Log($"[VisionCone] playerLayer={playerLayer.value} obstacleLayer={obstacleLayer.value}");
         if (playerLayer.value == 0)
@@ -205,10 +214,14 @@ public class EnemyVisionCone : MonoBehaviour
             if (damageTimer <= 0f)
             {
                 Debug.Log("[VisionCone] ✅ Player detected! TakeDamage()");
+
+                // เล่นเสียงโจมตี
+                if (attackSound != null)
+                    audioSource.PlayOneShot(attackSound);
+
                 player.TakeDamage();
                 damageTimer = damageCooldown;
             }
-
             break; // เจอแล้วไม่ต้องเช็ค ray ต่อ
         }
 

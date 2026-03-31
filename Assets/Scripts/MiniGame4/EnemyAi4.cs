@@ -171,13 +171,13 @@ public class EnemyAi4 : MonoBehaviour
     }
 
     // ─────────────────────────────────────────
-    void OnCollisionStay2D(Collision2D collision)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (damageTimer > 0f) return;
 
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            PlayerMiniGame4 player = collision.gameObject.GetComponent<PlayerMiniGame4>();
+            PlayerMiniGame4 player = other.GetComponent<PlayerMiniGame4>();
             if (player != null && !player.IsHiding())
             {
                 player.TakeDamage();

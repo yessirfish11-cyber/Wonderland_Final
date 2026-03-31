@@ -20,12 +20,17 @@ public class GiantMonsterEnemy : MonoBehaviour
     [SerializeField] private AudioClip chaseMusic;
     [SerializeField] private AudioClip catchSound;
 
-    private enum EnemyState
-    {
-        Patrol,
-        Chase,
-        Attack
-    }
+    [Header("Proximity Audio")]
+    [SerializeField] private AudioSource proximityAudioSource;  // AudioSource แยกสำหรับเสียงใกล้
+    [SerializeField] private AudioClip proximitySound;          // เสียงที่จะ Loop เมื่อใกล้
+    [SerializeField] private float proximitySoundRange = 12f;   // ระยะที่เริ่มได้ยินเสียง
+    [SerializeField] private float proximitySoundMaxVolume = 1f;// ความดังสูงสุด
+    [SerializeField] private float proximitySoundFadeSpeed = 2f;// ความเร็วในการ Fade
+
+    [Header("Sprite Direction")]
+    [SerializeField] private bool defaultFacingRight = true;
+
+    private enum EnemyState { Patrol, Chase, Attack }
 
     private EnemyState currentState = EnemyState.Patrol;
     private int currentWaypointIndex = 0;
@@ -33,8 +38,15 @@ public class GiantMonsterEnemy : MonoBehaviour
     private StealthPlayer playerScript;
     private Rigidbody2D rb;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
     private Vector2 movement;
     private int lastDirectionState = 2;
+
+    // ── Proximity audio state ──
+    private float targetProximityVolume = 0f;
+
+    // ── Attack guard ──
+    private bool hasAttacked = false;
 
     public bool IsChasing => currentState == EnemyState.Chase;
 
@@ -42,10 +54,22 @@ public class GiantMonsterEnemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (audioSource == null)
-        {
             audioSource = GetComponent<AudioSource>();
+
+        // ตั้งค่า proximityAudioSource (ต้องกำหนดใน Inspector)
+        if (proximityAudioSource != null)
+        {
+            proximityAudioSource.loop = true;
+            proximityAudioSource.playOnAwake = false;
+            proximityAudioSource.volume = 0f;
+            proximityAudioSource.spatialBlend = 0f;
+        }
+        else
+        {
+            Debug.LogWarning("[GiantMonster] กรุณาใส่ Proximity Audio Source ใน Inspector!");
         }
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -56,6 +80,9 @@ public class GiantMonsterEnemy : MonoBehaviour
         }
 
         currentState = EnemyState.Patrol;
+
+        // เริ่ม Proximity Loop ทันที (Volume = 0 ก่อน)
+        StartProximityLoop();
     }
 
     private void Update()
@@ -66,23 +93,73 @@ public class GiantMonsterEnemy : MonoBehaviour
                 Patrol();
                 DetectPlayer();
                 break;
-
             case EnemyState.Chase:
                 ChasePlayer();
                 break;
-
             case EnemyState.Attack:
                 AttackPlayer();
                 break;
         }
 
-        UpdateAnimation();
+        UpdateSpriteFlip();
+        UpdateProximityVolume();
     }
 
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
     }
+
+    // ════════════════════════════════════════════
+    //  PROXIMITY AUDIO
+    // ════════════════════════════════════════════
+
+    private void StartProximityLoop()
+    {
+        if (proximityAudioSource == null || proximitySound == null) return;
+
+        proximityAudioSource.clip = proximitySound;
+        proximityAudioSource.loop = true;
+        proximityAudioSource.volume = 0f;
+        proximityAudioSource.Play();
+    }
+
+    private void UpdateProximityVolume()
+    {
+        if (proximityAudioSource == null || proximitySound == null || player == null) return;
+
+        // ถ้ากำลัง Chase หรือ Attack ให้ปิดเสียง proximity (เพราะ chaseMusic จะเล่นแทน)
+        if (currentState == EnemyState.Chase || currentState == EnemyState.Attack)
+        {
+            targetProximityVolume = 0f;
+        }
+        else
+        {
+            float distance = Vector2.Distance(transform.position, player.position);
+
+            if (distance >= proximitySoundRange)
+            {
+                targetProximityVolume = 0f;
+            }
+            else
+            {
+                // ยิ่งใกล้ยิ่งดัง: Volume = 1 เมื่อ distance = 0, Volume = 0 เมื่อ distance = proximitySoundRange
+                float ratio = 1f - (distance / proximitySoundRange);
+                targetProximityVolume = ratio * proximitySoundMaxVolume;
+            }
+        }
+
+        // Smooth Fade
+        proximityAudioSource.volume = Mathf.MoveTowards(
+            proximityAudioSource.volume,
+            targetProximityVolume,
+            proximitySoundFadeSpeed * Time.deltaTime
+        );
+    }
+
+    // ════════════════════════════════════════════
+    //  PATROL & DETECTION
+    // ════════════════════════════════════════════
 
     private void Patrol()
     {
@@ -98,9 +175,7 @@ public class GiantMonsterEnemy : MonoBehaviour
 
         float distance = Vector2.Distance(rb.position, targetPos);
         if (distance < waypointThreshold)
-        {
             currentWaypointIndex = (currentWaypointIndex + 1) % patrolPoints.Length;
-        }
     }
 
     private void DetectPlayer()
@@ -109,24 +184,15 @@ public class GiantMonsterEnemy : MonoBehaviour
 
         Vector2 directionToPlayer = (player.position - transform.position).normalized;
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
         float nearRadius = visionRange * 0.5f;
 
-        // --- วงใกล้ (nearRadius = visionRange / 2) ---
-        // ตรวจจับทันที ไม่ว่าผู้เล่นจะหยุดหรือขยับ ไม่มีข้อจำกัดมุมมอง
         if (distanceToPlayer <= nearRadius)
         {
             RaycastHit2D hitNear = Physics2D.Raycast(
                 transform.position, directionToPlayer, distanceToPlayer, obstacleLayer);
-            if (hitNear.collider == null)
-            {
-                StartChase();
-                return;
-            }
+            if (hitNear.collider == null) { StartChase(); return; }
         }
 
-        // --- วงไกล (visionRange + visionAngle) ---
-        // ตรวจจับเฉพาะเมื่อผู้เล่นกำลังเดินหรือวิ่ง
         if (distanceToPlayer > visionRange) return;
 
         Vector2 forward = GetForwardDirection();
@@ -137,17 +203,12 @@ public class GiantMonsterEnemy : MonoBehaviour
             transform.position, directionToPlayer, distanceToPlayer, obstacleLayer);
         if (hit.collider != null) return;
 
-        // IsMoving ต้องมีใน StealthPlayer (ทั้งเดินและวิ่งถือว่า true)
-        if (playerScript.IsMoving)
-        {
-            StartChase();
-        }
+        if (playerScript.IsMoving) StartChase();
     }
 
     private void StartChase()
     {
         currentState = EnemyState.Chase;
-        Debug.Log("ตัวเงินตัวทองยักษ์เห็นผู้เล่น! กำลังไล่ล่า!");
 
         if (audioSource != null && chaseMusic != null)
         {
@@ -156,6 +217,10 @@ public class GiantMonsterEnemy : MonoBehaviour
             audioSource.Play();
         }
     }
+
+    // ════════════════════════════════════════════
+    //  CHASE & ATTACK
+    // ════════════════════════════════════════════
 
     private void ChasePlayer()
     {
@@ -173,75 +238,66 @@ public class GiantMonsterEnemy : MonoBehaviour
         movement = direction * chaseSpeed;
 
         float nearRadius = visionRange * 0.5f;
-
-        // ถ้าผู้เล่นอยู่ในวงใกล้ ยังคงไล่ต่อเสมอ ไม่หยุด
         if (distanceToPlayer <= nearRadius) return;
 
-        // ถ้าผู้เล่นออกมานอกวงใกล้ และหยุดขยับ ให้หยุดไล่
         if (playerScript != null && !playerScript.IsMoving)
-        {
             StopChase();
-        }
     }
 
     private void StopChase()
     {
         currentState = EnemyState.Patrol;
-        Debug.Log("หลุดสายตา กลับไปลาดตระเวน");
 
         if (audioSource != null && audioSource.isPlaying)
-        {
             audioSource.Stop();
-        }
     }
 
     private void AttackPlayer()
     {
+        if (hasAttacked) return;
+        hasAttacked = true;
+
         movement = Vector2.zero;
 
-        // หยุดเพลงไล่ล่าก่อน
+        Debug.Log($"[Attack] audioSource={audioSource}, catchSound={catchSound}");
+
         if (audioSource != null && audioSource.isPlaying)
             audioSource.Stop();
 
-        // เล่นเสียงจับได้ (ถ้ามี) — JumpScareUI จะเล่นเสียง Jumpscare ต่อเอง
         if (audioSource != null && catchSound != null)
+        {
+            Debug.Log("[Attack] PlayOneShot catchSound");
             audioSource.PlayOneShot(catchSound);
+        }
+        else
+        {
+            if (audioSource == null) Debug.LogWarning("[Attack] audioSource เป็น null!");
+            if (catchSound == null) Debug.LogWarning("[Attack] catchSound เป็น null!");
+        }
 
         StartCoroutine(AttackSequence());
     }
 
     private IEnumerator AttackSequence()
     {
-        // แอนิเมชัน Attack
-        if (animator != null)
-            animator.SetTrigger("Attack");
-
-        // หยุดการเคลื่อนที่ของผู้เล่นทันที
         if (playerScript != null)
             playerScript.SetMovement(false);
 
-        // รอนิดนึงให้แอนิเมชัน Attack เริ่มต้น
         yield return new WaitForSecondsRealtime(0.3f);
 
-        // ──── เรียก Jump Scare UI ────
-        if (JumpScareUI.Instance != null)
-        {
-            JumpScareUI.Instance.TriggerJumpScare();
-        }
+        if (GameOverUI2.Instance != null)
+            GameOverUI2.Instance.Show();
         else
-        {
-            Debug.LogWarning("JumpScareUI.Instance เป็น null — ตรวจสอบว่ามี JumpScareUI ใน Scene");
-        }
-
-        // Enemy หยุดนิ่ง ไม่ต้อง return to Patrol เพราะ Scene จะ Reload
+            Debug.LogWarning("GameOverUI.Instance เป็น null — ตรวจสอบว่ามี GameOverUI ใน Scene");
     }
+
+    // ════════════════════════════════════════════
+    //  HELPERS
+    // ════════════════════════════════════════════
 
     private Vector2 GetForwardDirection()
     {
-        if (movement.magnitude > 0.1f)
-        {
-            return movement.normalized;
-        }
+        if (movement.magnitude > 0.1f) return movement.normalized;
 
         switch (lastDirectionState)
         {
@@ -253,56 +309,49 @@ public class GiantMonsterEnemy : MonoBehaviour
         }
     }
 
-    private void UpdateAnimation()
+    private void UpdateSpriteFlip()
     {
-        if (animator == null) return;
+        if (spriteRenderer == null) return;
 
-        if (movement.magnitude > 0.1f)
+        if (Mathf.Abs(movement.x) > 0.1f)
         {
-            if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
-            {
-                lastDirectionState = movement.x > 0 ? 4 : 3;
-            }
-            else
-            {
-                lastDirectionState = movement.y > 0 ? 1 : 2;
-            }
-
-            animator.SetInteger("State", lastDirectionState);
+            bool movingRight = movement.x > 0f;
+            spriteRenderer.flipX = defaultFacingRight ? !movingRight : movingRight;
+            lastDirectionState = movingRight ? 4 : 3;
         }
-        else
+        else if (Mathf.Abs(movement.y) > 0.1f)
         {
-            animator.SetInteger("State", lastDirectionState * 10);
+            lastDirectionState = movement.y > 0f ? 1 : 2;
         }
-
-        animator.SetFloat("Speed", movement.magnitude);
-        animator.SetBool("IsChasing", currentState == EnemyState.Chase);
     }
+
+    // ════════════════════════════════════════════
+    //  GIZMOS
+    // ════════════════════════════════════════════
 
     private void OnDrawGizmos()
     {
-        // วงไกล (visionRange) - เหลือง = ลาดตระเวน, แดง = กำลังไล่
         Gizmos.color = currentState == EnemyState.Chase ? Color.red : Color.yellow;
         Gizmos.DrawWireSphere(transform.position, visionRange);
 
-        // วงใกล้ (visionRange * 0.5f) - สีส้ม: ตรวจจับทันทีไม่ว่าผู้เล่นจะหยุดหรือขยับ
         Gizmos.color = new Color(1f, 0.5f, 0f, 0.9f);
         Gizmos.DrawWireSphere(transform.position, visionRange * 0.3f);
 
-        // มุมมองเห็น (เฉพาะวงไกล)
+        // Proximity sound range (สีม่วง)
+        Gizmos.color = new Color(0.6f, 0f, 1f, 0.5f);
+        Gizmos.DrawWireSphere(transform.position, proximitySoundRange);
+
         Vector2 forward = GetForwardDirection();
         Vector3 rightBound = Quaternion.Euler(0, 0, -visionAngle) * forward;
-        Vector3 leftBound = Quaternion.Euler(0, 0, visionAngle) * forward;
+        Vector3 leftBound  = Quaternion.Euler(0, 0,  visionAngle) * forward;
 
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position + rightBound * visionRange);
-        Gizmos.DrawLine(transform.position, transform.position + leftBound * visionRange);
+        Gizmos.DrawLine(transform.position, transform.position + leftBound  * visionRange);
 
-        // ระยะจับ
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, catchDistance);
 
-        // เส้นทางลาดตระเวน
         if (patrolPoints != null && patrolPoints.Length > 1)
         {
             Gizmos.color = Color.cyan;

@@ -18,6 +18,13 @@ public class InteractableObjectMG4 : MonoBehaviour
     [Header("Collect Settings")]
     public bool destroyAfterCollect = true;
 
+    [Header("Hide Sounds (Optional)")]
+    [Tooltip("เสียงตอนเข้าซ่อน")]
+    public AudioClip hideEnterSound;
+    [Tooltip("เสียงตอนออกจากที่ซ่อน")]
+    public AudioClip hideExitSound;
+    [Range(0f, 1f)] public float hideVolume = 1f;
+
     private PlayerMiniGame4 playerInRange = null;
     private bool playerIsHidingHere = false;
     private bool isCollected = false;
@@ -48,6 +55,10 @@ public class InteractableObjectMG4 : MonoBehaviour
             player.transform.position = transform.position;
             playerIsHidingHere = true;
             playerInRange = player;
+
+            if (hideEnterSound != null)
+                AudioSource.PlayClipAtPoint(hideEnterSound, transform.position, hideVolume);
+
             Debug.Log($"[Interact] Player hiding in '{gameObject.name}'");
         }
         else
@@ -55,6 +66,10 @@ public class InteractableObjectMG4 : MonoBehaviour
             player.SetHiding(false);
             playerIsHidingHere = false;
             playerInRange = null;
+
+            if (hideExitSound != null)
+                AudioSource.PlayClipAtPoint(hideExitSound, transform.position, hideVolume);
+
             Debug.Log($"[Interact] Player came out from '{gameObject.name}'");
         }
     }

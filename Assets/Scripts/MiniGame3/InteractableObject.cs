@@ -2,8 +2,8 @@ using UnityEngine;
 
 public enum InteractType
 {
-    Hide,   // ซ่อนตัว
-    Win     // ชนะ
+    Hide,
+    Win
 }
 
 public class InteractableObject : MonoBehaviour
@@ -12,16 +12,29 @@ public class InteractableObject : MonoBehaviour
     public InteractType interactType = InteractType.Hide;
 
     [Header("Visual Hint (optional)")]
-    public GameObject interactPrompt; // ป้าย [E] ลอยอยู่เหนือ object
+    public GameObject interactPrompt;
 
+    [Header("Sound")]
+    public AudioClip hideSound;
+
+    private AudioSource audioSource;
     private PlayerMiniGame3 playerInRange = null;
     private bool playerIsHidingHere = false;
 
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+    }
+
     void Update()
     {
-        // แสดง/ซ่อน prompt เมื่อผู้เล่นอยู่ใกล้
         if (interactPrompt != null)
             interactPrompt.SetActive(playerInRange != null);
+
+        // ❌ ลบ Input.GetKeyDown(KeyCode.E) ออกจากที่นี่
+        // PlayerMiniGame3.HandleInteraction() จัดการอยู่แล้ว
     }
 
     public void Interact(PlayerMiniGame3 player)
@@ -31,7 +44,6 @@ public class InteractableObject : MonoBehaviour
             case InteractType.Hide:
                 HandleHide(player);
                 break;
-
             case InteractType.Win:
                 HandleWin();
                 break;
@@ -42,16 +54,18 @@ public class InteractableObject : MonoBehaviour
     {
         if (!player.IsHiding())
         {
-            // ซ่อนตัว
             player.SetHiding(true);
             player.transform.position = transform.position;
             playerIsHidingHere = true;
             playerInRange = player;
+
+            if (hideSound != null)
+                audioSource.PlayOneShot(hideSound);
+
             Debug.Log("Player is hiding!");
         }
         else
         {
-            // ออกจากที่ซ่อน
             player.SetHiding(false);
             playerIsHidingHere = false;
             playerInRange = null;
