@@ -5,48 +5,6 @@ TextureImporter:
   - first:
       213: -4616926237635292242
     second: Bang_0
-  - first:
-      213: -1097421992513990583
-    second: Bang_1
-  - first:
-      213: -7307287247805295037
-    second: Bang_2
-  - first:
-      213: -8797043978379850059
-    second: Bang_3
-  - first:
-      213: 9189744409838653748
-    second: Bang_4
-  - first:
-      213: -9069623093726745796
-    second: Bang_5
-  - first:
-      213: -830101012169036029
-    second: Bang_6
-  - first:
-      213: 3200853232468666268
-    second: Bang_7
-  - first:
-      213: 6604139502459916102
-    second: Bang_8
-  - first:
-      213: 4799458686691859790
-    second: Bang_9
-  - first:
-      213: -2030728350012769313
-    second: Bang_10
-  - first:
-      213: 6569257798264836241
-    second: Bang_11
-  - first:
-      213: 794826130885121814
-    second: Bang_12
-  - first:
-      213: 4982252531634061631
-    second: Bang_13
-  - first:
-      213: 4123223479685377693
-    second: Bang_14
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -147,8 +105,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 8121
-        height: 3698
+        width: 8572
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 28f5439f47718f44291be379253ea098
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
