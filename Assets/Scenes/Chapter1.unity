@@ -119,6 +119,156 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &79564402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 79564403}
+  - component: {fileID: 79564405}
+  - component: {fileID: 79564404}
+  m_Layer: 5
+  m_Name: BG_Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &79564403
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79564402}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1747381719}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &79564404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79564402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &79564405
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79564402}
+  m_CullTransparentMesh: 1
+--- !u!1 &152266603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 152266604}
+  - component: {fileID: 152266606}
+  - component: {fileID: 152266605}
+  m_Layer: 5
+  m_Name: BG_Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &152266604
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152266603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1747381719}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &152266605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152266603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 0.5686275}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &152266606
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152266603}
+  m_CullTransparentMesh: 1
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,8 +449,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 99afa13daba868e43a1f1a1f95ccbc7b, type: 2}
+  m_sharedMaterial: {fileID: -2607641141864516015, guid: 99afa13daba868e43a1f1a1f95ccbc7b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -496,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e984a941438dd47a54c308e369380d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundImage: {fileID: 0}
+  backgroundImage: {fileID: 79564404}
   displayImage: {fileID: 429803427}
   videoDisplay: {fileID: 1828916640}
   videoPlayer: {fileID: 1828916642}
@@ -506,54 +656,71 @@ MonoBehaviour:
   storyList:
   - background: {fileID: 0}
     image: {fileID: 0}
-    videoClip: {fileID: 32900000, guid: 8ff0a32455dd8064cb4f70cf5a2d960d, type: 3}
-    voiceOverList: []
-    subtitle: 
-  - background: {fileID: 0}
-    image: {fileID: 2527826774558546573, guid: a2eced5d934018147b75619ccd794a06, type: 3}
     videoClip: {fileID: 32900000, guid: 4f886bc65add6294c833e8604352a158, type: 3}
-    voiceOverList: []
-    subtitle: 
+    voiceOverList:
+    - {fileID: 8300000, guid: e36af41e845bb4c4a91dc94bff8910a8, type: 3}
+    subtitle: "\u0E41\u0E21\u0E48\u0E19\u0E32\u0E04 : \u0E09\u0E31\u0E19\u0E21\u0E32\u0E23\u0E2D\u0E1E\u0E35\u0E48\u0E17\u0E35\u0E48\u0E17\u0E48\u0E32\u0E19\u0E49\u0E33\u0E17\u0E38\u0E01\u0E27\u0E31\u0E19\u0E40\u0E25\u0E22\u0E2B\u0E19\u0E32"
   - background: {fileID: 0}
-    image: {fileID: 3677860823259659522, guid: 23f0806c3ab3c37459992dcefb9ce9c3, type: 3}
-    videoClip: {fileID: 0}
-    voiceOverList: []
-    subtitle: 
-  - background: {fileID: 0}
+    image: {fileID: 0}
+    videoClip: {fileID: 32900000, guid: 7d0b484e74bcaf84083072e01c8b1708, type: 3}
+    voiceOverList:
+    - {fileID: 8300000, guid: 4d8bc0d21c148f840bbab9b812914036, type: 3}
+    subtitle: "\u0E41\u0E21\u0E48\u0E19\u0E32\u0E04 : \u0E09\u0E31\u0E19\u0E21\u0E32\u0E23\u0E2D\u0E1E\u0E35\u0E48\u0E48\u0E17\u0E35\u0E48\u0E17\u0E48\u0E32\u0E19\u0E49\u0E33\u0E17\u0E38\u0E01\u0E27\u0E31\u0E19\u0E40\u0E25\u0E22\u0E2B\u0E19\u0E32
+      \u0E1E\u0E35\u0E48\u0E43\u0E2B\u0E49\u0E09\u0E31\u0E19\u0E23\u0E2D\u0E19\u0E32\u0E19\u0E46\u0E21\u0E31\u0E19\u0E01\u0E47\u0E2D\u0E32\u0E08\u0E08\u0E30\u0E1A\u0E31\u0E48\u0E19\u0E17\u0E2D\u0E19\u0E14\u0E27\u0E07\u0E43\u0E08\u0E19\u0E49\u0E2D\u0E07\u0E44\u0E14\u0E49\u0E19\u0E30\u0E1E\u0E35\u0E48\u0E08\u0E4B\u0E32
+      \u0E41\u0E25\u0E09\u0E31\u0E19\u0E15\u0E49\u0E2D\u0E07\u0E1E\u0E22\u0E32\u0E22\u0E32\u0E21\u0E2D\u0E35\u0E01\u0E19\u0E32\u0E19\u0E40\u0E17\u0E48\u0E32\u0E44\u0E2B\u0E23\u0E48
+      \u0E1E\u0E35\u0E48\u0E21\u0E32\u0E01\u0E16\u0E36\u0E07\u0E08\u0E31\u0E01\u0E01\u0E25\u0E31\u0E1A\u0E21\u0E32\u0E40\u0E2B\u0E25\u0E48\u0E32
+      \u0E2D\u0E30\u0E2E\u0E37\u0E48\u0E2D.."
+  - background: {fileID: -3404285296392657137, guid: c019cf51354abe14db0dea1043a2d73d, type: 3}
     image: {fileID: 7315411847164208195, guid: 604c92b9a6902864e9b506405ba56b3b, type: 3}
     videoClip: {fileID: 0}
     voiceOverList: []
-    subtitle: 
-  - background: {fileID: 0}
+    subtitle: "\u0E41\u0E21\u0E48\u0E19\u0E32\u0E04 : !"
+  - background: {fileID: -3404285296392657137, guid: c019cf51354abe14db0dea1043a2d73d, type: 3}
     image: {fileID: -1286218599853773326, guid: 271b38e768986b542b9ad3175f6a2c2c, type: 3}
     videoClip: {fileID: 0}
-    voiceOverList: []
-    subtitle: 
-  - background: {fileID: 0}
+    voiceOverList:
+    - {fileID: 8300000, guid: 51b5f14f365284a4485d9ed68b7d10c8, type: 3}
+    - {fileID: 8300000, guid: 28b37701906390245b31016cc79934f9, type: 3}
+    subtitle: "\u0E41\u0E21\u0E48\u0E19\u0E32\u0E04 : \u0E40\u0E08\u0E49\u0E32\u0E40\u0E1B\u0E47\u0E19\u0E1C\u0E39\u0E49\u0E43\u0E14\u0E01\u0E31\u0E19
+      \u0E43\u0E22\u0E21\u0E32\u0E40\u0E25\u0E48\u0E19\u0E19\u0E49\u0E33\u0E2B\u0E19\u0E49\u0E32\u0E1A\u0E49\u0E32\u0E19\u0E02\u0E49\u0E32\n\u0E1C\u0E39\u0E49\u0E40\u0E25\u0E48\u0E19
+      : (\u0E2A\u0E20\u0E32\u0E1E\u0E1C\u0E21\u0E40\u0E2B\u0E21\u0E37\u0E2D\u0E19\u0E04\u0E19\u0E40\u0E25\u0E48\u0E19\u0E19\u0E49\u0E33\u0E2B\u0E23\u0E2D\u0E04\u0E23\u0E31\u0E1A)
+      \u0E1A\u0E38\u0E4B\u0E07\u0E46\n\u0E41\u0E21\u0E48\u0E19\u0E32\u0E04 : \u0E1A\u0E38\u0E4B\u0E07\u0E46
+      \u0E2D\u0E30\u0E44\u0E23\u0E02\u0E2D\u0E07\u0E40\u0E08\u0E49\u0E32 \u0E2B\u0E25\u0E2D\u0E01\u0E14\u0E48\u0E32\u0E02\u0E49\u0E32\u0E40\u0E23\u0E4A\u0E2D\u0E30"
+  - background: {fileID: -3404285296392657137, guid: c019cf51354abe14db0dea1043a2d73d, type: 3}
     image: {fileID: -2658508710025601885, guid: b051a061202d3f742a4e032aaf429a5a, type: 3}
     videoClip: {fileID: 0}
-    voiceOverList: []
-    subtitle: 
-  - background: {fileID: 0}
+    voiceOverList:
+    - {fileID: 8300000, guid: f991fe1b1df024241bd2cef39e8081de, type: 3}
+    subtitle: "\u0E41\u0E21\u0E48\u0E19\u0E32\u0E04 : \u0E0A\u0E48\u0E32\u0E07\u0E40\u0E16\u0E2D\u0E30\u0E40\u0E08\u0E49\u0E32\u0E44\u0E21\u0E48\u0E08\u0E33\u0E40\u0E1B\u0E47\u0E19\u0E15\u0E49\u0E2D\u0E07\u0E15\u0E2D\u0E1A
+      \n\u0E40\u0E1E\u0E23\u0E32\u0E30\u0E19\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E1E\u0E35\u0E48\u0E21\u0E32\u0E01
+      \u0E02\u0E49\u0E32\u0E01\u0E47\u0E21\u0E34\u0E44\u0E14\u0E49\u0E41\u0E25\u0E0A\u0E32\u0E22\u0E2D\u0E37\u0E48\u0E19\u0E14\u0E2D\u0E01\n"
+  - background: {fileID: -3404285296392657137, guid: c019cf51354abe14db0dea1043a2d73d, type: 3}
     image: {fileID: 390594795338066448, guid: e5c3946d6c94a5245b480dd0d5b7ded8, type: 3}
     videoClip: {fileID: 0}
     voiceOverList: []
-    subtitle: 
-  - background: {fileID: 0}
+    subtitle: "\u0E41\u0E21\u0E48\u0E19\u0E32\u0E04 : ..."
+  - background: {fileID: -3404285296392657137, guid: c019cf51354abe14db0dea1043a2d73d, type: 3}
     image: {fileID: -4613582995679433411, guid: fbd9baca5f1479a4ba9a78f0d0af49f8, type: 3}
     videoClip: {fileID: 0}
-    voiceOverList: []
-    subtitle: 
-  - background: {fileID: 0}
+    voiceOverList:
+    - {fileID: 8300000, guid: b34b1484923745948925610083b5854e, type: 3}
+    subtitle: "\u0E41\u0E21\u0E48\u0E19\u0E32\u0E04 : \u0E40\u0E09\u0E01\u0E40\u0E0A\u0E48\u0E19\u0E19\u0E31\u0E49\u0E19\u0E41\u0E25\u0E49\u0E27
+      \u0E40\u0E08\u0E49\u0E32\u0E08\u0E30\u0E0A\u0E48\u0E27\u0E22\u0E02\u0E49\u0E32\u0E15\u0E32\u0E21\u0E2B\u0E32\u0E1E\u0E35\u0E48\u0E21\u0E32\u0E01\u0E43\u0E0A\u0E48\u0E2B\u0E23\u0E37\u0E2D\u0E44\u0E21\u0E48"
+  - background: {fileID: -3404285296392657137, guid: c019cf51354abe14db0dea1043a2d73d, type: 3}
+    image: {fileID: -2891966952907841576, guid: a4d7324d3df8a4444a4b616aa4d38551, type: 3}
+    videoClip: {fileID: 0}
+    voiceOverList:
+    - {fileID: 8300000, guid: 577694c345d83a748ae9e3f9c02a0057, type: 3}
+    subtitle: "\u0E41\u0E21\u0E48\u0E19\u0E32\u0E04 : \u0E40\u0E2B\u0E15\u0E38\u0E43\u0E14\u0E16\u0E36\u0E07\u0E44\u0E21\u0E48\u0E40\u0E2D\u0E48\u0E22\u0E15\u0E2D\u0E1A
+      \u0E02\u0E49\u0E32\u0E16\u0E32\u0E21\u0E27\u0E48\u0E32 \u0E43\u0E0A\u0E48 \u0E2B\u0E23\u0E37\u0E2D
+      \u0E44\u0E21\u0E48\n"
+  - background: {fileID: -3404285296392657137, guid: c019cf51354abe14db0dea1043a2d73d, type: 3}
     image: {fileID: -2891966952907841576, guid: a4d7324d3df8a4444a4b616aa4d38551, type: 3}
     videoClip: {fileID: 0}
     voiceOverList: []
-    subtitle: 
-  - background: {fileID: 0}
-    image: {fileID: -2891966952907841576, guid: a4d7324d3df8a4444a4b616aa4d38551, type: 3}
-    videoClip: {fileID: 0}
-    voiceOverList: []
-    subtitle: 
+    subtitle: "\u0E1C\u0E39\u0E49\u0E40\u0E25\u0E48\u0E19 : \u0E1A\u0E38\u0E4B\u0E07\u0E46
+      \n(\u0E41\u0E25\u0E49\u0E27\u0E09\u0E31\u0E19\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E2D\u0E30\u0E44\u0E23\u0E44\u0E14\u0E49\u0E44\u0E2B\u0E21
+      \u0E40\u0E25\u0E37\u0E2D\u0E01\u0E17\u0E35\u0E48\u0E08\u0E30\u0E44\u0E21\u0E48\u0E15\u0E32\u0E21\u0E2B\u0E32\u0E44\u0E14\u0E49\u0E2B\u0E23\u0E37\u0E2D\u0E40\u0E1B\u0E25\u0E48\u0E32)"
   nextSceneName: GameScene
   typingSpeed: 0.05
 --- !u!82 &841178365
@@ -964,6 +1131,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 79564403}
+  - {fileID: 152266604}
   - {fileID: 429803426}
   - {fileID: 1828916639}
   - {fileID: 357068422}
