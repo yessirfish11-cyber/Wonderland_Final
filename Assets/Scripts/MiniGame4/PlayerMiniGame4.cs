@@ -110,7 +110,11 @@ public class PlayerMiniGame4 : MonoBehaviour
             else
                 lastDirectionState = movement.y > 0 ? 1 : 2;
 
-            animator.SetInteger("State", lastDirectionState);
+            // เพิ่ม sprint state (คูณ 100) เหมือน PlayerCtrl
+            if (isSprinting)
+                animator.SetInteger("State", lastDirectionState * 100);
+            else
+                animator.SetInteger("State", lastDirectionState);
         }
         else
         {
