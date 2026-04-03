@@ -9,8 +9,10 @@ using TMPro;
 [System.Serializable]
 public class StoryFrame
 {
+    public string characterName;
     public Sprite background;
-    public Sprite image;
+    public Sprite mainImage;
+    public Sprite secondaryImage;
     public VideoClip videoClip;
     public List<AudioClip> voiceOverList;      // <-- เพิ่มช่องสำหรับใส่เสียงในแต่ละ Frame
     [TextArea(3, 10)]
@@ -21,8 +23,10 @@ public class StoryFrame
 public class CutsceneManager : MonoBehaviour
 {
     [Header("UI Elements")]
+    public TextMeshProUGUI nameText;
     public Image backgroundImage;
     public Image displayImage;
+    public Image secondaryDisplay;   // <--- เพิ่ม Image สำหรับแสดงผล secondaryImage
     public RawImage videoDisplay;   // Raw Image สำหรับวิดีโอ
     public VideoPlayer videoPlayer; // ตัวเล่นวิดีโอ
     public TextMeshProUGUI subtitleText; // หรือใช้ Text ธรรมดาก็ได้ครับ
@@ -60,6 +64,7 @@ public class CutsceneManager : MonoBehaviour
         isTransitioning = false;
 
         // เริ่มเล่นคิวเสียงและพิมพ์ข้อความ
+        UpdateCharacterName();
         audioQueueCoroutine = StartCoroutine(PlayAudioQueue());
         typingCoroutine = StartCoroutine(TypeText(storyList[currentIndex].subtitle));
     }
@@ -92,9 +97,19 @@ public class CutsceneManager : MonoBehaviour
         }
     }
 
+    void UpdateCharacterName()
+    {
+        // อัปเดตชื่อตัวละครในแต่ละเฟรม
+        if (nameText != null)
+        {
+            nameText.text = storyList[currentIndex].characterName;
+        }
+    }
+
     void ShowCurrentFrame(bool shouldClearText = true)
     {
         StoryFrame current = storyList[currentIndex];
+        UpdateCharacterName();
 
         // 1. จัดการ Background
         if (current.background != null)
@@ -102,16 +117,12 @@ public class CutsceneManager : MonoBehaviour
             backgroundImage.gameObject.SetActive(true);
             backgroundImage.sprite = current.background;
         }
-        else
-        {
-            // ถ้าเฟรมนี้ไม่มี Background อาจจะเลือกปิดไปหรือปล่อยทิ้งไว้ตามความเหมาะสม
-            // backgroundImage.gameObject.SetActive(false); 
-        }
 
-        // 2. จัดการ Content (Video หรือ Image)
+        // 2. จัดการ Content (Video หรือ Images)
         if (current.videoClip != null)
         {
             displayImage.gameObject.SetActive(false);
+            secondaryDisplay.gameObject.SetActive(false); // ปิดภาพที่สองถ้าเล่นวิดีโอ
             videoDisplay.gameObject.SetActive(true);
             videoPlayer.clip = current.videoClip;
             videoPlayer.Play();
@@ -119,19 +130,29 @@ public class CutsceneManager : MonoBehaviour
         else
         {
             videoDisplay.gameObject.SetActive(false);
+            if (videoPlayer.isPlaying) videoPlayer.Stop();
 
-            // ถ้าไม่มีรูปประกอบหลัก (image) ให้ปิดตัวละครไป แต่ถ้ามีก็แสดงผล
-            if (current.image != null)
+            // จัดการรูปที่ 1
+            if (current.mainImage != null)
             {
                 displayImage.gameObject.SetActive(true);
-                displayImage.sprite = current.image;
+                displayImage.sprite = current.mainImage;
             }
             else
             {
                 displayImage.gameObject.SetActive(false);
             }
 
-            if (videoPlayer.isPlaying) videoPlayer.Stop();
+            // จัดการรูปที่ 2 (เงื่อนไขเดียวกับรูปแรก)
+            if (current.secondaryImage != null)
+            {
+                secondaryDisplay.gameObject.SetActive(true);
+                secondaryDisplay.sprite = current.secondaryImage;
+            }
+            else
+            {
+                secondaryDisplay.gameObject.SetActive(false);
+            }
         }
 
         if (shouldClearText) subtitleText.text = "";

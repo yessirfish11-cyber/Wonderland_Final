@@ -3362,7 +3362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visionAngle: 40
-  visionRange: 100
+  visionRange: 50
   rotationSpeed: 45
   rotateClockwise: 1
   playerLayer:
