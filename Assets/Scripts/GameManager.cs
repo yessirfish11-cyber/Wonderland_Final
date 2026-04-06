@@ -24,13 +24,9 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-            
-        else
-            Destroy(gameObject);
+        // ไม่ต้องมี DontDestroyOnLoad เลย
+        // แต่ละ Scene สร้าง GameManager ใหม่เสมอ
+        Instance = this;
     }
 
     void Start()
@@ -38,13 +34,19 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
 
-        UpdateScoreUI();
+        // หาทุก GameObject ที่มี Tag นี้ แม้ซ่อนอยู่
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+        
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.CompareTag("WinPanel"))
+                winPanel = obj;
+        }
 
         if (winPanel != null)
             winPanel.SetActive(false);
 
-        if (pauseMenuUI != null)
-            pauseMenuUI.SetActive(false);
+        UpdateScoreUI();
     }
 
     void Update()
@@ -136,7 +138,7 @@ public class GameManager : MonoBehaviour
             scoreText.text = "Maps: " + currentScore + " / " + scoreToWin;
     }
 
-    private void Win()
+    public void Win()
     {
         if (winPanel != null)
             winPanel.SetActive(true);

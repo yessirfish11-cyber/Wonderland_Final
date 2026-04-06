@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 39882aba4787496439fdda9df187e3d8
+guid: 27effbfe4d23e254c98281aca8fe58ed
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5211730004006995597
-    second: Bang2_0
-  - first:
-      213: -7466944211962050644
-    second: Bang2_1
-  - first:
-      213: 3144751107012303111
-    second: Bang2_2
-  - first:
-      213: 309586772366965280
-    second: Bang2_3
-  - first:
-      213: -1975461505115898727
-    second: Bang2_4
+      213: -6593325809962421911
+    second: Bowels_-22_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bang2_0
+      name: Bowels_-22_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 8573
-        height: 5250
+        x: 255
+        y: 318
+        width: 66
+        height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d86051263d8c35840800000000000000
-      internalID: 5211730004006995597
+      spriteID: 96176c8db1dcf74a0800000000000000
+      internalID: -6593325809962421911
       vertices: []
       indices: 
       edges: []
@@ -137,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 7bdb096bc14b8fd449c66ebf30cd3b6b
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -147,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bang2_0: 5211730004006995597
+      Bowels_-22_0: -6593325809962421911
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -36,7 +36,6 @@ public class BackgroundMusicManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         activeSource = musicSource1;
         inactiveSource = musicSource2;

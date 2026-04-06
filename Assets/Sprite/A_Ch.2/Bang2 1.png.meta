@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 39882aba4787496439fdda9df187e3d8
+guid: 5725c33df42f6e348b0f2afaaf042c67
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5211730004006995597
-    second: Bang2_0
+      213: 148056273561169244
+    second: Bang2 1_0
   - first:
-      213: -7466944211962050644
-    second: Bang2_1
+      213: -7597569825104564258
+    second: Bang2 1_1
   - first:
-      213: 3144751107012303111
-    second: Bang2_2
+      213: 3007452729012206485
+    second: Bang2 1_2
   - first:
-      213: 309586772366965280
-    second: Bang2_3
+      213: 4841412356554896821
+    second: Bang2 1_3
   - first:
-      213: -1975461505115898727
-    second: Bang2_4
+      213: 7188880044762160213
+    second: Bang2 1_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bang2_0
+      name: Bang2 1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 2661
         width: 8573
-        height: 5250
+        height: 2589
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d86051263d8c35840800000000000000
-      internalID: 5211730004006995597
+      spriteID: c5da16875600e0200800000000000000
+      internalID: 148056273561169244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bang2 1_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 235
+        height: 2179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edf6a6a6f72009690800000000000000
+      internalID: -7597569825104564258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bang2 1_2
+      rect:
+        serializedVersion: 2
+        x: 3910
+        y: 0
+        width: 700
+        height: 1988
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59b3d87a25e9cb920800000000000000
+      internalID: 3007452729012206485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bang2 1_3
+      rect:
+        serializedVersion: 2
+        x: 4609
+        y: 0
+        width: 235
+        height: 1987
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b534ab23e6203340800000000000000
+      internalID: 4841412356554896821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bang2 1_4
+      rect:
+        serializedVersion: 2
+        x: 8344
+        y: 0
+        width: 229
+        height: 2179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55c51f8ff4804c360800000000000000
+      internalID: 7188880044762160213
       vertices: []
       indices: 
       edges: []
@@ -137,7 +225,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 7bdb096bc14b8fd449c66ebf30cd3b6b
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -147,7 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bang2_0: 5211730004006995597
+      Bang2 1_0: 148056273561169244
+      Bang2 1_1: -7597569825104564258
+      Bang2 1_2: 3007452729012206485
+      Bang2 1_3: 4841412356554896821
+      Bang2 1_4: 7188880044762160213
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
