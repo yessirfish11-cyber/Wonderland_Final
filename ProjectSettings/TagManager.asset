@@ -13,6 +13,7 @@ TagManager:
   - RoomGateManager
   - WinPanel
   - GameOver
+  - Gate
   layers:
   - Default
   - TransparentFX
