@@ -80,6 +80,7 @@ public class ChestType1 : MonoBehaviour
         openedCount++;
         if (animator != null) animator.SetBool(AnimIsOpen, true);
         if (interactHint != null) interactHint.SetActive(false);
+        Debug.Log($"[ChestType1] เปิดกล่อง: {openedCount}/{totalChestsInRoom}");
 
         if (openedCount >= totalChestsInRoom)
         {
@@ -87,6 +88,8 @@ public class ChestType1 : MonoBehaviour
             RoomGateManager gm = gateObj != null
                 ? gateObj.GetComponent<RoomGateManager>()
                 : FindObjectOfType<RoomGateManager>();
+            if (gm != null) gm.OpenGate();
+            else Debug.LogWarning("[ChestType1] หา RoomGateManager ไม่เจอ!");
         }
     }
 

@@ -6,18 +6,18 @@ using System.Collections;
 ///
 /// วิธีใช้:
 /// 1. สร้าง GameObject ใหม่ใน Scene แนบ Script นี้
-/// 2. **ตั้ง Tag ของ GameObject นี้ว่า "RoomGateManager"**
-/// 3. ลาก GameObject ที่เป็นประตู/กำแพงใส่ช่อง gateObjects
+/// 2. ตั้ง Tag ของ GameObject นี้ว่า "RoomGateManager"
+/// 3. ตั้ง Tag ของ GameObject ที่เป็นประตูว่า "Gate" (หรือค่าที่กำหนดใน gateTag)
+/// 4. ไม่ต้องลาก Gate ใส่มือ — Script หาเองตอน Runtime
 /// </summary>
 public class RoomGateManager : MonoBehaviour
 {
-    [Header("Gate Objects")]
-    [Tooltip("ลาก GameObject ที่เป็นประตู/กำแพงกั้นทางใส่ที่นี่")]
-    [SerializeField] private GameObject[] gateObjects;
+    [Header("Gate Tag")]
+    [Tooltip("Tag ของ GameObject ที่เป็นประตู/กำแพงกั้นทาง")]
+    [SerializeField] private string gateTag = "Gate";
 
     public enum GateOpenMode { Disable, Destroy, Animate }
     [SerializeField] private GateOpenMode openMode = GateOpenMode.Disable;
-
     [SerializeField] private float openDelay = 0.5f;
 
     [Header("Effects (Optional)")]
@@ -46,7 +46,16 @@ public class RoomGateManager : MonoBehaviour
         if (audioSource != null && openSound != null)
             audioSource.PlayOneShot(openSound);
 
-        foreach (var gate in gateObjects)
+        // ── หา Gate ทุกอันจาก Tag ตอน Runtime ──
+        GameObject[] gates = GameObject.FindGameObjectsWithTag(gateTag);
+
+        if (gates.Length == 0)
+        {
+            Debug.LogWarning($"[RoomGateManager] ไม่พบ GameObject ที่มี Tag '{gateTag}'!");
+            yield break;
+        }
+
+        foreach (var gate in gates)
         {
             if (gate == null) continue;
 
@@ -55,8 +64,12 @@ public class RoomGateManager : MonoBehaviour
 
             switch (openMode)
             {
-                case GateOpenMode.Disable:  gate.SetActive(false); break;
-                case GateOpenMode.Destroy:  Destroy(gate); break;
+                case GateOpenMode.Disable:
+                    gate.SetActive(false);
+                    break;
+                case GateOpenMode.Destroy:
+                    Destroy(gate);
+                    break;
                 case GateOpenMode.Animate:
                     Animator anim = gate.GetComponent<Animator>();
                     if (anim != null) anim.SetBool("IsOpen", true);
@@ -65,13 +78,14 @@ public class RoomGateManager : MonoBehaviour
             }
         }
 
-        Debug.Log("[RoomGateManager] ทางเดินถูกเปิดแล้ว!");
+        Debug.Log($"[RoomGateManager] เปิดประตู {gates.Length} อัน!");
     }
 
     public void ResetGate()
     {
         isGateOpen = false;
-        foreach (var gate in gateObjects)
+        GameObject[] gates = GameObject.FindGameObjectsWithTag(gateTag);
+        foreach (var gate in gates)
         {
             if (gate == null) continue;
             gate.SetActive(true);
@@ -82,9 +96,10 @@ public class RoomGateManager : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (gateObjects == null) return;
+        // แสดง Gate ที่หาได้จาก Tag ใน Scene View
+        GameObject[] gates = GameObject.FindGameObjectsWithTag(gateTag);
         Gizmos.color = Color.green;
-        foreach (var gate in gateObjects)
+        foreach (var gate in gates)
             if (gate != null)
                 Gizmos.DrawWireCube(gate.transform.position, gate.transform.localScale);
     }

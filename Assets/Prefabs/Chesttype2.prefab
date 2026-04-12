@@ -147,8 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8a4a8e13c102ab4bb50c742856fd6a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gateObjects:
-  - {fileID: 0}
+  gateObjects: []
   openMode: 0
   openDelay: 0.5
   openEffect: {fileID: 0}
