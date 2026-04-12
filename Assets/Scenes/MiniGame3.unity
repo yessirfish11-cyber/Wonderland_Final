@@ -2050,7 +2050,7 @@ MonoBehaviour:
   - {fileID: 229104649}
   heartFull: {fileID: -3218532005552536527, guid: eb75f2848edcbc248b92cf467adb00c3, type: 3}
   heartEmpty: {fileID: -6572557875216523385, guid: 85f34ddbd7e778a4781e5cadbb6b4b28, type: 3}
-  previousSceneName: GameScene
+  previousSceneName: GameS3
 --- !u!1 &886944089
 GameObject:
   m_ObjectHideFlags: 0
@@ -2655,8 +2655,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1264383217
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -8990763123181462008, guid: cb2c74aa0aa87214ebbf70a88a6d8581, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3223,7 +3223,7 @@ MonoBehaviour:
   scoreToWin: 0
   mainMenuSceneName: MainMenu
   cutsceneSceneName: CutsceneScene
-  gameSceneName: GameScene
+  gameSceneName: GameS3
 --- !u!4 &1319344101
 Transform:
   m_ObjectHideFlags: 0

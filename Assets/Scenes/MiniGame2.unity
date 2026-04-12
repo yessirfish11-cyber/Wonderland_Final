@@ -3447,7 +3447,7 @@ MonoBehaviour:
   scoreToWin: 1
   mainMenuSceneName: MainMenu
   cutsceneSceneName: 
-  gameSceneName: GameScene
+  gameSceneName: Chapter3
 --- !u!114 &935070847
 MonoBehaviour:
   m_ObjectHideFlags: 0
