@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 667e53aee148f6244b919e31f3f3271d
+guid: 447721a7c4a529e4dac898f02ed2c94a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3623146436854486012
-    second: UI_minigame1111_0
+      213: -7964898863582548689
+    second: UI_minigame3.2_Real_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_minigame1111_0
+      name: UI_minigame3.2_Real_0
       rect:
         serializedVersion: 2
-        x: 1458
-        y: 402
-        width: 1044
-        height: 1632
+        x: 1463
+        y: 407
+        width: 1034
+        height: 1674
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cf31fe1fc70084230800000000000000
-      internalID: 3623146436854486012
+      spriteID: f2def34feaef67190800000000000000
+      internalID: -7964898863582548689
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      UI_minigame1111_0: 3623146436854486012
+      UI_minigame3.2_Real_0: -7964898863582548689
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

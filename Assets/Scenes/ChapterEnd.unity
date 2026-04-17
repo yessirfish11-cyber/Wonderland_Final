@@ -403,14 +403,14 @@ RectTransform:
   m_GameObject: {fileID: 429803425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1747381719}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 154, y: 106}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429803427
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9b60eb9659b5e9c44b6d165110f03c84, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6bd04f3d89f9423448a167cda67adef9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -642,62 +642,34 @@ MonoBehaviour:
   fadeGroup: {fileID: 1747381720}
   audioSource: {fileID: 841178365}
   storyList:
-  - characterName: "\u0E02\u0E38\u0E19\u0E41\u0E1C\u0E19"
-    background: {fileID: -2895163818744905275, guid: 37636ba4cb74f34448f5ba1d15d3b607, type: 3}
-    mainImage: {fileID: 21300000, guid: 55a8dfab22eb4734984f1ce763969260, type: 3}
-    secondaryImage: {fileID: 0}
-    videoClip: {fileID: 0}
-    voiceOverList:
-    - {fileID: 8300000, guid: f73a6cbd6eaa60a44a4e7ed677cf0acb, type: 3}
-    subtitle: "\u0E2D\u0E22\u0E39\u0E48\u0E19\u0E35\u0E48\u0E40\u0E2D\u0E07\u0E23\u0E36\u0E41\u0E21\u0E48\u0E27\u0E31\u0E19"
-  - characterName: "\u0E02\u0E38\u0E19\u0E0A\u0E49\u0E32\u0E07"
-    background: {fileID: -2895163818744905275, guid: 37636ba4cb74f34448f5ba1d15d3b607, type: 3}
-    mainImage: {fileID: 21300000, guid: f59b6f06674d78542b43b041f1200e61, type: 3}
-    secondaryImage: {fileID: 0}
-    videoClip: {fileID: 0}
-    voiceOverList:
-    - {fileID: 8300000, guid: d862cb1e2e358f149848898ed346edbe, type: 3}
-    subtitle: "\u0E02\u0E38\u0E19\u0E0A\u0E49\u0E32\u0E07 : \u0E41\u0E21\u0E48\u0E27\u0E31\u0E19\u0E17\u0E2D\u0E07\u0E02\u0E2D\u0E07\u0E02\u0E49\u0E32!
-      \u0E22\u0E2D\u0E14\u0E23\u0E31\u0E01\u0E14\u0E27\u0E07\u0E43\u0E08\u0E02\u0E2D\u0E07\u0E02\u0E49\u0E32\u0E2D\u0E22\u0E39\u0E48\u0E19\u0E35\u0E48\u0E40\u0E2D\u0E07"
-  - characterName: "\u0E44\u0E01\u0E23\u0E17\u0E2D\u0E07"
-    background: {fileID: -4682110120235967029, guid: 9016e381e9e76a143bc98fc3903213f7, type: 3}
-    mainImage: {fileID: 0}
-    secondaryImage: {fileID: 21300000, guid: dc843c8bd0db52f47a02c2a46a44bd8e, type: 3}
-    videoClip: {fileID: 0}
-    voiceOverList:
-    - {fileID: 8300000, guid: 7be23defd9de89e4499de49f175d7013, type: 3}
-    subtitle: "\u0E40\u0E08\u0E49\u0E32\u0E21\u0E35\u0E40\u0E08\u0E49\u0E32\u0E02\u0E2D\u0E07\u0E41\u0E25\u0E49\u0E27\u0E23\u0E36
-      \u0E41\u0E15\u0E48\u0E40\u0E08\u0E49\u0E32\u0E21\u0E32\u0E2B\u0E25\u0E2D\u0E01\u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\u0E23\u0E31\u0E01\u0E41\u0E25\u0E49\u0E27\u0E2B\u0E19\u0E32\n\u0E1C\u0E39\u0E49\u0E40\u0E25\u0E48\u0E19
-      : (\u0E15\u0E2D\u0E19\u0E44\u0E2B\u0E19?)"
-  - characterName: "\u0E1C\u0E39\u0E49\u0E40\u0E25\u0E48\u0E19"
-    background: {fileID: -2895163818744905275, guid: 37636ba4cb74f34448f5ba1d15d3b607, type: 3}
-    mainImage: {fileID: 21300000, guid: f3cd380c7fc30f843940cfd8580f41b2, type: 3}
+  - characterName: (???)
+    background: {fileID: 4326141295802079320, guid: abd8266e5ff627449b93517934c2ebf1, type: 3}
+    mainImage: {fileID: 21300000, guid: 6bd04f3d89f9423448a167cda67adef9, type: 3}
     secondaryImage: {fileID: 0}
     videoClip: {fileID: 0}
     voiceOverList: []
-    subtitle: "(\u0E43\u0E04\u0E23\u0E19\u0E31\u0E01\u0E2B\u0E19\u0E32\u0E27\u0E30?) "
-  - characterName: "\u0E02\u0E38\u0E19\u0E0A\u0E49\u0E32\u0E07"
-    background: {fileID: -2895163818744905275, guid: 37636ba4cb74f34448f5ba1d15d3b607, type: 3}
-    mainImage: {fileID: 21300000, guid: 75c268c0487edca4b98c68cc63729e99, type: 3}
+    subtitle: "(\u0E01\u0E36\u0E01\u0E01\u0E31\u0E01 \u0E01\u0E36\u0E01\u0E01\u0E31\u0E01...)"
+  - characterName: (???)
+    background: {fileID: 4326141295802079320, guid: abd8266e5ff627449b93517934c2ebf1, type: 3}
+    mainImage: {fileID: 21300000, guid: 4399227a9cdadc148a3852c5aa1a32a1, type: 3}
     secondaryImage: {fileID: 0}
     videoClip: {fileID: 0}
-    voiceOverList:
-    - {fileID: 8300000, guid: 8b336e1788b83334a9b4ba5fcee20167, type: 3}
-    subtitle: "\u0E44\u0E2D\u0E49\u0E41\u0E1C\u0E19! \u0E41\u0E21\u0E48\u0E27\u0E31\u0E19\u0E17\u0E2D\u0E07\u0E2B\u0E19\u0E35\u0E2D\u0E35\u0E01\u0E41\u0E25\u0E49\u0E27"
-  - characterName: "\u0E02\u0E38\u0E19\u0E41\u0E1C\u0E19"
-    background: {fileID: -2895163818744905275, guid: 37636ba4cb74f34448f5ba1d15d3b607, type: 3}
-    mainImage: {fileID: 21300000, guid: 9b60eb9659b5e9c44b6d165110f03c84, type: 3}
+    voiceOverList: []
+    subtitle: "(\u0E1B\u0E38\u0E4A\u0E07...) \u0E40\u0E2B\u0E49\u0E2D...."
+  - characterName: "\u0E41\u0E21\u0E48\u0E19\u0E32\u0E04"
+    background: {fileID: 4326141295802079320, guid: abd8266e5ff627449b93517934c2ebf1, type: 3}
+    mainImage: {fileID: 0}
+    secondaryImage: {fileID: -1295183560013447663, guid: 03a61dfbd4d9c4949b734202a4866ba1, type: 3}
+    videoClip: {fileID: 0}
+    voiceOverList: []
+    subtitle: "\u0E1E\u0E35\u0E48\u0E21\u0E32\u0E01\u0E02\u0E32!!!"
+  - characterName: "\u0E41\u0E21\u0E48\u0E19\u0E32\u0E04"
+    background: {fileID: 4326141295802079320, guid: abd8266e5ff627449b93517934c2ebf1, type: 3}
+    mainImage: {fileID: 21300000, guid: 9a2ef089f6003314fbd29798519971f8, type: 3}
     secondaryImage: {fileID: 0}
     videoClip: {fileID: 0}
-    voiceOverList:
-    - {fileID: 8300000, guid: 26501d5dd6eb4774f81a5615fa4f8ba5, type: 3}
-    - {fileID: 8300000, guid: af7a4cd3e4195db42b9833b9c595c231, type: 3}
-    - {fileID: 8300000, guid: cfb98809043dac84988439dfebcbc52c, type: 3}
-    subtitle: "\u0E15\u0E23\u0E39\u0E40\u0E2B\u0E47\u0E19\u0E41\u0E25\u0E49\u0E27!
-      \u0E44\u0E2D\u0E49\u0E1E\u0E25\u0E32\u0E22\u0E15\u0E23\u0E39\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E40\u0E08\u0E49\u0E32
-      \u0E44\u0E1B\u0E08\u0E31\u0E1A\u0E15\u0E31\u0E27\u0E41\u0E21\u0E48\u0E27\u0E31\u0E19\u0E21\u0E32\u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\n\u0E02\u0E38\u0E19\u0E0A\u0E49\u0E32\u0E07
-      : \u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32!!\n\u0E02\u0E38\u0E19\u0E41\u0E1C\u0E19
-      : \u0E2B\u0E38\u0E1A\u0E1B\u0E32\u0E01!!\n"
+    voiceOverList: []
+    subtitle: ...
   nextSceneName: GameS3
   typingSpeed: 0.05
 --- !u!82 &841178365
@@ -854,7 +826,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2895163818744905275, guid: 37636ba4cb74f34448f5ba1d15d3b607, type: 3}
+  m_Sprite: {fileID: 4326141295802079320, guid: abd8266e5ff627449b93517934c2ebf1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1190,14 +1162,14 @@ RectTransform:
   m_GameObject: {fileID: 1218898919}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.53321, y: 0.53321, z: 0.53321}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1747381719}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -483, y: -131}
+  m_AnchoredPosition: {x: 377, y: 70}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1218898921
@@ -1220,7 +1192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dc843c8bd0db52f47a02c2a46a44bd8e, type: 3}
+  m_Sprite: {fileID: -1295183560013447663, guid: 03a61dfbd4d9c4949b734202a4866ba1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1288,7 +1260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9777123, b: 0.5943396, a: 0.4117647}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.43137255}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1470,7 +1442,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -55}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1828916640
