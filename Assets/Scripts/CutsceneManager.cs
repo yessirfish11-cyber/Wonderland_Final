@@ -46,12 +46,57 @@ public class CutsceneManager : MonoBehaviour
     private Coroutine typingCoroutine;
     private Coroutine audioQueueCoroutine; // สำหรับควบคุมคิวเสียง
 
+    [Header("New UI Buttons")]
+    public Button continueButton; // ปุ่มสำหรับไปต่อ
+    public Button skipButton;     // ปุ่มสำหรับข้ามทั้งหมด
+
     void Start()
     {
         if (videoDisplay != null) videoDisplay.gameObject.SetActive(false);
         if (audioSource == null) audioSource = GetComponent<AudioSource>();
 
         if (storyList.Count > 0) StartCoroutine(InitialStart());
+
+        if (continueButton != null)
+        {
+            continueButton.onClick.AddListener(OnContinuePressed);
+            continueButton.gameObject.SetActive(true); // มั่นใจว่าเปิดใช้งานอยู่ตลอด
+        }
+
+        if (skipButton != null)
+            skipButton.onClick.AddListener(SkipAll);
+
+        if (storyList.Count > 0) StartCoroutine(InitialStart());
+    }
+
+    // ฟังก์ชันเมื่อกดปุ่ม Continue หรือคลิกจอ
+    public void OnContinuePressed()
+    {
+        if (isTransitioning) return;
+
+        // หยุด Coroutine ทั้งหมดที่เกี่ยวกับเฟรมเก่า (เสียงพากย์ และ การพิมพ์ข้อความ)
+        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+        if (audioQueueCoroutine != null) StopCoroutine(audioQueueCoroutine);
+        audioSource.Stop();
+
+        // ไปยังเนื้อเรื่องส่วนต่อไป
+        AdvanceStory();
+    }
+
+    // ฟังก์ชันสำหรับปุ่ม Skip
+    public void SkipAll()
+    {
+        if (isTransitioning) return;
+        StartCoroutine(EndCutsceneRoutine());
+    }
+
+    // แก้ไข Update เล็กน้อยเพื่อให้ปุ่ม Space ทำงานเหมือนปุ่ม Continue
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !isTransitioning)
+        {
+            OnContinuePressed();
+        }
     }
 
     IEnumerator InitialStart()
@@ -66,22 +111,8 @@ public class CutsceneManager : MonoBehaviour
         // เริ่มเล่นคิวเสียงและพิมพ์ข้อความ
         UpdateCharacterName();
         audioQueueCoroutine = StartCoroutine(PlayAudioQueue());
+        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
         typingCoroutine = StartCoroutine(TypeText(storyList[currentIndex].subtitle));
-    }
-
-    void Update()
-    {
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && !isTransitioning)
-        {
-            if (isTyping)
-            {
-                StopTypingAndShowFullText();
-            }
-            else
-            {
-                AdvanceStory();
-            }
-        }
     }
 
     void AdvanceStory()
@@ -184,10 +215,11 @@ public class CutsceneManager : MonoBehaviour
     IEnumerator TypeText(string textToType)
     {
         isTyping = true;
-        subtitleText.text = "";
+        subtitleText.text = ""; // <-- ต้องล้างข้อความเดิมออกทุกครั้งที่เริ่มฟังก์ชัน!
+
         foreach (char letter in textToType.ToCharArray())
         {
-            subtitleText.text += letter;
+            subtitleText.text += letter; // ค่อยๆ เพิ่มตัวอักษร
             yield return new WaitForSeconds(typingSpeed);
         }
         isTyping = false;

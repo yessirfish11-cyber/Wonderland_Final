@@ -2221,7 +2221,7 @@ MonoBehaviour:
   - {fileID: 229104649}
   heartFull: {fileID: -3218532005552536527, guid: eb75f2848edcbc248b92cf467adb00c3, type: 3}
   heartEmpty: {fileID: -6572557875216523385, guid: 85f34ddbd7e778a4781e5cadbb6b4b28, type: 3}
-  previousSceneName: MiniGame4
+  previousSceneName: Chapter3.1
 --- !u!1001 &782107462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3508,7 +3508,7 @@ MonoBehaviour:
   scoreToWin: 0
   mainMenuSceneName: MainMenu
   cutsceneSceneName: CutsceneScene
-  gameSceneName: MiniGame4
+  gameSceneName: Chapter3.1
 --- !u!4 &1319344101
 Transform:
   m_ObjectHideFlags: 0
@@ -3533,7 +3533,7 @@ AudioSource:
   m_GameObject: {fileID: 1319344099}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4290969230199064079, guid: 48a0ab9624d380d4ebc7e36c22c49f41, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 2605fcd7f8d2e8f48a1f3741d4585cbb, type: 3}
   m_PlayOnAwake: 1

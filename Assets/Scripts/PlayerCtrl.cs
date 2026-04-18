@@ -14,7 +14,14 @@ public class PlayerCtrl : MonoBehaviour
     public int lastDirectionState = 2;
 
     private bool isSprinting;
-    
+
+    [Header("Audio Settings")]
+    [SerializeField] private float walkStepInterval = 0.5f;   // ความถี่เสียงตอนเดิน
+    [SerializeField] private float sprintStepInterval = 0.3f; // ความถี่เสียงตอนวิ่ง (เร็วขึ้น)
+    [SerializeField] private AudioClip footstepClip;         // ไฟล์เสียงเท้า
+
+    private float stepTimer; // ตัวนับเวลา
+
 
     private void Awake()
     {
@@ -46,6 +53,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         PlayerInput();
         UpdateAnimationTransitions();
+        HandleFootstepSound();
     }
 
     private void FixedUpdate()
@@ -63,11 +71,41 @@ public class PlayerCtrl : MonoBehaviour
 
     private void Move()
     {
-        // แม้ movement เป็น zero ก็ควรให้ rb.velocity เป็น zero เพื่อป้องกันแรงเฉื่อยค้าง
         float currentSpeed = isSprinting ? sprintSpeed : moveSpeed;
 
-        // ใช้ velocity หรือ MovePosition ก็ได้ แต่แนะนำให้คูณ currentSpeed เข้าไปตรงๆ
-        rb.linearVelocity = movement * currentSpeed;
+        // ใช้ rb.velocity เพื่อความชัวร์ (รองรับทุกเวอร์ชัน)
+        rb.velocity = movement * currentSpeed;
+    }
+
+    private void HandleFootstepSound()
+    {
+        // เงื่อนไข: ถ้ามีการกดเคลื่อนที่ (movement ไม่เป็น 0)
+        if (movement.magnitude > 0.1f)
+        {
+            stepTimer -= Time.deltaTime;
+
+            if (stepTimer <= 0f)
+            {
+                PlayFootstepSound();
+                // ปรับจังหวะก้าวตามสถานะ เดิน/วิ่ง
+                stepTimer = isSprinting ? sprintStepInterval : walkStepInterval;
+            }
+        }
+        else
+        {
+            // ถ้าหยุดอยู่กับที่ ให้รีเซ็ต Timer 
+            // เพื่อให้ก้าวแรกที่เดินใหม่มีเสียงทันที และเสียงเก่าไม่ค้าง
+            stepTimer = 0f;
+        }
+    }
+
+    private void PlayFootstepSound()
+    {
+        if (AudioManager.Instance != null && footstepClip != null)
+        {
+            // เล่นเสียงผ่าน SFX Source
+            AudioManager.Instance.sfxSource.PlayOneShot(footstepClip);
+        }
     }
 
     private void UpdateAnimationTransitions()

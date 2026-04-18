@@ -3013,7 +3013,7 @@ AudioSource:
   m_GameObject: {fileID: 281469674}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4290969230199064079, guid: 48a0ab9624d380d4ebc7e36c22c49f41, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: aa22826e9e22c9a45b5ac3df9a65a39c, type: 3}
   m_PlayOnAwake: 1
@@ -16597,7 +16597,7 @@ MonoBehaviour:
   scoreToWin: 1
   mainMenuSceneName: MainMenu
   cutsceneSceneName: CutsceneScene
-  gameSceneName: Chapter2
+  gameSceneName: ChapterEnd
 --- !u!114 &1726037080
 MonoBehaviour:
   m_ObjectHideFlags: 0

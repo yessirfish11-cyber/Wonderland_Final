@@ -14,7 +14,11 @@ public class AudioUIHandler : MonoBehaviour
     public Button sfxToggleButton;
     public GameObject sfxCheckmark;
 
-    // ทำงานตอนโหลด Scene หรือตอนเปิด Object นี้
+    [Header("Character Settings")] // เพิ่มส่วนนี้เข้ามา
+    public Slider charSlider;
+    public Button charToggleButton;
+    public GameObject charCheckmark;
+
     private void Start()
     {
         SyncUIWithManager();
@@ -27,50 +31,67 @@ public class AudioUIHandler : MonoBehaviour
 
     public void SyncUIWithManager()
     {
-        // รอจนกว่า AudioManager จะพร้อม (เผื่อกรณีเปลี่ยน Scene เร็วมาก)
         if (AudioManager.Instance == null) return;
 
-        var am = AudioManager.Instance;
+        // --- ดึงค่าจาก PlayerPrefs มาแสดงผลที่ UI ---
+        // ใช้ชื่อ Parameter ให้ตรงกับที่ตั้งไว้ใน AudioManager
+        UpdateUISlot("MusicVol", musicSlider, musicCheckmark);
+        UpdateUISlot("SFXVol", sfxSlider, sfxCheckmark);
+        UpdateUISlot("CharVol", charSlider, charCheckmark);
 
-        // --- ดึงค่าจริงจาก Manager มาแสดงที่ UI ของ Scene นี้ ---
-
-        // 1. ตั้งค่า Slider (ต้องทำก่อน AddListener เพื่อไม่ให้เกิด Loop เสียง)
-        if (musicSlider != null) musicSlider.value = am.musicSource.volume;
-        if (sfxSlider != null) sfxSlider.value = am.sfxSource.volume;
-
-        // 2. ตั้งค่าการติ๊กถูก (Checkmark)
-        // !am.musicSource.mute หมายถึง "ถ้าไม่ได้ปิดเสียง ให้โชว์ติ๊กถูก"
-        if (musicCheckmark != null) musicCheckmark.SetActive(!am.musicSource.mute);
-        if (sfxCheckmark != null) sfxCheckmark.SetActive(!am.sfxSource.mute);
-
-        // 3. ผูก Event ใหม่ (เพื่อความชัวร์ว่าคุมตัวแปรล่าสุด)
         SetupListeners();
+    }
 
-        Debug.Log("UI Synced ใน Scene: " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    // ฟังก์ชันช่วยลดความซ้ำซ้อนในการตั้งค่า UI เบื้องต้น
+    void UpdateUISlot(string param, Slider slider, GameObject checkmark)
+    {
+        if (slider != null)
+            slider.value = PlayerPrefs.GetFloat(param, 1.0f);
+
+        if (checkmark != null)
+        {
+            bool isActive = PlayerPrefs.GetInt(param + "_Mute", 1) == 1;
+            checkmark.SetActive(isActive);
+        }
     }
 
     void SetupListeners()
     {
         var am = AudioManager.Instance;
 
-        musicSlider.onValueChanged.RemoveAllListeners();
-        musicSlider.onValueChanged.AddListener(am.SetMusicVolume);
+        // Music
+        SetupControl(musicSlider, musicToggleButton, musicCheckmark, "MusicVol");
 
-        sfxSlider.onValueChanged.RemoveAllListeners();
-        sfxSlider.onValueChanged.AddListener(am.SetSFXVolume);
+        // SFX
+        SetupControl(sfxSlider, sfxToggleButton, sfxCheckmark, "SFXVol");
 
-        musicToggleButton.onClick.RemoveAllListeners();
-        musicToggleButton.onClick.AddListener(() => {
-            bool currentMute = am.musicSource.mute;
-            am.SetMusicActive(currentMute); // ส่งค่า mute เดิมเข้าไปเพื่อสลับเป็น active
-            musicCheckmark.SetActive(!am.musicSource.mute);
-        });
+        // Character
+        SetupControl(charSlider, charToggleButton, charCheckmark, "CharVol");
+    }
 
-        sfxToggleButton.onClick.RemoveAllListeners();
-        sfxToggleButton.onClick.AddListener(() => {
-            bool currentMute = am.sfxSource.mute;
-            am.SetSFXActive(currentMute);
-            sfxCheckmark.SetActive(!am.sfxSource.mute);
-        });
+    // ฟังก์ชันรวมการผูก Event เพื่อให้โค้ดดูง่าย
+    void SetupControl(Slider slider, Button btn, GameObject checkmark, string param)
+    {
+        var am = AudioManager.Instance;
+
+        if (slider != null)
+        {
+            slider.onValueChanged.RemoveAllListeners();
+            slider.onValueChanged.AddListener(val => am.SetVolume(param, val));
+        }
+
+        if (btn != null)
+        {
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(() => {
+                // อ่านค่าสถานะปัจจุบันจากเครื่องหมายติ๊กถูก
+                bool newActiveState = !checkmark.activeSelf;
+                am.SetActive(param, newActiveState);
+                checkmark.SetActive(newActiveState);
+
+                // เล่นเสียงคลิกทุกครั้งที่มีการกดปุ่ม
+                am.PlayClickSound();
+            });
+        }
     }
 }
